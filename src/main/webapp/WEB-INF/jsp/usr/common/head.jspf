@@ -20,7 +20,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!-- 구글폰트 불러오기 -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <style>
 .head_img_box {
@@ -137,7 +138,7 @@
 					</a>
 				</div>
 				<div class="LoginIcon">
-					<a href="">
+					<a href="../member/login">
 						<img src="https://velog.velcdn.com/images/fake150907/post/cb9fe070-b691-4cf6-b7cf-a4ddd545b586/image.svg" />
 						Login
 					</a>
@@ -183,7 +184,7 @@
 				</c:if>
 				<c:if test="${rq.isLogined() }">
 					<li>
-						<a class="hover:underline" href="../article/write">WRITE</a>
+						<a class="hover:underline" href="../recipe/write">WRITE</a>
 					</li>
 					<li class="hover:underline">
 						<a class="h-full px-3 flex items-center" href="/usr/member/myPage">MYPAGE</a>

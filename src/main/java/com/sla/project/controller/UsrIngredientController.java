@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UsrIngredientController {
 
-	@RequestMapping("/usr/ingredient/groupBuying")
-	public String showGroupBuyingPage() {
+	@RequestMapping("/usr/ingredient/location")
+	public String showLocationPage() {
 
-		return "/usr/ingredient/groupBuying";
+		return "/usr/ingredient/location";
 	}
 }
