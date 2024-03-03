@@ -15,7 +15,7 @@ CREATE TABLE `member` (
     email  CHAR(50) NOT NULL UNIQUE,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부(0=탈퇴 전, 1=탈퇴 후)',
     delDate DATETIME COMMENT '탈퇴 날짜',
-    mannerWeather INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '순서대로 1,2,3,4,5 1이 매너 제일 안좋음 5가 매너 제일 좋음'
+    mannerWeather INT(10) UNSIGNED NOT NULL DEFAULT 3 COMMENT '순서대로 1,2,3,4,5 1이 매너 제일 안좋음 5가 매너 제일 좋음'
 );
 
 CREATE TABLE recipe(
@@ -84,4 +84,39 @@ CREATE TABLE groupBuyingArticle (
     location VARCHAR(50) NOT NULL
 );
 
+#########################################################################
+# SELECT
+select * from `member`;
 
+#########################################################################
+# member table insert data
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user1',
+loginPw = 'user1',
+`authLevel` = 7,
+`name` = '고수달',
+nickname = '초고수달',
+cellphoneNum = '01012341234',
+email = 'sudal123@gmail.com';
+
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user2',
+loginPw = 'user2',
+`name` = '고양이',
+nickname = '고먐미',
+cellphoneNum = '01011112222',
+email = 'nyang22@gmail.com';
+
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user3',
+loginPw = 'user3',
+`name` = '강아지',
+nickname = '멈무이',
+cellphoneNum = '01012345678',
+email = 'mummu33@gmail.com';
