@@ -18,7 +18,9 @@
 
 <!-- 제이쿼리 불러오기 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<head>
+<!-- 구글폰트 불러오기 -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sla Recipe</title>
@@ -568,7 +570,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 								src="https://velog.velcdn.com/images/fake150907/post/8ce2087f-9ea9-433b-94e6-d3f38de359a3/image.jpg" />
 						</div>
 					</div>
-					<a href="../ingredient/groupBuying">
+					<a href="../ingredient/location">
 						<div class="startPage_bottom_content">
 							재료공구
 							<div class="icon">

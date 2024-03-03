@@ -244,62 +244,63 @@
 	font-size: 20px;
 }
 </style>
+</head>
+<body>
+	<div class="SlaRecipeLoginPageVer02">
+		<img class="Background_img"
+			src="https://images.unsplash.com/photo-1516824467205-afa656d31a79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+			alt="Background Image">
+		<div class="Rectangle57"></div>
+		<div class="HeadIcons">
+			<div class="login_MenuIcon">
+				<a href="/">
+					<span class="material-symbols-outlined"> home </span>
+					Home
+				</a>
+			</div>
+		</div>
+		<a href="/">
+			<img class="logo"
+				src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png" alt="Logo">
+		</a>
+		<form action="../member/doLogin" method="POST">
+			<div class="LoginIdBox">
+				<div style="font-size: 35px; font-family: Inter; font-weight: 600;">아이디</div>
+				<div class="inputLoginId_box">
+					<img src="https://velog.velcdn.com/images/fake150907/post/9385617a-3763-433f-8c7c-6b9134eff921/image.svg" alt="" />
+					<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginId input w-full"
+						autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
+				</div>
+				<div class="Line21"></div>
+			</div>
+			<div class="LoginPwBox">
+				<div style="font-size: 35px; font-family: Inter; font-weight: 600;">비밀번호</div>
+				<div class="inputLoginPw_box">
+					<img src="https://velog.velcdn.com/images/fake150907/post/1286d64c-f81c-4b1f-95a3-bb555e940bd9/image.svg" alt="" />
+					<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginPw input w-full"
+						autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+				</div>
+				<div class="LockFill0Wght400Grad0Opsz241">
+					<div class="Vector"></div>
+				</div>
+				<div class="Line21" style="left: 4px;"></div>
+			</div>
+			<div class="LoginBtn_box">
+				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value="로그인" class="LoginBtn" />
+			</div>
+		</form>
 
-<div class="SlaRecipeLoginPageVer02">
-	<img class="Background_img"
-		src="https://images.unsplash.com/photo-1516824467205-afa656d31a79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		alt="Background Image">
-	<div class="Rectangle57"></div>
-	<div class="HeadIcons">
-		<div class="login_MenuIcon">
-			<a href="/">
-				<span class="material-symbols-outlined"> home </span>
-				Home
-			</a>
+		<div class="history_back_btn">
+			<button class="btn btn-outline" type="button" onclick="history.back();">
+				<img class="history_back_img"
+					src="https://velog.velcdn.com/images/fake150907/post/2d6415a7-d5b6-4673-8cd9-83e781b2945a/image.svg" alt="" />
+				<div class="history_back_text">뒤로가기</div>
+			</button>
+		</div>
+		<div class="SlaRecipeMidTextBox">
+			<div class="SlaRecipe">Sla Recipe</div>
+			<div class="ATasteToBuildYourDreamOn">A Taste to Build Your Dream On</div>
 		</div>
 	</div>
-	<a href="/">
-		<img class="logo" src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png"
-			alt="Logo">
-	</a>
-	<form action="../member/doLogin" method="POST">
-		<div class="LoginIdBox">
-			<div style="font-size: 35px; font-family: Inter; font-weight: 600;">아이디</div>
-			<div class="inputLoginId_box">
-				<img src="https://velog.velcdn.com/images/fake150907/post/9385617a-3763-433f-8c7c-6b9134eff921/image.svg" alt="" />
-				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginId input w-full"
-					autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
-			</div>
-			<div class="Line21"></div>
-		</div>
-		<div class="LoginPwBox">
-			<div style="font-size: 35px; font-family: Inter; font-weight: 600;">비밀번호</div>
-			<div class="inputLoginPw_box">
-				<img src="https://velog.velcdn.com/images/fake150907/post/1286d64c-f81c-4b1f-95a3-bb555e940bd9/image.svg" alt="" />
-				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginPw input w-full"
-					autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" />
-			</div>
-			<div class="LockFill0Wght400Grad0Opsz241">
-				<div class="Vector"></div>
-			</div>
-			<div class="Line21" style="left: 4px;"></div>
-		</div>
-		<div class="LoginBtn_box">
-			<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value="로그인" class="LoginBtn" />
-		</div>
-	</form>
-
-	<div class="history_back_btn">
-		<button class="btn btn-outline" type="button" onclick="history.back();">
-			<img class="history_back_img"
-				src="https://velog.velcdn.com/images/fake150907/post/2d6415a7-d5b6-4673-8cd9-83e781b2945a/image.svg" alt="" />
-			<div class="history_back_text">뒤로가기</div>
-		</button>
-	</div>
-	<div class="SlaRecipeMidTextBox">
-		<div class="SlaRecipe">Sla Recipe</div>
-		<div class="ATasteToBuildYourDreamOn">A Taste to Build Your Dream On</div>
-	</div>
-</div>
 </body>
 </html>
