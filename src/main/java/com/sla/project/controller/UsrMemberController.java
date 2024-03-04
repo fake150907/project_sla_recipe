@@ -91,34 +91,35 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-	public String doJoin(HttpServletRequest req, String loginId, String loginPw, String name, String nickname,
-			String cellphoneNum, String email) {
+	public String doJoin(HttpServletRequest req, String JoinId, String JoinPw, String JoinName, String JoinNickName,
+			String JoinCellPhoneNum, String JoinEmail) {
 		Rq rq = (Rq) req.getAttribute("rq");
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("F-A", "이미 로그인 상태입니다");
 		}
 
-		if (Ut.isNullOrEmpty(loginId)) {
+		if (Ut.isNullOrEmpty(JoinId)) {
 			return Ut.jsHistoryBack("F-1", "아이디를 입력해주세요");
 		}
-		if (Ut.isNullOrEmpty(loginPw)) {
+		if (Ut.isNullOrEmpty(JoinPw)) {
 			return Ut.jsHistoryBack("F-2", "비밀번호를 입력해주세요");
 		}
-		if (Ut.isNullOrEmpty(name)) {
+		if (Ut.isNullOrEmpty(JoinName)) {
 			return Ut.jsHistoryBack("F-3", "이름을 입력해주세요");
 		}
-		if (Ut.isNullOrEmpty(nickname)) {
+		if (Ut.isNullOrEmpty(JoinNickName)) {
 			return Ut.jsHistoryBack("F-4", "닉네임을 입력해주세요");
 		}
-		if (Ut.isNullOrEmpty(cellphoneNum)) {
+		if (Ut.isNullOrEmpty(JoinCellPhoneNum)) {
 			return Ut.jsHistoryBack("F-5", "전화번호를 입력해주세요");
 
 		}
-		if (Ut.isNullOrEmpty(email)) {
+		if (Ut.isNullOrEmpty(JoinEmail)) {
 			return Ut.jsHistoryBack("F-6", "이메일을 입력해주세요");
 		}
 
-		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+		ResultData<Integer> joinRd = memberService.join(JoinId, JoinPw, JoinName, JoinNickName, JoinCellPhoneNum,
+				JoinEmail);
 
 		if (joinRd.isFail()) {
 			return Ut.jsHistoryBack(joinRd.getResultCode(), joinRd.getMsg());
@@ -131,16 +132,16 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/loginIdConfirm")
 	@ResponseBody
-	public Map<String, Object> loginIdConfirm(HttpServletRequest req, String loginId, String loginPw, String name,
+	public Map<String, Object> loginIdConfirm(HttpServletRequest req, String JoinId, String loginPw, String name,
 			String nickname, String cellphoneNum, String email) {
 		Rq rq = (Rq) req.getAttribute("rq");
-		Member existsMember = memberService.getMemberByLoginId(loginId);
+		Member existsMember = memberService.getMemberByLoginId(JoinId);
 
 		Map<String, Object> rs = new HashMap<>();
 
 		if (existsMember != null) {
 
-			rs.put("msg", Ut.f("*이미 사용중인 아이디(%s)입니다", loginId));
+			rs.put("msg", Ut.f("*이미 사용중인 아이디(%s)입니다", JoinId));
 			rs.put("code", "F-7");
 
 			return rs;

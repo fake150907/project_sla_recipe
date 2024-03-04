@@ -34,6 +34,7 @@
 	width: 100%;
 	hegiht: 50px;
 	position: absolute;
+	opacity: 0.8;
 }
 
 .head_bar {
@@ -41,11 +42,19 @@
 	left: 1200px;
 }
 
+.logo {
+	left: 15px;
+	top: 2px;
+	height: 103px;
+	position: absolute;
+	width: 83px;
+}
+
 .HeadIcons {
 	width: 300px;
 	height: 55px;
 	right: 2%;
-	top: 5%;
+	top: 2%;
 	position: absolute;
 }
 
@@ -54,22 +63,14 @@
 	height: 60px;
 }
 
-.logo {
-	left: 15px;
-	top: 2px;
-	height: 193px;
-	position: absolute;
-	width: 153px;
-}
-
 .SearchIcon, .noneLogin-SearchIcon, .LoginIcon, .LogoutIcon, .JoinIcon,
 	.HomeIcon, .MyPageIcon, .noneLogin-HomeIcon, .WriteIcon {
 	font-size: 15px;
 	width: 63px;
-	height: 58px;
 	font-weight: bold;
 	width: 43.96px;
 	position: absolute;
+	height: 58px;
 }
 
 .noneLogin-HomeIcon {
@@ -89,7 +90,7 @@
 }
 
 .HomeIcon {
-	left: 5%;
+	left: 0;
 }
 
 .SearchIcon {
@@ -118,40 +119,43 @@
 	left: 15%;
 	top: 50%;
 	position: absolute;
+	align-content: center;
 }
 
 .material-symbols-outlined {
-	width: 30px;
-	height: 30px;
+	width: 24px;
+	height: 24px;
 }
 
 .header-container {
+	top: 30%;
+	left: 8%;
+	height: 90px;
 	width: 602px;
-	top: 70px;
 	position: relative;
-	height: 157px;
 }
 
 .title, .subtitle {
 	position: absolute;
 	font-weight: 600;
-	left: 35%;
+	left:;
 	color: white;
 	word-wrap: break-word;
 	color: white;
 	font-family: Inter;
+	-webkit-text-stroke: 0.5px #05343F;
 }
 
 .title {
-	top: 0px;
-	font-size: 80px;
+	top:;
+	font-size: 50px;
 	width: 450px;
 }
 
 .subtitle {
 	width: 800px;
-	font-size: 40px;
-	top: 89px;
+	font-size: 30px;
+	top: 50%;
 }
 </style>
 
@@ -160,7 +164,7 @@
 	<header>
 		<div class="head_img_box">
 			<img class="head_img"
-				src="https://velog.velcdn.com/images/fake150907/post/adbc4e19-26e0-4204-be91-717cf2022be4/image.jpg" alt="" />
+				src="https://velog.velcdn.com/images/fake150907/post/19352db7-c954-49c2-aaa3-90c325cfb696/image.png" alt="" />
 		</div>
 		<div class="h-20 flex mx-auto items-center text-3xl">
 			<div class="logo">
@@ -182,7 +186,7 @@
 						</a>
 					</div>
 					<div class="noneLogin-SearchIcon">
-						<a href="">
+						<a href="../home/search">
 							<span class="material-symbols-outlined"> search </span>
 							<span class="Icon_text">Search</span>
 						</a>
@@ -206,11 +210,11 @@
 					<div class="HomeIcon">
 						<a class="hover:underline" href="/">
 							<span class="material-symbols-outlined"> home </span>
-							<span class="Icon_text">HOME</span>
+							<span class="Icon_text_home">Home</span>
 						</a>
 					</div>
 					<div class="SearchIcon">
-						<a class="hover:underline" href="">
+						<a class="hover:underline" href="../home/search">
 							<span class="material-symbols-outlined"> search </span>
 							<span class="Icon_text">Search</span>
 						</a>
@@ -218,7 +222,7 @@
 					<div class="LogoutIcon">
 						<a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline" href="../member/doLogout">
 							<span class="material-symbols-outlined">logout</span>
-							<span class="Icon_text">LOGOUT</span>
+							<span class="Icon_text">Logout</span>
 						</a>
 					</div>
 					<div class="WriteIcon">
@@ -230,12 +234,10 @@
 					<div class="MyPageIcon">
 						<a class="hover:underline" class="h-full px-3 flex items-center" href="/usr/member/myPage">
 							<span class="material-symbols-outlined"> location_home </span>
-							<span class="Icon_text">MYPAGE</span>
+							<span class="Icon_text">MyPage</span>
 						</a>
 					</div>
 				</div>
 			</c:if>
 		</div>
 	</header>
-	<h1 style="font-size: 2rem;">${pageTitle }</h1>
-	<hr />

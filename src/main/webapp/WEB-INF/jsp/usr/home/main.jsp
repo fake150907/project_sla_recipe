@@ -20,7 +20,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- 구글폰트 불러오기 -->
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /><head>
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sla Recipe</title>
@@ -108,11 +109,13 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 }
 
 .HeadIcons {
-	width: 160px;
+	width: 300px;
 	height: 55px;
-	left: 88%;
-	top: 5%;
+	top: 2%;
 	position: absolute;
+	display: flex;
+	justify-content: space-around;
+	right: 2%;
 }
 
 .HeadIcons img {
@@ -120,26 +123,33 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	height: 60px;
 }
 
+.SearchIcon, .noneLogin-SearchIcon, .LoginIcon, .LogoutIcon, .JoinIcon,
+	.HomeIcon, .MyPageIcon, .noneLogin-HomeIcon, .WriteIcon {
+	font-size: 15px;
+	width: px;
+	font-weight: bold;
+	width: 43.96px;
+	position: relative;
+	height: 58px;
+}
+
+.Icon_text {
+	position: relative;
+	left: -17%;
+	top: -20%;
+}
+
+.Icon_text_home {
+	left: 15%;
+	top: 50%;
+	position: absolute;
+	align-content: center;
+}
+
 .logo {
 	position: absolute;
 	width: 153px;
 	height: 193px;
-}
-
-.SearchIcon, .LoginIcon, .MenuIcon {
-	font-size: 15px;
-	width: 63px;
-	height: 58px;
-	position: absolute;
-	width: 43.96px;
-}
-
-.MenuIcon {
-	left: 80%;
-}
-
-.LoginIcon {
-	left: 40%;
 }
 
 .Group6 {
@@ -206,6 +216,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	backdrop-filter: blur(10px); /* 블러 효과 추가 */
 	padding: 0 20px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: absolute;
 }
 
 .startPage_bottom_box1, .startPage_bottom_box2, .startPage_bottom_box3,
@@ -228,38 +239,6 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	align-items: center;
 	padding: 0 20px;
 	box-sizing: border-box;
-}
-
-.startPage_bottom_box1:hover .startPage_bottom_item1 {
-	background: rgba(0, 0, 0, 0.3);
-}
-
-.startPage_bottom_box1:hover .introduce_box {
-	display: block;
-}
-
-.startPage_bottom_box2:hover .startPage_bottom_item2 {
-	background: rgba(0, 0, 0, 0.3);
-}
-
-.startPage_bottom_box2:hover .ingredients_box {
-	display: block;
-}
-
-.startPage_bottom_box3:hover .startPage_bottom_item3 {
-	background: rgba(0, 0, 0, 0.3);
-}
-
-.startPage_bottom_box3:hover .recommendRecipe_box {
-	display: block;
-}
-
-.startPage_bottom_box4:hover .startPage_bottom_item4 {
-	background: rgba(0, 0, 0, 0.3);
-}
-
-.startPage_bottom_box4:hover .recipeList_box {
-	display: block;
 }
 
 .separator1 {
@@ -318,9 +297,9 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	width: 1910px;
 	height: 800px;
 	position: absolute;
+	display: none;
 	bottom: 99px;
 	backdrop-filter: blur(10px);
-	display: none;
 	opacity: 1; /* 투명도를 1로 설정하여 요소를 부드럽게 보여줌 */
 	transition: opacity 0.3s ease;
 }
@@ -355,34 +334,17 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	transition: background 0.3s ease; /* 배경색 변화에 대한 transition 효과 설정 */
 }
 
-.startPage_bottom_box1:hover>.introduce_box, .startPage_bottom_box2:hover>.ingredients_box,
-	.startPage_bottom_box3:hover>.recommendRecipe_box,
-	.startPage_bottom_box4:hover>.recipeList_box {
-	display: block;
-	opacity: 1; /* 투명도를 1로 설정하여 요소를 부드럽게 보여줌 */
-	transition: opacity 0.3s ease; /* opacity 속성에 대한 transition 효과 설정 */
-}
-
 /* .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box의 display 속성을 변경하여 효과적으로 보여줌 */
-.introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box
-	{
+.startPage_bottom_box1:hover .introduce_box, .startPage_bottom_box2:hover  .ingredients_box,
+	.startPage_bottom_box3:hover  .recommendRecipe_box,
+	.startPage_bottom_box4:hover  .recipeList_box {
 	background: rgba(0, 0, 0, 0.3);
 	width: 1910px;
-	height: 800px;
+	height: 650px;
 	position: absolute;
-	bottom: 99px;
-	backdrop-filter: blur(10px);
-	display: none;
-	transition: background 0.3s; /* opacity 속성에 대한 transition 효과 설정 */
-}
-
-/* 해당 박스에 마우스를 올렸을 때 내부 요소를 부드럽게 표시 */
-.startPage_bottom_box1:hover .introduce_box, .startPage_bottom_box2:hover .ingredients_box,
-	.startPage_bottom_box3:hover .recommendRecipe_box,
-	.startPage_bottom_box4:hover .recipeList_box {
 	display: block;
-	opacity: 1; /* 투명도를 1로 설정하여 요소를 부드럽게 보여줌 */
-	transition: opacity 0.3s ease; /* opacity 속성에 대한 transition 효과 설정 */
+	backdrop-filter: blur(10px);
+	bottom: 99px;
 }
 
 /* 타이틀 */
@@ -420,7 +382,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 .ingredients_img1 {
 	width: 605px;
 	height: 345px;
-	top: 150px;
+	top: 100px;
 	left: 350px;
 	border-radius: 10px;
 	position: absolute;
@@ -430,7 +392,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 .ingredients_img2 {
 	width: 605px;
 	height: 345px;
-	top: 300px;
+	top: 250px;
 	left: 900px;
 	position: absolute;
 	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
@@ -447,7 +409,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	height: 66px;
 	position: absolute;
 	left: 350px;
-	top: 50px;
+	top: 0;
 }
 
 .ingredients_content2 {
@@ -459,7 +421,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	line-height: 24px;
 	word-wrap: break-word;
 	left: 900px;
-	top: 666px;
+	top: 600px;
 	font-family: Inter;
 	color: white;
 }
@@ -500,7 +462,83 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	word-wrap: break-word;
 }
 </style>
+<script type="text/javascript">
+	/* $(function(){
+		$('.startPage_bottom_box1').on('mouseover', function(){
+			$('.introduce_box').stop().slideUp(200)
+            $(this).children('.introduce_box').stop().slideDown(200)
+		});
 
+		$('.startPage_bottom_box1').on('mouseleave', function(){
+			$(this).children('.introduce_box').stop().slideDown(200)
+		});
+		
+		$('.startPage_bottom_box2').on('mouseover', function(){
+			$('.ingredients_box').stop().slideUp(200)
+            $(this).children('.ingredients_box').stop().slideDown(200)
+		});
+
+		$('.startPage_bottom_box2').on('mouseleave', function(){
+			$(this).children('.ingredients_box').stop().slideUp(200)
+		});
+		
+		$('.startPage_bottom_box3').on('mouseover', function(){
+			$('.recommendRecipe_box').stop().slideUp(200)
+            $(this).children('.recommendRecipe_box').stop().slideDown(200)
+		});
+
+		$('.startPage_bottom_box3').on('mouseleave', function(){
+			$(this).children('.recommendRecipe_box').stop().slideUp(200)
+		});
+		
+		$('.startPage_bottom_box4').on('mouseover', function(){
+			$('.recipeList_box').stop().slideUp(200)
+            $(this).children('.recipeList_box').stop().slideDown(200)
+		});
+
+		$('.startPage_bottom_box4').on('mouseleave', function(){
+			$(this).children('.recipeList_box').stop().slideUp(200)
+		});
+	}); */
+	
+	$(function(){
+		$('.startPage_bottom_box1').on('mouseover', function(){
+			$('.introduce_box').stop().slideDown();
+		});
+
+		$('.startPage_bottom_box1').on('mouseleave', function(){
+			$('.introduce_box').hide();
+			$('.introduce_box').stop().slideUp();
+		});
+		
+		$('.startPage_bottom_box2').on('mouseover', function(){
+			$('.ingredients_box').stop().slideDown();
+		});
+
+		$('.startPage_bottom_box2').on('mouseleave', function(){
+			$('.ingredients_box').hide();
+			$('.ingredients_box').stop().slideUp();
+		});
+		
+		$('.startPage_bottom_box3').on('mouseover', function(){
+			$('.recommendRecipe_box').stop().slideDown();
+		});
+
+		$('.startPage_bottom_box3').on('mouseleave', function(){
+			$('.recommendRecipe_box').hide();
+			$('.recommendRecipe_box').stop().slideUp();
+		});
+		
+		$('.startPage_bottom_box4').on('mouseover', function(){
+			$('.recipeList_box').stop().slideDown();
+		});
+
+		$('.startPage_bottom_box4').on('mouseleave', function(){
+			$('.recipeList_box').hide();
+			$('.recipeList_box').stop().slideUp();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="SlaRecipeStartPageVer01">
@@ -517,26 +555,68 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 			<div class="title">Sla Recipe</div>
 			<div class="subtitle">A Taste to Build Your Dream On</div>
 		</div>
-		<div class="HeadIcons">
-			<div class="SearchIcon">
-				<a href="">
-					<img src="https://velog.velcdn.com/images/fake150907/post/c3ce7de3-1a43-42f7-88bf-e8d45e5fdd04/image.svg">
-					Search
-				</a>
+		<c:if test="${!rq.isLogined() }">
+			<div class="HeadIcons">
+				<div class="noneLogin-HomeIcon">
+					<a class="hover:underline" href="/">
+						<span class="material-symbols-outlined"> home </span>
+						<span class="Icon_text">Home</span>
+					</a>
+				</div>
+				<div class="noneLogin-SearchIcon">
+					<a class="hover:underline" href="../home/search">
+						<span class="material-symbols-outlined"> search </span>
+						<span class="Icon_text">Search</span>
+					</a>
+				</div>
+				<div class="LoginIcon">
+					<a class="hover:underline" href="../member/login">
+						<span class="material-symbols-outlined"> login </span>
+						<span class="Icon_text">Login</span>
+					</a>
+				</div>
+				<div class="JoinIcon">
+					<a class="hover:underline" href="../member/join">
+						<span class="material-symbols-outlined"> group_add </span>
+						<span class="Icon_text">Join</span>
+					</a>
+				</div>
 			</div>
-			<div class="LoginIcon">
-				<a href="">
-					<img src="https://velog.velcdn.com/images/fake150907/post/cb9fe070-b691-4cf6-b7cf-a4ddd545b586/image.svg" />
-					Login
-				</a>
+		</c:if>
+		<c:if test="${rq.isLogined() }">
+			<div class="HeadIcons">
+				<div class="HomeIcon">
+					<a class="hover:underline" href="/">
+						<span class="material-symbols-outlined"> home </span>
+						<span class="Icon_text">Home</span>
+					</a>
+				</div>
+				<div class="SearchIcon">
+					<a class="hover:underline" href="../home/search">
+						<span class="material-symbols-outlined"> search </span>
+						<span class="Icon_text">Search</span>
+					</a>
+				</div>
+				<div class="LogoutIcon">
+					<a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline" href="../member/doLogout">
+						<span class="material-symbols-outlined">logout</span>
+						<span class="Icon_text">Logout</span>
+					</a>
+				</div>
+				<div class="WriteIcon">
+					<a class="hover:underline" href="../recipe/write">
+						<span class="material-symbols-outlined"> edit_square </span>
+						<span class="Icon_text">Write</span>
+					</a>
+				</div>
+				<div class="MyPageIcon">
+					<a class="hover:underline" class="h-full px-3 flex items-center" href="/usr/member/myPage">
+						<span class="material-symbols-outlined"> location_home </span>
+						<span class="Icon_text">MyPage</span>
+					</a>
+				</div>
 			</div>
-			<div class="MenuIcon">
-				<a href="">
-					<img src="https://velog.velcdn.com/images/fake150907/post/34249e90-532a-4676-b0ca-321777ab36f5/image.svg" />
-					Menu
-				</a>
-			</div>
-		</div>
+		</c:if>
 		<div class="startPage_bottom_Container">
 			<div class="startPage_bottom_box1">
 				<div class="startPage_bottom_item1">
