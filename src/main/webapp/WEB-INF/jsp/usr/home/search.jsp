@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Search"></c:set>
+<%@ include file="../common/head.jspf"%>
 
 <style>
 .PopularitySearchBar {
@@ -23,6 +24,7 @@
 	display: inline-flex;
 }
 
+/*	인기검색어 tag css  */
 .popularity_tag1, .popularity_tag2, .popularity_tag3, .popularity_tag4,
 	.popularity_tag5, .popularity_tag6 {
 	width: 130px;
@@ -58,6 +60,7 @@
 	border: 3px #180A6B solid;
 }
 
+/* 검색창 css  */
 .searchKeyword_box {
 	left: 1.5%;
 	top: 15%;
@@ -106,16 +109,28 @@
 .searchKeyword_submit_btn:hover>.SearchBtn {
 	background: rgba(205, 234, 192, 1);
 }
+
+.searchKeywordTypeCode {
+	color: rgba(0, 0, 0, 0.6);
+	background-color: #FFFACD;
+}
+
+.searchKeywordTypeCode .op {
+	background-color: #FFFACD;
+}
+
+.op:hover {
+	background: rgba(205, 234, 192, 1);
+}
 </style>
-<%@ include file="../common/head.jspf"%>
 
 <div class="PopularitySearchBar">
 	<form action="">
-		<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-			name="searchKeywordTypeCode">
-			<option value="title">제목</option>
-			<option value="body">작성자</option>
-			<option value="category">카테고리</option>
+		<select data-value="${param.searchKeywordTypeCode }"
+			class="searchKeywordTypeCode select select-bordered select-sm max-w-xs" name="searchKeywordTypeCode">
+			<option class="op" value="title">제목</option>
+			<option class="op" value="body">작성자</option>
+			<option class="op" value="category">카테고리</option>
 		</select>
 		<div class="searchKeyword_box">
 			<div class="searchKeyword_data">

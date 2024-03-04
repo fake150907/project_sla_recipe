@@ -163,6 +163,7 @@
 	border-radius: 10px;
 }
 
+/*  */
 .inputJoinId, .inputJoinPw, .inputJoinName, .inputJoinNickName,
 	.inputJoinEmail, .inputJoinCellPhoneNum {
 	background-color: #FFFACD;
