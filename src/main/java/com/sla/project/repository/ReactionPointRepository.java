@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.sla.project.repository;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

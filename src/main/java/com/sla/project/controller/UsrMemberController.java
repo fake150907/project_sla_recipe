@@ -91,13 +91,8 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-<<<<<<< HEAD
 	public String doJoin(HttpServletRequest req, String JoinId, String JoinPw, String JoinName, String JoinNickName,
 			String JoinCellPhoneNum, String JoinEmail) {
-=======
-	public String doJoin(HttpServletRequest req, String JoinId, String JoinPw, String JoinName, String JoinNickname,
-			String JoinCellphoneNum, String JoinEmail) {
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 		Rq rq = (Rq) req.getAttribute("rq");
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("F-A", "이미 로그인 상태입니다");
@@ -112,17 +107,11 @@ public class UsrMemberController {
 		if (Ut.isNullOrEmpty(JoinName)) {
 			return Ut.jsHistoryBack("F-3", "이름을 입력해주세요");
 		}
-<<<<<<< HEAD
 		if (Ut.isNullOrEmpty(JoinNickName)) {
 			return Ut.jsHistoryBack("F-4", "닉네임을 입력해주세요");
 		}
+
 		if (Ut.isNullOrEmpty(JoinCellPhoneNum)) {
-=======
-		if (Ut.isNullOrEmpty(JoinNickname)) {
-			return Ut.jsHistoryBack("F-4", "닉네임을 입력해주세요");
-		}
-		if (Ut.isNullOrEmpty(JoinCellphoneNum)) {
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 			return Ut.jsHistoryBack("F-5", "전화번호를 입력해주세요");
 
 		}
@@ -130,11 +119,7 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-6", "이메일을 입력해주세요");
 		}
 
-<<<<<<< HEAD
 		ResultData<Integer> joinRd = memberService.join(JoinId, JoinPw, JoinName, JoinNickName, JoinCellPhoneNum,
-=======
-		ResultData<Integer> joinRd = memberService.join(JoinId, JoinPw, JoinName, JoinNickname, JoinCellphoneNum,
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 				JoinEmail);
 
 		if (joinRd.isFail()) {

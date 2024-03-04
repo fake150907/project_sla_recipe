@@ -1,12 +1,15 @@
 package com.sla.project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.service.ReactionPointService;
-import com.example.demo.service.ReplyService;
+import com.sla.project.service.ReactionPointService;
+import com.sla.project.service.ReplyService;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.Reply;
 import com.sla.project.vo.ResultData;
@@ -46,8 +49,21 @@ public class UsrReplyController {
 
 		int id = (int) writeReplyRd.getData1();
 
-		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), "../article/detail?id=" + relId);
+		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), "../reply/detail?id=" + relId);
 
+	}
+
+	@RequestMapping("/usr/reply/replyList")
+	@ResponseBody
+	public List<Reply> showReplyList(HttpServletRequest req, Model model, int recipeId, String relTypeCode) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), relTypeCode, recipeId);
+
+		model.addAttribute("replys", replies);
+
+		return replies;
 	}
 
 	@RequestMapping("/usr/reply/doDelete")
@@ -69,8 +85,8 @@ public class UsrReplyController {
 
 		if (Ut.isNullOrEmpty(replaceUri)) {
 			switch (reply.getRelTypeCode()) {
-			case "article":
-				replaceUri = Ut.f("../article/detail?id=%d", reply.getRelId());
+			case "reply":
+				replaceUri = Ut.f("../reply/detail?id=%d", reply.getRelId());
 				break;
 			}
 		}

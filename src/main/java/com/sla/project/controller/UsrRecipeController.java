@@ -1,12 +1,20 @@
 package com.sla.project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sla.project.service.BoardService;
+import com.sla.project.service.ReactionPointService;
 import com.sla.project.service.RecipeService;
+import com.sla.project.service.ReplyService;
 import com.sla.project.util.Ut;
+import com.sla.project.vo.Board;
 import com.sla.project.vo.Recipe;
 import com.sla.project.vo.ResultData;
 import com.sla.project.vo.Rq;
@@ -27,6 +35,8 @@ public class UsrRecipeController {
 	private UsrReplyController usrReplyController;
 	@Autowired
 	private ReplyService replyService;
+	@Autowired
+	private BoardService boardService;
 
 	public UsrRecipeController() {
 
@@ -42,7 +52,7 @@ public class UsrRecipeController {
 
 		Board board = boardService.getBoardById(boardId);
 
-		int recipesCount = recipeService.getrecipesCount(boardId, searchKeywordTypeCode, searchKeyword);
+		int recipesCount = recipeService.getRecipesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
@@ -55,7 +65,7 @@ public class UsrRecipeController {
 
 		int pagesCount = (int) Math.ceil(recipesCount / (double) itemsInAPage);
 
-		List<recipe> recipes = recipeService.getForPrintrecipes(boardId, itemsInAPage, page, searchKeywordTypeCode,
+		List<Recipe> recipes = recipeService.getForPrintRecipes(boardId, itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
 		model.addAttribute("board", board);
@@ -74,23 +84,22 @@ public class UsrRecipeController {
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		recipe recipe = recipeService.getForPrintrecipe(rq.getLoginedMemberId(), id);
+		Recipe recipe = recipeService.getForPrintRecipe(rq.getLoginedMemberId(), id);
 
 		boolean isAlreadyAddrecipeGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
 				"recipe");
 		boolean isAlreadyAddrecipeBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "recipe");
-		boolean isAlreadyAddCommentGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
+		boolean isAlreadyAddReplyGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
 				"comment");
-		boolean isAlreadyAddCommentBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id,
-				"comment");
-
+		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "comment");
+		String relTypeCode = "Recipe";
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("isLogined", rq.isLogined());
 		model.addAttribute("isAlreadyAddrecipeGoodRp", isAlreadyAddrecipeGoodRp);
 		model.addAttribute("isAlreadyAddrecipeBadRp", isAlreadyAddrecipeBadRp);
-		model.addAttribute("isAlreadyAddCommentGoodRp", isAlreadyAddCommentGoodRp);
-		model.addAttribute("isAlreadyAddCommentBadRp", isAlreadyAddCommentBadRp);
-		model.addAttribute("comments", usrCommentController.showCommentList(req, model, id));
+		model.addAttribute("isAlreadyAddReplyGoodRp", isAlreadyAddReplyGoodRp);
+		model.addAttribute("isAlreadyAddReplyBadRp", isAlreadyAddReplyBadRp);
+		model.addAttribute("Replies", usrReplyController.showReplyList(req, model, id, relTypeCode));
 		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 
 		return "usr/recipe/detail";
@@ -106,7 +115,7 @@ public class UsrRecipeController {
 			return increaseHitCountRd;
 		}
 
-		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount", recipeService.getrecipeHitCount(id));
+		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount", recipeService.getRecipeHitCount(id));
 
 		rd.setData2("id", id);
 
