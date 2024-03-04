@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="API TEST4"></c:set>
+<c:set var="pageTitle" value="Location Map"></c:set>
 
 <%@ include file="../common/head.jspf"%>
 <!DOCTYPE html>
@@ -11,15 +11,15 @@
 <style>
 #map{
 	position:absolute;
-	width: 70%;
-	height: 750px;
-	left:30%;
-	top:21%;
+	width: 75%;
+	height: 845px;
+	left:25%;
+	top:11.3%;
 }
 
 body > p{
 	position:absolute;
-	left:30%;
+	left:25%;
 	z-index: 6;
 }
 
@@ -43,8 +43,8 @@ body > p{
 }
 
 .location_box {
-	left:4%;
-	top:25%;
+	left:1.5%;
+	top:15%;
 	position:absolute;
 }
 
@@ -91,8 +91,8 @@ body > p{
 }
 
 .group_buying_content_box{
-	left:5%;
-	top:32%;
+	left:2.5%;
+	top:23%;
 	position:absolute;
 }
 
