@@ -15,9 +15,104 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsrRecipeController {
+	@Autowired
+	private Rq rq;
 
 	@Autowired
 	private RecipeService recipeService;
+
+	@Autowired
+	private ReactionPointService reactionPointService;
+	@Autowired
+	private UsrReplyController usrReplyController;
+	@Autowired
+	private ReplyService replyService;
+
+	public UsrRecipeController() {
+
+	}
+
+	@RequestMapping("/usr/recipe/list")
+	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Board board = boardService.getBoardById(boardId);
+
+		int recipesCount = recipeService.getrecipesCount(boardId, searchKeywordTypeCode, searchKeyword);
+
+		if (board == null) {
+			return rq.historyBackOnView("없는 게시판이야");
+		}
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(recipesCount / (double) itemsInAPage);
+
+		List<recipe> recipes = recipeService.getForPrintrecipes(boardId, itemsInAPage, page, searchKeywordTypeCode,
+				searchKeyword);
+
+		model.addAttribute("board", board);
+		model.addAttribute("boardId", boardId);
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("recipesCount", recipesCount);
+		model.addAttribute("recipes", recipes);
+
+		return "usr/recipe/list";
+	}
+
+	@RequestMapping("/usr/recipe/detail")
+	public String showDetail(HttpServletRequest req, Model model, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		recipe recipe = recipeService.getForPrintrecipe(rq.getLoginedMemberId(), id);
+
+		boolean isAlreadyAddrecipeGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
+				"recipe");
+		boolean isAlreadyAddrecipeBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "recipe");
+		boolean isAlreadyAddCommentGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
+				"comment");
+		boolean isAlreadyAddCommentBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id,
+				"comment");
+
+		model.addAttribute("recipe", recipe);
+		model.addAttribute("isLogined", rq.isLogined());
+		model.addAttribute("isAlreadyAddrecipeGoodRp", isAlreadyAddrecipeGoodRp);
+		model.addAttribute("isAlreadyAddrecipeBadRp", isAlreadyAddrecipeBadRp);
+		model.addAttribute("isAlreadyAddCommentGoodRp", isAlreadyAddCommentGoodRp);
+		model.addAttribute("isAlreadyAddCommentBadRp", isAlreadyAddCommentBadRp);
+		model.addAttribute("comments", usrCommentController.showCommentList(req, model, id));
+		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
+
+		return "usr/recipe/detail";
+	}
+
+	@RequestMapping("/usr/recipe/doIncreaseHitCountRd")
+	@ResponseBody
+	public ResultData doIncreaseHitCountRd(int id) {
+
+		ResultData increaseHitCountRd = recipeService.increaseHitCount(id);
+
+		if (increaseHitCountRd.isFail()) {
+			return increaseHitCountRd;
+		}
+
+		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount", recipeService.getrecipeHitCount(id));
+
+		rd.setData2("id", id);
+
+		return rd;
+
+	}
 
 	@RequestMapping("/usr/recipe/write")
 	public String showWrite(HttpServletRequest req) {
