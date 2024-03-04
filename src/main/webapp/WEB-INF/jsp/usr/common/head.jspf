@@ -42,6 +42,13 @@
 	left: 1200px;
 }
 
+.logo {
+	left: 15px;
+	top: 2px;
+	height: 103px;
+	position: absolute;
+	width: 83px;
+}
 .HeadIcons {
 	width: 300px;
 	height: 55px;
@@ -55,22 +62,15 @@
 	height: 60px;
 }
 
-.logo {
-	left: 15px;
-	top: 2px;
-	height: 103px;
-	position: absolute;
-	width: 83px;
-}
 
 .SearchIcon, .noneLogin-SearchIcon, .LoginIcon, .LogoutIcon, .JoinIcon,
 	.HomeIcon, .MyPageIcon, .noneLogin-HomeIcon, .WriteIcon {
 	font-size: 15px;
 	width: 63px;
-	height: 58px;
 	font-weight: bold;
 	width: 43.96px;
 	position: absolute;
+	height: 58px;
 }
 
 .noneLogin-HomeIcon {
@@ -123,21 +123,22 @@
 }
 
 .material-symbols-outlined {
-	width: 30px;
-	height: 30px;
+	width: 24px;
+	height: 24px;
 }
 
 .header-container {
+	top: 30%;
+	left: 8%;
+	height: 90px;
 	width: 602px;
-	top: 70px;
 	position: relative;
-	height: 157px;
 }
 
 .title, .subtitle {
 	position: absolute;
 	font-weight: 600;
-	left: 35%;
+	left:;
 	color: white;
 	word-wrap: break-word;
 	color: white;
@@ -146,7 +147,7 @@
 }
 
 .title {
-	top: -10px;
+	top:;
 	font-size: 50px;
 	width: 450px;
 }
@@ -154,7 +155,7 @@
 .subtitle {
 	width: 800px;
 	font-size: 30px;
-	top: 20%;
+	top: 50%;
 }
 </style>
 

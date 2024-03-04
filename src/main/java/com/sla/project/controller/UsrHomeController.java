@@ -18,5 +18,11 @@ public class UsrHomeController {
 
 		return "redirect:/usr/home/main";
 	}
-	
+
+	@RequestMapping("/usr/home/search")
+	public String showSearhPage() {
+
+		return "/usr/home/search";
+	}
+
 }
