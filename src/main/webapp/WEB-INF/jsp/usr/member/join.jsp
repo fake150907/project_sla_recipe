@@ -291,10 +291,17 @@
 
 		var JoinId = $('.JoinId').value;
 
+<<<<<<< HEAD
 		/* if (JoinId == null) {
 			$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
 			return;
 		} */
+=======
+		if (JoinId == null) {
+			$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
+			return;
+		}
+>>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 
 		$.get('./loginIdConfirm', {
 			JoinId : JoinId

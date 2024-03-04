@@ -60,6 +60,7 @@
 					<span class="cooking_information_text">요리정보</span>
 					<div class="cooking_information_bgc"></div>
 				</div>
+<<<<<<< HEAD
 				<div class="category_box">
 					<div class="category_text">카테고리</div>
 					<div class="category_select">
@@ -124,6 +125,62 @@
 									onchange="previewThumbnail(event)">
 								<br>
 								<img id="thumbnail-preview" style="display: none; max-width: 200px; margin-top: 10px;" alt="Thumbnail Preview">
+=======
+				<table class="write-box table-box-1" border="1">
+					<tbody>
+						<tr>
+							<th>카테고리</th>
+							<td>
+								<select class="select select-ghost w-full max-w-xs" name="categoryId">
+									<!-- 									<option selected="selected" disabled>레시피 카테고리를 선택해주세요</option> -->
+									<option value="1">일반식</option>
+									<option value="2">다이어트</option>
+									<option value="3">탄단지</option>
+									<option value="4">초간단</option>
+									<option value="5">대접</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>인원</th>
+							<td>
+								<select class="select select-ghost w-full max-w-xs" name="personnel">
+									<!-- 									<option selected="selected" disabled>몇인분인지 선택해주세요</option> -->
+									<option value="1">1인분</option>
+									<option value="2">2인분</option>
+									<option value="3">3인분</option>
+									<option value="4">4인분</option>
+									<option value="5">5인분이상</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>요리시간</th>
+							<td>
+								<select class="select select-ghost w-full max-w-xs" name="personnel">
+									<!-- 									<option selected="selected" disabled>시간이 얼마나 소요되는지 선택해주세요</option> -->
+									<option value="1">10분이내</option>
+									<option value="2">15분이내</option>
+									<option value="3">20분이내</option>
+									<option value="4">30분이내</option>
+									<option value="5">60분이내</option>
+									<option value="6">90분이내</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>난이도</th>
+							<td>
+								<select class="select select-ghost w-full max-w-xs" name="personnel">
+									<!-- <option selected="selected" disabled>난이도를 선택해주세요</option> -->
+									<option value="1">아무나</option>
+									<option value="2">초하수달</option>
+									<option value="3">하수달</option>
+									<option value="4">고수달</option>
+									<option value="5">초고수달</option>
+									<option value="6">90분이내</option>
+								</select>
+>>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 							</td>
 						</tr>
 						<tr>

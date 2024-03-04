@@ -118,6 +118,13 @@
 .searchKeywordTypeCode .op {
 	background-color: #FFFACD;
 }
+<<<<<<< HEAD
+=======
+
+.op:hover {
+	background: rgba(205, 234, 192, 1);
+}
+>>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 </style>
 
 <div class="PopularitySearchBar">

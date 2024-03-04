@@ -25,4 +25,8 @@ public class UsrHomeController {
 		return "/usr/home/search";
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
