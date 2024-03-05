@@ -41,13 +41,67 @@
 
 <style>
 .cooking_information {
-	border: 3px solid green;
+	height: 900px;
 	display: flex;
 	justify-content: center;
+	border: 3px solid green;
 }
 
 .cooking_information_bgc {
 	
+}
+
+.category, .cookingTime, .cookLevel, .personnel {
+	color: rgba(0, 0, 0, 0.6);
+	background-color: #FFFACD;
+}
+
+.category .op, .cookingTime .op, .cookLevel .op, .personnel .op {
+	background-color: #CDEAC0;
+}
+
+.cooking_information_text {
+	position: absolute;
+	top: 12%;
+	left: 28.3%;
+	z-index: 3;
+}
+
+.cooking_information_bgc {
+	width: 100px;
+	height: 40px;
+	top: 11.5%;
+	left: 27.8%;
+	position: absolute;
+	background-color: #CDEAC0;
+	border-radius: 10px;
+}
+
+.category_box, .pesonnel_box, .cookingTime_box, .cookLevel_box {
+	position: absolute;
+	top: 18%;
+}
+
+.category_box {
+	left: 28.3%;
+}
+
+.pesonnel_box {
+	left: 34.3%;
+}
+
+.cookingTime_box {
+	left: 40.7%;
+}
+
+.cookLevel_box {
+	left: 46.8%;
+}
+
+.write-box {
+	position: absolute;
+	left: 25%;
+	top: 30%;
 }
 </style>
 
@@ -56,100 +110,97 @@
 		<form action="../recipe/doWrite" method="POST" onsubmit="RecipeWrite__submit(this); return false;"
 			enctype="multipart/form-data">
 			<input type="hidden" name="body">
-			<div class="cooking_information">
-				<div class="cooking_information_text_box">
-					<span class="cooking_information_text">요리정보</span>
-					<div class="cooking_information_bgc"></div>
-				</div>
-				<div class="category_box">
-					<div class="category_text">카테고리</div>
-					<div class="category_select">
-						<select class="select select-ghost w-full max-w-xs" name="category">
-							<!-- 									<option selected="selected" disabled>레시피 카테고리를 선택해주세요</option> -->
-							<option value="1">집밥</option>
-							<option value="2">다이어트</option>
-							<option value="3">탄단지</option>
-							<option value="4">초간단</option>
-							<option value="5">대접</option>
-						</select>
-					</div>
-				</div>
-				<div class="pesonnel_box">
-					<div class="personnel_text">인원</div>
-					<div class="personnel_select">
-						<select class="select select-ghost w-full max-w-xs" name="personnel">
-							<!-- 									<option selected="selected" disabled>몇인분인지 선택해주세요</option> -->
-							<option value="1">1인분</option>
-							<option value="2">2인분</option>
-							<option value="3">3인분</option>
-							<option value="4">4인분</option>
-							<option value="5">5인분이상</option>
-						</select>
-					</div>
-				</div>
-				<div class="cookingTime_box">
-					<div class="cookingTime_text">요리시간</div>
-					<div class="cookingTime_select">
-						<select class="select select-ghost w-full max-w-xs" name="cookingTime">
-							<!-- 									<option selected="selected" disabled>시간이 얼마나 소요되는지 선택해주세요</option> -->
-							<option value="1">10분이내</option>
-							<option value="2">15분이내</option>
-							<option value="3">20분이내</option>
-							<option value="4">30분이내</option>
-							<option value="5">60분이내</option>
-							<option value="6">90분이내</option>
-						</select>
-					</div>
-				</div>
-				<div class="cookLevel_box">
-					<div class="cookLevel_text">난이도</div>
-					<div class="cookLevel_select">
-						<select class="select select-ghost w-full max-w-xs" name="cookLevel">
-							<!-- <option selected="selected" disabled>난이도를 선택해주세요</option> -->
-							<option value="1">아무나</option>
-							<option value="2">초하수달</option>
-							<option value="3">하수달</option>
-							<option value="4">고수달</option>
-							<option value="5">초고수달</option>
-						</select>
-					</div>
-				</div>
-				<table class="write-box table-box-1" border="1">
-					<tbody>
-
-						<tr>
-							<th>썸네일</th>
-							<td>
-								<input type="file" name="files" multiple="multiple" />
-								<input type="submit" id="submit" value="전송" />
-								<input class="input input-bordered input-primary w-full max-w-xs" type="file" name="thumbnail" accept="image/*"
-									onchange="previewThumbnail(event)">
-								<img id="thumbnail-preview" style="display: none; max-width: 200px; margin-top: 10px;" alt="Thumbnail Preview">
-						</tr>
-						<tr>
-							<th>제목</th>
-							<td>
-								<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-									placeholder="제목을 입력해주세요" name="title" />
-							</td>
-						</tr>
-						<tr>
-							<th>내용</th>
-							<td>
-								<div class="toast-ui-editor">
-									<script type="text/x-template"></script>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th></th>
-							<td>
-								<button class="btn btn-outline btn-info" type="submit" value="작성">작성</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="cooking_information_text_box">
+				<span class="cooking_information_text">요리정보</span>
+				<div class="cooking_information_bgc"></div>
 			</div>
+			<div class="category_box">
+				<div class="category_text">카테고리</div>
+				<div class="category_select">
+					<select class="category select select-bordered select-sm max-w-xs" name="category">
+						<!-- 									<option selected="selected" disabled>레시피 카테고리를 선택해주세요</option> -->
+						<option value="1">집밥</option>
+						<option value="2">다이어트</option>
+						<option value="3">탄단지</option>
+						<option value="4">초간단</option>
+						<option value="5">대접</option>
+					</select>
+				</div>
+			</div>
+			<div class="pesonnel_box">
+				<div class="personnel_text">인원</div>
+				<div class="personnel_select">
+					<select class="personnel select select-bordered select-sm max-w-xs" name="personnel">
+						<!-- 									<option selected="selected" disabled>몇인분인지 선택해주세요</option> -->
+						<option value="1">1인분</option>
+						<option value="2">2인분</option>
+						<option value="3">3인분</option>
+						<option value="4">4인분</option>
+						<option value="5">5인분이상</option>
+					</select>
+				</div>
+			</div>
+			<div class="cookingTime_box">
+				<div class="cookingTime_text">요리시간</div>
+				<div class="cookingTime_select">
+					<select class="cookingTime select select-bordered select-sm max-w-xs" name="cookingTime">
+						<!-- 									<option selected="selected" disabled>시간이 얼마나 소요되는지 선택해주세요</option> -->
+						<option value="1">10분이내</option>
+						<option value="2">15분이내</option>
+						<option value="3">20분이내</option>
+						<option value="4">30분이내</option>
+						<option value="5">60분이내</option>
+						<option value="6">90분이내</option>
+					</select>
+				</div>
+			</div>
+			<div class="cookLevel_box">
+				<div class="cookLevel_text">난이도</div>
+				<div class="cookLevel_select">
+					<select class="cookLevel select select-bordered select-sm max-w-xs" name="cookLevel">
+						<!-- <option selected="selected" disabled>난이도를 선택해주세요</option> -->
+						<option value="1">아무나</option>
+						<option value="2">초하수달</option>
+						<option value="3">하수달</option>
+						<option value="4">고수달</option>
+						<option value="5">초고수달</option>
+					</select>
+				</div>
+			</div>
+			<table class="write-box table-box-1" border="1">
+				<tbody>
+					<tr>
+						<th>썸네일</th>
+						<td>
+							<input type="file" name="files" multiple="multiple" />
+							<input type="submit" id="submit" value="전송" />
+							<input class="input input-bordered input-primary w-full max-w-xs" type="file" name="thumbnail" accept="image/*"
+								onchange="previewThumbnail(event)">
+							<img id="thumbnail-preview" style="display: none; max-width: 200px; margin-top: 10px;" alt="Thumbnail Preview">
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td>
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="제목을 입력해주세요" name="title" />
+						</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td>
+							<div class="toast-ui-editor">
+								<script type="text/x-template"></script>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<button class="btn btn-outline btn-info" type="submit" value="작성">작성</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</form>
 		<div class="btns">
 			<button class="btn btn-outline" class="" type="button" onclick="history.back();">뒤로가기</button>

@@ -235,6 +235,9 @@ function doModifyReply(replyId) {
 }
 </script>
 
+<style>
+
+</style>
 
 <section class="mt-8 text-xl px-4 ">
 	<div class="">
@@ -432,7 +435,6 @@ function doModifyReply(replyId) {
 				</tr>
 			</thead>
 			<tbody>
-
 				<c:forEach var="reply" items="${replies }">
 					<tr class="hover">
 						<td>${reply.id }</td>
