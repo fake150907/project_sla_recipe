@@ -17,10 +17,15 @@ public class Recipe {
 	private int hitCount;
 	private int goodReactionPoint;
 	private int badReactionPoint;
+	private int categoryId;
+	private int personnel;
+	private int cookingTime;
+	private int cookLevel;
 
 	private int extra__repliesCnt;
 	private String extra__writer;
 
 	private boolean userCanModify;
 	private boolean userCanDelete;
+
 }

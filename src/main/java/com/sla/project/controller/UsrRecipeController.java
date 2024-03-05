@@ -43,20 +43,13 @@ public class UsrRecipeController {
 	}
 
 	@RequestMapping("/usr/recipe/list")
-	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,
-			@RequestParam(defaultValue = "1") int page,
+	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		Board board = boardService.getBoardById(boardId);
-
-		int recipesCount = recipeService.getRecipesCount(boardId, searchKeywordTypeCode, searchKeyword);
-
-		if (board == null) {
-			return rq.historyBackOnView("없는 게시판이야");
-		}
+		int recipesCount = recipeService.getRecipesCount(searchKeywordTypeCode, searchKeyword);
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
@@ -65,11 +58,9 @@ public class UsrRecipeController {
 
 		int pagesCount = (int) Math.ceil(recipesCount / (double) itemsInAPage);
 
-		List<Recipe> recipes = recipeService.getForPrintRecipes(boardId, itemsInAPage, page, searchKeywordTypeCode,
+		List<Recipe> recipes = recipeService.getForPrintRecipes(itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
-		model.addAttribute("board", board);
-		model.addAttribute("boardId", boardId);
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
@@ -95,11 +86,12 @@ public class UsrRecipeController {
 		String relTypeCode = "Recipe";
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("isLogined", rq.isLogined());
-		model.addAttribute("isAlreadyAddrecipeGoodRp", isAlreadyAddrecipeGoodRp);
-		model.addAttribute("isAlreadyAddrecipeBadRp", isAlreadyAddrecipeBadRp);
+		model.addAttribute("isAlreadyAddGoodRp", isAlreadyAddrecipeGoodRp);
+		model.addAttribute("isAlreadyAddBadRp", isAlreadyAddrecipeBadRp);
 		model.addAttribute("isAlreadyAddReplyGoodRp", isAlreadyAddReplyGoodRp);
 		model.addAttribute("isAlreadyAddReplyBadRp", isAlreadyAddReplyBadRp);
-		model.addAttribute("Replies", usrReplyController.showReplyList(req, model, id, relTypeCode));
+		model.addAttribute("replies", usrReplyController.showReplyList(req, model, id, relTypeCode));
+		model.addAttribute("repliesCount", usrReplyController.showReplyList(req, model, id, relTypeCode).size());
 		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 
 		return "usr/recipe/detail";

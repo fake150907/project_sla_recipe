@@ -49,7 +49,7 @@ public class UsrReplyController {
 
 		int id = (int) writeReplyRd.getData1();
 
-		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), "../reply/detail?id=" + relId);
+		return Ut.jsReplace(writeReplyRd.getResultCode(), writeReplyRd.getMsg(), "../recipe/detail?id=" + relId);
 
 	}
 

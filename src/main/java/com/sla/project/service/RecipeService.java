@@ -59,6 +59,7 @@ public class RecipeService {
 	}
 
 	public ResultData<Integer> writeRecipe(int memberId, String title, String body, int boardId) {
+
 		recipeRepository.writeRecipe(memberId, title, body, boardId);
 
 		int id = recipeRepository.getLastInsertId();
@@ -82,8 +83,8 @@ public class RecipeService {
 		return recipeRepository.getRecipes();
 	}
 
-	public int getRecipesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
-		return recipeRepository.getRecipesCount(boardId, searchKeywordTypeCode, searchKeyword);
+	public int getRecipesCount(String searchKeywordTypeCode, String searchKeyword) {
+		return recipeRepository.getRecipesCount(searchKeywordTypeCode, searchKeyword);
 	}
 //
 //	public List<recipe> getForPrintRecipes(int boardId) {
@@ -105,7 +106,7 @@ public class RecipeService {
 		return recipeRepository.getRecipeHitCount(id);
 	}
 
-	public List<Recipe> getForPrintRecipes(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode,
+	public List<Recipe> getForPrintRecipes(int page, int itemsInAPage, String searchKeywordTypeCode,
 			String searchKeyword) {
 
 //		SELECT * FROM recipe WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
@@ -114,7 +115,7 @@ public class RecipeService {
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
 
-		return recipeRepository.getForPrintRecipes(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
+		return recipeRepository.getForPrintRecipes(limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
 	}
 
 	public ResultData increaseGoodReactionPoint(int relId) {

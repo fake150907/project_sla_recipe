@@ -564,31 +564,19 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 					</a>
 				</div>
 				<div class="noneLogin-SearchIcon">
-<<<<<<< HEAD
 					<a class="hover:underline" href="../home/search">
-=======
-					<a href="">
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 						<span class="material-symbols-outlined"> search </span>
 						<span class="Icon_text">Search</span>
 					</a>
 				</div>
 				<div class="LoginIcon">
-<<<<<<< HEAD
 					<a class="hover:underline" href="../member/login">
-=======
-					<a href="../member/login">
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 						<span class="material-symbols-outlined"> login </span>
 						<span class="Icon_text">Login</span>
 					</a>
 				</div>
 				<div class="JoinIcon">
-<<<<<<< HEAD
 					<a class="hover:underline" href="../member/join">
-=======
-					<a href="../member/join">
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 						<span class="material-symbols-outlined"> group_add </span>
 						<span class="Icon_text">Join</span>
 					</a>
@@ -604,11 +592,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 					</a>
 				</div>
 				<div class="SearchIcon">
-<<<<<<< HEAD
 					<a class="hover:underline" href="../home/search">
-=======
-					<a class="hover:underline" href="search">
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 						<span class="material-symbols-outlined"> search </span>
 						<span class="Icon_text">Search</span>
 					</a>

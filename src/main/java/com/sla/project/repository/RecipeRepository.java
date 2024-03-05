@@ -38,12 +38,12 @@ public interface RecipeRepository {
 
 	@Select("""
 			<script>
-				SELECT A.*, M.nickname AS extra__writer
-				FROM recipe AS A
+				SELECT R.*, M.nickname AS extra__writer
+				FROM recipe AS R
 				INNER JOIN `member` AS M
-				ON A.memberId = M.id
-				WHERE A.id = #{id}
-				GROUP BY A.id
+				ON R.memberId = M.id
+				WHERE R.id = #{id}
+				GROUP BY R.id
 			</script>
 				""")
 	public Recipe getForPrintRecipe(int id);
@@ -65,25 +65,25 @@ public interface RecipeRepository {
 	public void modifyRecipe(int id, String title, String body);
 
 	@Select("""
-			SELECT A.*, M.nickname AS extra__writer
-			FROM recipe AS A
+			SELECT R.*, M.nickname AS extra__writer
+			FROM recipe AS R
 			INNER JOIN `member` AS M
-			ON A.memberId = M.id
-			ORDER BY A.id DESC
+			ON R.memberId = M.id
+			ORDER BY R.id DESC
 			""")
 	public List<Recipe> getRecipes();
 
 //	@Select("""
 //			<script>
-//			SELECT A.*, M.nickname AS extra__writer
-//			FROM recipe AS A
+//			SELECT R.*, M.nickname AS extra__writer
+//			FROM recipe AS R
 //			INNER JOIN `member` AS M
-//			ON A.memberId = M.id
+//			ON R.memberId = M.id
 //			WHERE 1
 //			<if test="boardId != 0">
-//				AND A.boardId = #{boardId}
+//				AND R.boardId = #{boardId}
 //			</if>
-//			ORDER BY A.id DESC
+//			ORDER BY R.id DESC
 //			</script>
 //			""")
 //	public List<Recipe> getForPrintRecipes(int boardId);
@@ -91,29 +91,26 @@ public interface RecipeRepository {
 	@Select("""
 			<script>
 			SELECT COUNT(*) AS cnt
-			FROM recipe AS A
+			FROM recipe AS R
 			WHERE 1
-			<if test="boardId != 0">
-				AND boardId = #{boardId}
-			</if>
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
-						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<when test="searchKeywordTypeCode == 'body'">
-						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+						AND R.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
-						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR R.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
 			ORDER BY id DESC
 			</script>
 			""")
-	public int getRecipesCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
+	public int getRecipesCount(String searchKeywordTypeCode, String searchKeyword);
 
 	@Update("""
 			UPDATE recipe
@@ -131,38 +128,35 @@ public interface RecipeRepository {
 
 	@Select("""
 			<script>
-			SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
-			FROM recipe AS A
+			SELECT R.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			FROM recipe AS R
 			INNER JOIN `member` AS M
-			ON A.memberId = M.id
+			ON R.memberId = M.id
 			LEFT JOIN `reply` AS R
-			ON A.id = R.relId
+			ON R.id = R.relId
 			WHERE 1
-			<if test="boardId != 0">
-				AND A.boardId = #{boardId}
-			</if>
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
-						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<when test="searchKeywordTypeCode == 'body'">
-						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+						AND R.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
-						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR R.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
-			GROUP BY A.id
-			ORDER BY A.id DESC
+			GROUP BY R.id
+			ORDER BY R.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
 			</if>
 			</script>
 			""")
-	public List<Recipe> getForPrintRecipes(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
+	public List<Recipe> getForPrintRecipes(int limitFrom, int limitTake, String searchKeywordTypeCode,
 			String searchKeyword);
 
 	@Update("""

@@ -16,4 +16,6 @@ public interface BoardRepository {
 			""")
 	public Board getBoardById(int boardId);
 
+	public Board save(Board board);
+
 }

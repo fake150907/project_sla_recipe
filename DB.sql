@@ -28,7 +28,10 @@ CREATE TABLE recipe(
     hitCount INT(10) UNSIGNED NOT NULL DEFAULT 0,
     goodReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0,
     badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0,
-    categoryId INT(10) UNSIGNED NOT NULL
+    categoryId INT(10) UNSIGNED NOT NULL,
+    personnel INT(5) UNSIGNED NOT NULL COMMENT '1인분,2인분,3인분,4인분,5인분',
+    cookingTime INT(10) UNSIGNED NOT NULL COMMENT '10분이내,15분이내,20분이내,30분이내,60분이내,90분이내',
+    cookLevel INT(10) UNSIGNED NOT NULL COMMENT '1초하수달,2하수달,3중수달,4고수달,5초고수달'
 );
 
 CREATE TABLE ingredient(
@@ -86,7 +89,46 @@ CREATE TABLE groupBuyingArticle (
 
 #########################################################################
 # SELECT
-select * from `member`;
+SELECT * FROM `member`;
+
+SELECT * FROM recipe;
+
+SELECT * FROM reply;
+
+#########################################################################
+# recipe table insert data
+INSERT INTO recipe
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+title = '나만의 김치찜 만들기',
+`body` = '일단 옆집 꼬꼬를 죽이고 털 뽑아서 내장 버리고 머리 버리고 정육해서 김치넣고 끓이면 완성!',
+categoryId = 1,
+personnel = 1,
+cookingTime = 1,
+cookLevel = 1;
+
+INSERT INTO recipe
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+title = '오리훈제 샐러드',
+`body` = '옆집 꽥꽥이 죽이고 털뽑아서 내장 버리고 머리 버리고 정육해서 훈연하고 샐러드 만들면 완성!',
+categoryId = 2,
+personnel = 1,
+cookingTime = 1,
+cookLevel = 1;
+
+INSERT INTO recipe
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+title = '수달식 회치기',
+`body` = '살아있는거 뜯어먹으면 끝!',
+categoryId = 4,
+personnel = 1,
+cookingTime = 1,
+cookLevel = 1;
 
 #########################################################################
 # member table insert data
@@ -120,3 +162,22 @@ loginPw = 'user3',
 nickname = '멈무이',
 cellphoneNum = '01012345678',
 email = 'mummu33@gmail.com';
+
+#########################################################################
+# category table insert data
+
+INSERT INTO category
+SET `name` = '집밥';
+
+INSERT INTO category
+SET `name` = '다이어트';
+
+INSERT INTO category
+SET `name` = '탄단지';
+
+INSERT INTO category
+SET `name` = '초간단';
+
+INSERT INTO category
+SET `name` = '대접';
+

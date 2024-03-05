@@ -3,7 +3,7 @@
 <c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
+<!-- <iframe src="http://localhost:8081/usr/recipe/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 
 <!-- 변수 -->
 <script>
@@ -16,14 +16,11 @@
 	
 	var isAlreadyAddGoodRp = ${isAlreadyAddGoodRp};
 	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
-	
-	
-</script>
 
 <!-- 조회수 -->
-<script>
-	function ArticleDetail__doIncreaseHitCount() {
-		const localStorageKey = 'article__' + params.id + '__alreadyView';
+
+	function RecipeDetail__doIncreaseHitCount() {
+		const localStorageKey = 'recipe__' + params.id + '__alreadyView';
 
 		if (localStorage.getItem(localStorageKey)) {
 			return;
@@ -31,17 +28,17 @@
 
 		localStorage.setItem(localStorageKey, true);
 
-		$.get('../article/doIncreaseHitCountRd', {
+		$.get('../recipe/doIncreaseHitCountRd', {
 			id : params.id,
 			ajaxMode : 'Y'
 		}, function(data) {
-			$('.article-detail__hit-count').empty().html(data.data1);
+			$('.recipe-detail__hit-count').empty().html(data.data1);
 		}, 'json');
 	}
 
 	$(function() {
-		// 		ArticleDetail__doIncreaseHitCount();
-		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
+		// 		RecipeDetail__doIncreaseHitCount();
+		setTimeout(RecipeDetail__doIncreaseHitCount, 2000);
 	});
 </script>
 
@@ -58,7 +55,7 @@
 		}
 	}
 	
-	function doGoodReaction(articleId) {
+	function doGoodReaction(recipeId) {
 		if(isNaN(params.memberId) == true){
 			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
 				var currentUri = encodeURIComponent(window.location.href);
@@ -70,7 +67,7 @@
 		$.ajax({
 			url: '/usr/reactionPoint/doGoodReaction',
 			type: 'POST',
-			data: {relTypeCode: 'article', relId: articleId},
+			data: {relTypeCode: 'recipe', relId: recipeId},
 			dataType: 'json',
 			success: function(data){
 				console.log(data);
@@ -112,7 +109,7 @@
 	
 	
 	
-	function doBadReaction(articleId) {
+	function doBadReaction(recipeId) {
 		
 		if(isNaN(params.memberId) == true){
 			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
@@ -125,7 +122,7 @@
 	 $.ajax({
 			url: '/usr/reactionPoint/doBadReaction',
 			type: 'POST',
-			data: {relTypeCode: 'article', relId: articleId},
+			data: {relTypeCode: 'recipe', relId: recipeId},
 			dataType: 'json',
 			success: function(data){
 				console.log(data);
@@ -245,32 +242,32 @@ function doModifyReply(replyId) {
 			<tbody>
 				<tr>
 					<th>번호</th>
-					<td>${article.id }${goodRP}${badRP}</td>
+					<td>${recipe.id }${goodRP}${badRP}</td>
 				</tr>
 				<tr>
 					<th>작성날짜</th>
-					<td>${article.regDate }</td>
+					<td>${recipe.regDate }</td>
 				</tr>
 				<tr>
 					<th>수정날짜</th>
-					<td>${article.updateDate }</td>
+					<td>${recipe.updateDate }</td>
 				</tr>
 				<tr>
 					<th>작성자</th>
-					<td>${article.extra__writer }</td>
+					<td>${recipe.extra__writer }</td>
 				</tr>
 				<tr>
 					<th>좋아요</th>
-					<td id="likeCount">${article.goodReactionPoint }</td>
+					<td id="likeCount">${recipe.goodReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>싫어요</th>
-					<td id="DislikeCount">${article.badReactionPoint }</td>
+					<td id="DislikeCount">${recipe.badReactionPoint }</td>
 				</tr>
 				<tr>
 					<th>추천 ${usersReaction }</th>
 					<td>
-						<!-- href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}" -->
+						<!-- href="/usr/reactionPoint/doGoodReaction?relTypeCode=recipe&relId=${param.id }&replaceUri=${rq.currentUri}" -->
 						<button id="likeButton" class="btn btn-outline btn-success" onclick="doGoodReaction(${param.id})">좋아요</button>
 
 						<button id="DislikeButton" class="btn btn-outline btn-error" onclick="doBadReaction(${param.id})">싫어요</button>
@@ -279,28 +276,108 @@ function doModifyReply(replyId) {
 				<tr>
 					<th>조회수</th>
 					<td>
-						<span class="article-detail__hit-count">${article.hitCount }</span>
+						<span class="recipe-detail__hit-count">${recipe.hitCount }</span>
 					</td>
 				</tr>
 				<tr>
 					<th>제목</th>
-					<td>${article.title }</td>
+					<td>${recipe.title }</td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td>${article.body }</td>
+					<td>${recipe.body }</td>
+				</tr>
+				<tr>
+					<th>카테고리</th>
+					<td>
+						<c:if test="${recipe.categoryId == 1 }">
+					집밥
+					</c:if>
+						<c:if test="${recipe.categoryId == 2 }">
+					다이터트
+					</c:if>
+						<c:if test="${recipe.categoryId == 3 }">
+					탄단지
+					</c:if>
+						<c:if test="${recipe.categoryId == 4 }">
+					초간단
+					</c:if>
+						<c:if test="${recipe.categoryId == 5}">
+					대접
+					</c:if>
+					</td>
+				</tr>
+				<tr>
+					<th>인원</th>
+					<td>
+						<c:if test="${recipe.personnel == 1 }">
+					1인분
+					</c:if>
+						<c:if test="${recipe.personnel == 2 }">
+					2인분
+					</c:if>
+						<c:if test="${recipe.personnel == 3 }">
+					3인분
+					</c:if>
+						<c:if test="${recipe.personnel == 4 }">
+					4인분
+					</c:if>
+						<c:if test="${recipe.personnel == 5 }">
+					5인분이상
+					</c:if>
+					</td>
+				</tr>
+				<tr>
+					<th>소요시간</th>
+					<td>
+						<c:if test="${recipe.cookingTime == 1 }">
+					10분이내
+					</c:if>
+						<c:if test="${recipe.cookingTime == 2 }">
+					20분이내
+					</c:if>
+						<c:if test="${recipe.cookingTime == 3 }">
+					30분이내
+					</c:if>
+						<c:if test="${recipe.cookingTime == 4 }">
+					60분이내
+					</c:if>
+						<c:if test="${recipe.cookingTime == 5 }">
+					90분이내
+					</c:if>
+					</td>
+				</tr>
+				<tr>
+					<th>난이도</th>
+					<td>
+						<c:if test="${recipe.cookLevel == 1 }">
+					초하수달
+					</c:if>
+						<c:if test="${recipe.cookLevel == 2 }">
+					하수달
+					</c:if>
+						<c:if test="${recipe.cookLevel == 3 }">
+					중수달
+					</c:if>
+						<c:if test="${recipe.cookLevel == 4 }">
+					고수달
+					</c:if>
+						<c:if test="${recipe.cookLevel == 5 }">
+					초고수달
+					</c:if>
+					</td>
 				</tr>
 
 			</tbody>
 		</table>
 		<div class="btns mt-5">
 			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
-			<c:if test="${article.userCanModify }">
-				<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
+			<c:if test="${recipe.userCanModify }">
+				<a class="btn btn-outline" href="../recipe/modify?id=${recipe.id }">수정</a>
 			</c:if>
-			<c:if test="${article.userCanDelete }">
+			<c:if test="${recipe.userCanDelete }">
 				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../article/doDelete?id=${article.id }">삭제</a>
+					href="../recipe/doDelete?id=${recipe.id }">삭제</a>
 			</c:if>
 		</div>
 	</div>
@@ -309,8 +386,8 @@ function doModifyReply(replyId) {
 <section class="mt-5 px-3">
 	<c:if test="${rq.isLogined() }">
 		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
-			<input type="hidden" name="relTypeCode" value="article" />
-			<input type="hidden" name="relId" value="${article.id }" />
+			<input type="hidden" name="relTypeCode" value="recipe" />
+			<input type="hidden" name="relId" value="${recipe.id }" />
 			<table class="write-box table-box-1" border="1">
 				<tbody>
 					<tr>

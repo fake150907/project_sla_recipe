@@ -47,33 +47,8 @@
 	position: absolute;
 }
 
-.Join_MenuIcon {
-	width: 43.96px;
-	height: 38.19px;
-	left: 130px;
-	top: 50px;
-	position: absolute;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	display: inline-flex;
-}
-
 .material-symbols-outlined {
 	font-size: 40px;
-}
-
-.Menu {
-	width: 43.08px;
-	height: 16.81px;
-	left: 250px;
-	top: 38.19px;
-	position: absolute;
-	color: rgba(0, 0, 0, 0.70);
-	font-size: 15px;
-	font-family: Inter;
-	font-weight: 600;
-	word-wrap: break-word;
 }
 
 .JoinIdBox, .JoinPwBox, .JoinNameBox, .JoinNickNameBox, .JoinEmailBox,
@@ -132,18 +107,6 @@
 	display: inline-flex;
 }
 
-.Rectangle58 {
-	width: 120px;
-	height: 60px;
-	left: 0px;
-	top: 0px;
-	position: absolute;
-	background: rgba(236, 94, 193, 0.43);
-	border-radius: 10px;
-	border: 1px rgba(0, 0, 0, 0.40) solid;
-	backdrop-filter: blur(4px);
-}
-
 .SlaRecipeMidTextBox {
 	top: 300px;
 	height: 148px;
@@ -152,8 +115,8 @@
 	left: 50px;
 }
 
-/* 개별 스타일 */
-.Rectangle57 {
+/* 회원가입 폼 배경상자 */
+.joinform_background {
 	width: 720px;
 	height: 850px;
 	left: 870px;
@@ -163,7 +126,7 @@
 	border-radius: 10px;
 }
 
-/*  */
+/* 공통속성이라서 묶음 */
 .inputJoinId, .inputJoinPw, .inputJoinName, .inputJoinNickName,
 	.inputJoinEmail, .inputJoinCellPhoneNum {
 	background-color: #FFFACD;
@@ -232,6 +195,7 @@
 	left: 50px;
 }
 
+/* 페이지 구성요소 */
 .SlaRecipe {
 	width: 100%;
 	left: 225px;
@@ -286,22 +250,21 @@
 }
 </style>
 <script>
+	/* 아이디 중복체크 함수 */
 	function JoinIdConfirm() {
 		var form = document.form1;
 
 		var JoinId = $('.JoinId').value;
 
-<<<<<<< HEAD
 		/* if (JoinId == null) {
 			$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
 			return;
 		} */
-=======
+
 		if (JoinId == null) {
 			$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
 			return;
 		}
->>>>>>> 8830125ab1f6bb878018ae6112ad7711b94bd968
 
 		$.get('./loginIdConfirm', {
 			JoinId : JoinId
@@ -322,11 +285,12 @@
 		<img class="Background_img"
 			src="https://images.unsplash.com/photo-1516824467205-afa656d31a79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 			alt="Background Image">
-		<div class="Rectangle57"></div>
+		<div class="joinform_background"></div>
 		<a href="/">
 			<img class="logo"
 				src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png" alt="Logo">
 		</a>
+		<!-- 회원가입 form -->
 		<form class="form1" action="../member/doJoin" method="POST">
 			<div class="JoinIdBox">
 				<div style="font-size: 20xp; font-family: Inter; font-weight: 600;">아이디</div>
@@ -336,6 +300,7 @@
 						autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="JoinId" />
 					<div class="rs-msg"></div>
 					<div class="ConfirmBtn_box">
+						<!-- 아이디 중복체크 버튼 -->
 						<input class="ConfirmBtn" style="font-size: 15px; font-family: Inter; font-weight: 600;"
 							onclick="JoinIdConfirm();" type="button" value="중복체크" />
 					</div>
