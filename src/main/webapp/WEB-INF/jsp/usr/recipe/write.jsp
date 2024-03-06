@@ -84,12 +84,12 @@
 	top: 65%;
 }
 
-.category, .cookingTime, .cookLevel, .personnel {
+.categoryId, .cookingTime, .cookLevel, .personnel {
 	color: rgba(0, 0, 0, 0.6);
 	background-color: #FFFACD;
 }
 
-.category .op, .cookingTime .op, .cookLevel .op, .personnel .op {
+.categoryId .op, .cookingTime .op, .cookLevel .op, .personnel .op {
 	background-color: #CDEAC0;
 }
 
@@ -162,12 +162,12 @@
 	top: 75%;
 }
 
-.category_box, .pesonnel_box, .cookingTime_box, .cookLevel_box {
+.categoryId_box, .pesonnel_box, .cookingTime_box, .cookLevel_box {
 	position: absolute;
 	top: 22%;
 }
 
-.category_box {
+.categoryId_box {
 	left: 26.3%;
 }
 
@@ -233,60 +233,52 @@
 			<div class="cooking_information_bgc">
 				<span class="cooking_information_danger_text">*체크하지 않으면 처벌을 당할 수도 있습니다. 인간.</span>
 			</div>
-			<div class="category_box">
-				<div class="category_text">카테고리</div>
-				<div class="category_select">
-					<select data-value="${param.categoryId }" class="category select select-bordered select-sm max-w-xs"
-						name="category">
-						<!-- 									<option selected="selected" disabled>레시피 카테고리를 선택해주세요</option> -->
-						<option value="1">집밥</option>
-						<option value="2">다이어트</option>
-						<option value="3">탄단지</option>
-						<option value="4">초간단</option>
-						<option value="5">대접</option>
+			<div class="categoryId_box">
+				<div class="categoryId_text">카테고리</div>
+				<div class="categoryId_select">
+					<select class="categoryId select select-bordered select-sm max-w-xs" name="categoryId">
+						<option value="1" ${param.categoryId == '1' ? 'selected' : ''}>집밥</option>
+						<option value="2" ${param.categoryId == '2' ? 'selected' : ''}>다이어트</option>
+						<option value="3" ${param.categoryId == '3' ? 'selected' : ''}>탄단지</option>
+						<option value="4" ${param.categoryId == '4' ? 'selected' : ''}>초간단</option>
+						<option value="5" ${param.categoryId == '5' ? 'selected' : ''}>대접</option>
 					</select>
 				</div>
 			</div>
 			<div class="pesonnel_box">
 				<div class="personnel_text">인원</div>
 				<div class="personnel_select">
-					<select data-value="${param.personnel }" class="personnel select select-bordered select-sm max-w-xs"
-						name="personnel">
-						<!-- 									<option selected="selected" disabled>몇인분인지 선택해주세요</option> -->
-						<option value="1">1인분</option>
-						<option value="2">2인분</option>
-						<option value="3">3인분</option>
-						<option value="4">4인분</option>
-						<option value="5">5인분이상</option>
+					<select class="personnel select select-bordered select-sm max-w-xs" name="personnel">
+						<option value="1" ${param.personnel == '1' ? 'selected' : ''}>1인분</option>
+						<option value="2" ${param.personnel == '2' ? 'selected' : ''}>2인분</option>
+						<option value="3" ${param.personnel == '3' ? 'selected' : ''}>3인분</option>
+						<option value="4" ${param.personnel == '4' ? 'selected' : ''}>4인분</option>
+						<option value="5" ${param.personnel == '5' ? 'selected' : ''}>5인분이상</option>
 					</select>
 				</div>
 			</div>
 			<div class="cookingTime_box">
 				<div class="cookingTime_text">요리시간</div>
 				<div class="cookingTime_select">
-					<select data-value="${param.cookingTime }" class="cookingTime select select-bordered select-sm max-w-xs"
-						name="cookingTime">
-						<!-- 									<option selected="selected" disabled>시간이 얼마나 소요되는지 선택해주세요</option> -->
-						<option value="1">10분이내</option>
-						<option value="2">15분이내</option>
-						<option value="3">20분이내</option>
-						<option value="4">30분이내</option>
-						<option value="5">60분이내</option>
-						<option value="6">90분이내</option>
+					<select class="cookingTime select select-bordered select-sm max-w-xs" name="cookingTime">
+						<option value="1" ${param.cookingTime == '1' ? 'selected' : ''}>10분이내</option>
+						<option value="2" ${param.cookingTime == '2' ? 'selected' : ''}>15분이내</option>
+						<option value="3" ${param.cookingTime == '3' ? 'selected' : ''}>20분이내</option>
+						<option value="4" ${param.cookingTime == '4' ? 'selected' : ''}>30분이내</option>
+						<option value="5" ${param.cookingTime == '5' ? 'selected' : ''}>60분이내</option>
+						<option value="6" ${param.cookingTime == '6' ? 'selected' : ''}>90분이내</option>
 					</select>
 				</div>
 			</div>
 			<div class="cookLevel_box">
 				<div class="cookLevel_text">난이도</div>
 				<div class="cookLevel_select">
-					<select data-value="${param.cookLevel }" class="cookLevel select select-bordered select-sm max-w-xs"
-						name="cookLevel">
-						<!-- <option selected="selected" disabled>난이도를 선택해주세요</option> -->
-						<option value="1">아무나</option>
-						<option value="2">초하수달</option>
-						<option value="3">하수달</option>
-						<option value="4">고수달</option>
-						<option value="5">초고수달</option>
+					<select class="cookLevel select select-bordered select-sm max-w-xs" name="cookLevel">
+						<option value="1" ${param.cookLevel == '1' ? 'selected' : ''}>아무나</option>
+						<option value="2" ${param.cookLevel == '2' ? 'selected' : ''}>초하수달</option>
+						<option value="3" ${param.cookLevel == '3' ? 'selected' : ''}>하수달</option>
+						<option value="4" ${param.cookLevel == '4' ? 'selected' : ''}>고수달</option>
+						<option value="5" ${param.cookLevel == '5' ? 'selected' : ''}>초고수달</option>
 					</select>
 				</div>
 			</div>

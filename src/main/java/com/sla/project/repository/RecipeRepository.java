@@ -20,9 +20,13 @@ public interface RecipeRepository {
 			updateDate = NOW(),
 			memberId = #{memberId},
 			title = #{title}, `body` = #{body},
-			categoryId = #{categoryId}
+			categoryId = #{categoryId},
+			personnel = #{personnel},
+			cookingTime = #{cookingTime},
+			cookLevel = #{cookLevel}
 			""")
-	public void writeRecipe(int memberId, String title, String body, int categoryId);
+	public void writeRecipe(int memberId, String title, String body, int categoryId, int personnel, int cookingTime,
+			int cookLevel);
 
 	@Select("""
 			SELECT LAST_INSERT_ID()

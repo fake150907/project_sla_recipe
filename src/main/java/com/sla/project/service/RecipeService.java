@@ -58,9 +58,10 @@ public class RecipeService {
 		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", recipe.getId()));
 	}
 
-	public ResultData<Integer> writeRecipe(int memberId, String title, String body, int boardId) {
+	public ResultData<Integer> writeRecipe(int memberId, String title, String body, int categoryId, int personnel,
+			int cookingTime, int cookLevel) {
 
-		recipeRepository.writeRecipe(memberId, title, body, boardId);
+		recipeRepository.writeRecipe(memberId, title, body, categoryId, personnel, cookingTime, cookLevel);
 
 		int id = recipeRepository.getLastInsertId();
 

@@ -123,7 +123,8 @@ public class UsrRecipeController {
 
 	@RequestMapping("/usr/recipe/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, String title, String body, int categoryId) {
+	public String doWrite(HttpServletRequest req, String title, String body, int categoryId, int personnel,
+			int cookingTime, int cookLevel) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
@@ -134,7 +135,7 @@ public class UsrRecipeController {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
 
-		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId);
+		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId,personnel,cookingTime,cookLevel);
 
 		int id = (int) writeRecipeRd.getData1();
 
