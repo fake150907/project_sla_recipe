@@ -678,7 +678,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 			<div class="startPage_bottom_box4">
 				<div class="startPage_bottom_item4">
 					<div class="recipeList_box"></div>
-					<a href="">
+					<a href="../recipe/list">
 						<div class="startPage_bottom_content">
 							레시피 목록
 							<div class="icon">

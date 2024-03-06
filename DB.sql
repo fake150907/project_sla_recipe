@@ -42,12 +42,13 @@ CREATE TABLE ingredient(
     measure CHAR(30) NOT NULL
 );
 
-CREATE TABLE cookware(
+CREATE TABLE cookWare(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     recipeId INT(10) UNSIGNED NOT NULL,
     `name` CHAR(20) NOT NULL,
     `count` INT(10) UNSIGNED NOT NULL
 );
+
 
 CREATE TABLE category(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -95,6 +96,10 @@ SELECT * FROM recipe;
 
 SELECT * FROM reply;
 
+SELECT * FROM ingredient;
+
+SELECT * FROM cookWare;
+
 #########################################################################
 # recipe table insert data
 INSERT INTO recipe
@@ -129,6 +134,90 @@ categoryId = 4,
 personnel = 1,
 cookingTime = 1,
 cookLevel = 1;
+
+#########################################################################
+# ingredient table insert data
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '김치',
+nutrients = '식이섬유',
+measure = '반포기';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '생닭',
+nutrients = '단백질',
+measure = '1마리';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '우유',
+nutrients = '단백질,지질,유당',
+measure = '500ml';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '고추가루',
+nutrients = '',
+measure = '1T';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '양파',
+nutrients = '케르세틴',
+measure = '1개';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '다진마늘',
+nutrients = '아미노산',
+measure = '1T';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '대파',
+nutrients = '무기질',
+measure = '반단';
+
+INSERT INTO ingredient
+SET recipeId = 1,
+`name` = '물',
+nutrients = '수분',
+measure = '300ml';
+
+INSERT INTO ingredient
+SET recipeId = 3,
+`name` = '가물치',
+nutrients = '단백질',
+measure = '1마리';
+
+
+#########################################################################
+# cookWare table insert data
+INSERT INTO cookWare
+SET recipeId = 1,
+`name` = '냄비',
+`count` = 1;
+
+INSERT INTO cookWare
+SET recipeId = 1,
+`name` = '국자',
+`count` = 1;
+
+INSERT INTO cookWare
+SET recipeId = 1,
+`name` = '보울',
+`count` = 2;
+
+INSERT INTO cookWare
+SET recipeId = 1,
+`name` = '도마',
+`count` = 1;
+
+INSERT INTO cookWare
+SET recipeId = 1,
+`name` = '칼',
+`count` = 1;
 
 #########################################################################
 # member table insert data
