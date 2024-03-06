@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class UsrIngredientController {
+public class UsrGroupBuyingController {
 
-	@RequestMapping("/usr/ingredient/location")
+	@RequestMapping("/usr/GroupBuying/location")
 	public String showLocationPage() {
 
-		return "/usr/ingredient/location";
+		return "/usr/GroupBuying/location";
 	}
 }

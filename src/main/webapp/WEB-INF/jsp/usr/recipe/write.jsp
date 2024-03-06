@@ -60,7 +60,8 @@
 	border-bottom-left-radius: 10px;
 }
 
-.title_box_bgc, .Thumbnail_box_bgc, .body_box_bgc {
+.title_box_bgc, .Thumbnail_box_bgc, .body_box_bgc, .cookWare_box_bgc,
+	.ingredient_box_bgc {
 	position: absolute;
 	width: 1000px;
 	height: 150px;
@@ -84,6 +85,14 @@
 	top: 65%;
 }
 
+.cookWare_box_bgc {
+	top: 65%;
+}
+
+.ingredient_box_bgc {
+	top: 65%;
+}
+
 .categoryId, .cookingTime, .cookLevel, .personnel {
 	color: rgba(0, 0, 0, 0.6);
 	background-color: #FFFACD;
@@ -93,7 +102,8 @@
 	background-color: #CDEAC0;
 }
 
-.cooking_information_text, .Thumbnail_text, .title_text, .body_text {
+.cooking_information_text, .Thumbnail_text, .title_text, .body_text,
+	.ingredient_text, .cookWare_text {
 	position: absolute;
 	z-index: 3;
 }
@@ -113,13 +123,23 @@
 	left: 2.8%;
 }
 
+.ingredient_text {
+	top: 97.7%;
+	left: 2.8%;
+}
+
+.cookWare_text {
+	top: 147.7%;
+	left: 2.8%;
+}
+
 .body_text {
 	top: 468px;
 	left: 2.8%;
 }
 
 .cooking_information_text_bgc, .title_text_bgc, .Thumbnail_text_bgc,
-	.body_text_bgc {
+	.body_text_bgc, .ingredient_text_bgc, .cookWare_text_bgc {
 	width: 100px;
 	height: 40px;
 	position: absolute;
@@ -162,28 +182,53 @@
 	top: 75%;
 }
 
-.categoryId_box, .pesonnel_box, .cookingTime_box, .cookLevel_box {
+.ingredient_data_box {
+	
+}
+
+.cookWare_data_box {
+	
+}
+
+.categoryId_box, .personnel_box, .cookingTime_box, .cookLevel_box {
 	position: absolute;
-	top: 22%;
 }
 
 .categoryId_box {
 	left: 26.3%;
+	top: 18%;
 }
 
-.pesonnel_box {
-	left: 32.3%;
+.personnel_box {
+	left: 26.3%;
+	top: 21%;
 }
 
 .cookingTime_box {
-	left: 38.7%;
+	left: 26.3%;
+	top: 24%;
 }
 
 .cookLevel_box {
-	left: 44.8%;
+	left: 26.3%;
+	top: 27%;
 }
 
-.title_box, .Thumbnail_box, .body_box {
+.categoryId_text, .personnel_text, .cookingTime_text, .cookLevel_text {
+	position: absolute;
+	width: 150px;
+	top: 4px;
+}
+
+.categoryId_btn_box, .personnel_btn_box, .cookingTime_btn_box,
+	.cookLevel_btn_box {
+	position: absolute;
+	width: 700px;
+	height: 50px;
+	left: 100px;
+}
+
+.title_box, .Thumbnail_box, .body_box, .ingredient_box, .cookWare_box {
 	width: 1000px;
 	height: 150px;
 }
@@ -219,6 +264,65 @@
 .submitBtn_box:hover>.submitBtn {
 	background-color: #FFC700;
 }
+
+/* radioBtn */
+label {
+	font-size: 18px;
+	line-height: 2rem;
+	padding: 0.2em 0.4em;
+}
+
+[type="radio"], span {
+	vertical-align: middle;
+}
+
+[type="radio"] {
+	appearance: none;
+	border: max(2px, 0.1em) solid #CDEAC0;
+	border-radius: 50%;
+	width: 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+}
+
+[type="radio"]:checked {
+	border: 0.4em solid #ECDF66;
+}
+
+[type="radio"]:focus-visible {
+	outline-offset: max(2px, 0.1em);
+	outline: max(2px, 0.1em) dotted #ECDF66;
+}
+
+[type="radio"]:hover {
+	box-shadow: 0 0 0 max(4px, 0.2em) #CDEAC0;
+	cursor: pointer;
+}
+
+[type="radio"]:hover+span {
+	cursor: pointer;
+}
+
+[type="radio"]:disabled {
+	background-color: lightgray;
+	box-shadow: none;
+	opacity: 1;
+	cursor: not-allowed;
+}
+
+[type="radio"]:disabled+span {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+/* Global CSS */
+fieldset {
+	display: flex;
+	justify-content: center;
+	border: none;
+	margin: 0;
+	padding: 40px 20px;
+}
 </style>
 
 <section class="mt-8 text-xl px-4">
@@ -230,10 +334,9 @@
 				<span class="cooking_information_text" style="font-weight: bold;">요리정보</span>
 				<div class="cooking_information_text_bgc"></div>
 			</div>
-			<div class="cooking_information_bgc">
-				<span class="cooking_information_danger_text">*체크하지 않으면 처벌을 당할 수도 있습니다. 인간.</span>
-			</div>
-			<div class="categoryId_box">
+			<div class="cooking_information_bgc"></div>
+			<!-- select칸 -->
+			<%-- <div class="categoryId_box">
 				<div class="categoryId_text">카테고리</div>
 				<div class="categoryId_select">
 					<select class="categoryId select select-bordered select-sm max-w-xs" name="categoryId">
@@ -245,7 +348,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="pesonnel_box">
+			<div class="personnel_box">
 				<div class="personnel_text">인원</div>
 				<div class="personnel_select">
 					<select class="personnel select select-bordered select-sm max-w-xs" name="personnel">
@@ -281,6 +384,107 @@
 						<option value="5" ${param.cookLevel == '5' ? 'selected' : ''}>초고수달</option>
 					</select>
 				</div>
+			</div> --%>
+			<!-- radioBtn칸 -->
+			<div class="categoryId_box">
+				<div class="categoryId_text" style="font-size: 18px;">카테고리</div>
+				<div class="categoryId_btn_box">
+					<label>
+						<input type="radio" name="categoryId" value="1" />
+						<span>집밥</span>
+					</label>
+					<label>
+						<input type="radio" name="categoryId" value="2" />
+						<span>다이어트</span>
+					</label>
+					<label>
+						<input type="radio" name="categoryId" value="3" />
+						<span>탄단지</span>
+					</label>
+					<label>
+						<input type="radio" name="categoryId" value="4" />
+						<span>초간단</span>
+					</label>
+					<label>
+						<input type="radio" name="categoryId" value="5" />
+						<span>대접</span>
+					</label>
+				</div>
+			</div>
+			<div class="personnel_box">
+				<div class="personnel_text" style="font-size: 18px;">인원</div>
+				<div class="personnel_btn_box">
+					<label>
+						<input type="radio" name="personnel" value="1" />
+						<span>1인분</span>
+					</label>
+					<label>
+						<input type="radio" name="personnel" value="2" />
+						<span>2인분</span>
+					</label>
+					<label>
+						<input type="radio" name="personnel" value="3" />
+						<span>3인분</span>
+					</label>
+					<label>
+						<input type="radio" name="personnel" value="4" />
+						<span>4인분</span>
+					</label>
+					<label>
+						<input type="radio" name="personnel" value="5" />
+						<span>5인분이상</span>
+					</label>
+				</div>
+			</div>
+			<div class="cookingTime_box">
+				<div class="cookingTime_text" style="font-size: 18px;">요리시간</div>
+				<div class="cookingTime_btn_box">
+					<label>
+						<input type="radio" name="cookingTime" value="1" />
+						<span>10분이내</span>
+					</label>
+					<label>
+						<input type="radio" name="cookingTime" value="2" />
+						<span>20분이내</span>
+					</label>
+					<label>
+						<input type="radio" name="cookingTime" value="3" />
+						<span>30분이내</span>
+					</label>
+					<label>
+						<input type="radio" name="cookingTime" value="4" />
+						<span>60분이내</span>
+					</label>
+					<label>
+						<input type="radio" name="cookingTime" value="5" />
+						<span>90분이내</span>
+					</label>
+				</div>
+			</div>
+			<div class="cookLevel_box">
+				<div class="cookLevel_text" style="font-size: 18px;">난이도</div>
+				<div class="cookLevel_btn_box">
+					<label>
+						<input type="radio" name="cookLevel" value="1" />
+						<span>아무나</span>
+					</label>
+					<label>
+						<input type="radio" name="cookLevel" value="2" />
+						<span>초하수달</span>
+					</label>
+					<label>
+						<input type="radio" name="cookLevel" value="3" />
+						<span>하수달</span>
+					</label>
+					<label>
+						<input type="radio" name="cookLevel" value="4" />
+						<span>고수달</span>
+					</label>
+					<label>
+						<input type="radio" name="cookLevel" value="5" />
+						<span>초고수달</span>
+					</label>
+				</div>
 			</div>
 			<div class="write-box table-box-1">
 				<div>
@@ -306,6 +510,28 @@
 								placeholder="제목을 입력해주세요" name="title" />
 						</div>
 						<div class="title_box_bgc">
+							<span class=""></span>
+						</div>
+					</div>
+					<div class="ingredient_box">
+						<span class="ingredient_text" style="font-weight: bold;">요리재료</span>
+						<div class="ingredient_text_bgc"></div>
+						<div class="ingredient_data_box">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="제목을 입력해주세요" name="ingredient" />
+						</div>
+						<div class="ingredient_box_bgc">
+							<span class=""></span>
+						</div>
+					</div>
+					<div class="cookWare_box">
+						<span class="cookWare_text" style="font-weight: bold;">요리도구</span>
+						<div class="cookWare_text_bgc"></div>
+						<div class="cookWare_data_box">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="제목을 입력해주세요" name="cookWare" />
+						</div>
+						<div class="cookWare_box_bgc">
 							<span class=""></span>
 						</div>
 					</div>
