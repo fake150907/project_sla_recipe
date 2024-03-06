@@ -30,8 +30,8 @@ CREATE TABLE recipe(
     badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0,
     categoryId INT(10) UNSIGNED NOT NULL,
     personnel INT(5) UNSIGNED NOT NULL COMMENT '1인분,2인분,3인분,4인분,5인분',
-    cookingTime INT(10) UNSIGNED NOT NULL COMMENT '10분이내,15분이내,20분이내,30분이내,60분이내,90분이내',
-    cookLevel INT(10) UNSIGNED NOT NULL COMMENT '1초하수달,2하수달,3중수달,4고수달,5초고수달'
+    cookingTime int(10) UNSIGNED NOT NULL COMMENT '10분이내,15분이내,20분이내,30분이내,60분이내,90분이내',
+    cookLevel int(10) UNSIGNED NOT NULL COMMENT '1초하수달,2하수달,3중수달,4고수달,5초고수달'
 );
 
 CREATE TABLE ingredient(
@@ -90,15 +90,15 @@ CREATE TABLE groupBuyingArticle (
 
 #########################################################################
 # SELECT
-SELECT * FROM `member`;
+select * from `member`;
 
-SELECT * FROM recipe;
+select * from recipe;
 
-SELECT * FROM reply;
+select * from reply;
 
-SELECT * FROM ingredient;
+select * from ingredient;
 
-SELECT * FROM cookWare;
+select * from cookWare;
 
 #########################################################################
 # recipe table insert data
@@ -255,8 +255,8 @@ email = 'mummu33@gmail.com';
 #########################################################################
 # category table insert data
 
-INSERT INTO category
-SET `name` = '집밥';
+insert into category
+set `name` = '집밥';
 
 INSERT INTO category
 SET `name` = '다이어트';
