@@ -391,23 +391,23 @@ fieldset {
 				<div class="categoryId_btn_box">
 					<label>
 						<input type="radio" name="categoryId" value="1" />
-						<span>집밥</span>
+						<span style="width: 75px; display: inline-block;">집밥</span>
 					</label>
 					<label>
 						<input type="radio" name="categoryId" value="2" />
-						<span>다이어트</span>
+						<span style="width: 75px; display: inline-block;">다이어트</span>
 					</label>
 					<label>
 						<input type="radio" name="categoryId" value="3" />
-						<span>탄단지</span>
+						<span style="width: 75px; display: inline-block;">탄단지</span>
 					</label>
 					<label>
 						<input type="radio" name="categoryId" value="4" />
-						<span>초간단</span>
+						<span style="width: 75px; display: inline-block;">초간단</span>
 					</label>
 					<label>
 						<input type="radio" name="categoryId" value="5" />
-						<span>대접</span>
+						<span style="width: 75px; display: inline-block;">대접</span>
 					</label>
 				</div>
 			</div>
@@ -416,23 +416,23 @@ fieldset {
 				<div class="personnel_btn_box">
 					<label>
 						<input type="radio" name="personnel" value="1" />
-						<span>1인분</span>
+						<span style="width: 75px; display: inline-block;">1인분</span>
 					</label>
 					<label>
 						<input type="radio" name="personnel" value="2" />
-						<span>2인분</span>
+						<span style="width: 75px; display: inline-block;">2인분</span>
 					</label>
 					<label>
 						<input type="radio" name="personnel" value="3" />
-						<span>3인분</span>
+						<span style="width: 75px; display: inline-block;">3인분</span>
 					</label>
 					<label>
 						<input type="radio" name="personnel" value="4" />
-						<span>4인분</span>
+						<span style="width: 75px; display: inline-block;">4인분</span>
 					</label>
 					<label>
 						<input type="radio" name="personnel" value="5" />
-						<span>5인분이상</span>
+						<span style="width: 90px; display: inline-block;">5인분이상</span>
 					</label>
 				</div>
 			</div>
@@ -441,23 +441,23 @@ fieldset {
 				<div class="cookingTime_btn_box">
 					<label>
 						<input type="radio" name="cookingTime" value="1" />
-						<span>10분이내</span>
+						<span style="width: 75px; display: inline-block;">10분이내</span>
 					</label>
 					<label>
 						<input type="radio" name="cookingTime" value="2" />
-						<span>20분이내</span>
+						<span style="width: 75px; display: inline-block;">20분이내</span>
 					</label>
 					<label>
 						<input type="radio" name="cookingTime" value="3" />
-						<span>30분이내</span>
+						<span style="width: 75px; display: inline-block;">30분이내</span>
 					</label>
 					<label>
 						<input type="radio" name="cookingTime" value="4" />
-						<span>60분이내</span>
+						<span style="width: 75px; display: inline-block;">60분이내</span>
 					</label>
 					<label>
 						<input type="radio" name="cookingTime" value="5" />
-						<span>90분이내</span>
+						<span style="width: 75px; display: inline-block;">90분이내</span>
 					</label>
 				</div>
 			</div>
@@ -466,23 +466,23 @@ fieldset {
 				<div class="cookLevel_btn_box">
 					<label>
 						<input type="radio" name="cookLevel" value="1" />
-						<span>아무나</span>
+						<span style="width: 75px; display: inline-block;">아무나</span>
 					</label>
 					<label>
 						<input type="radio" name="cookLevel" value="2" />
-						<span>초하수달</span>
+						<span style="width: 75px; display: inline-block;">초하수달</span>
 					</label>
 					<label>
 						<input type="radio" name="cookLevel" value="3" />
-						<span>하수달</span>
+						<span style="width: 75px; display: inline-block;">하수달</span>
 					</label>
 					<label>
 						<input type="radio" name="cookLevel" value="4" />
-						<span>고수달</span>
+						<span style="width: 75px; display: inline-block;">고수달</span>
 					</label>
 					<label>
 						<input type="radio" name="cookLevel" value="5" />
-						<span>초고수달</span>
+						<span style="width: 75px; display: inline-block;">초고수달</span>
 					</label>
 				</div>
 			</div>
