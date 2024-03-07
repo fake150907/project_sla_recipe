@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.sla.project.vo.CookWare;
+import com.sla.project.vo.Ingredient;
 import com.sla.project.vo.Recipe;
 
 @Mapper
@@ -51,6 +53,20 @@ public interface RecipeRepository {
 			</script>
 				""")
 	public Recipe getForPrintRecipe(int id);
+
+	@Select("""
+			SELECT *
+			FROM ingredient
+			WHERE recipeId = #{id};
+			""")
+	public List<Ingredient> getForPrintRecipeIngredient(int id);
+
+	@Select("""
+			SELECT *
+			FROM cookWare
+			WHERE recipeId = #{id};
+			""")
+	public List<CookWare> getForPrintRecipeCookWare(int id);
 
 	@Delete("DELETE FROM recipe WHERE id = #{id}")
 	public void deleteRecipe(int id);
@@ -204,4 +220,5 @@ public interface RecipeRepository {
 			WHERE id = #{relId}
 			""")
 	public int getBadRP(int relId);
+
 }

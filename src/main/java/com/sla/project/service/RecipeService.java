@@ -32,15 +32,17 @@ public class RecipeService {
 	}
 
 	// ingredient가져오는 메서드
-	public Ingredient getForPrintRecipeIngredient(int loginedMemberId, int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Ingredient> getForPrintRecipeIngredient(int id) {
+		List<Ingredient> ingredient = recipeRepository.getForPrintRecipeIngredient(id);
+
+		return ingredient;
 	}
 
 	// cookWare가져오는 메서드
-	public CookWare getForPrintRecipeCookWare(int loginedMemberId, int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CookWare> getForPrintRecipeCookWare(int id) {
+		List<CookWare> cookWare = recipeRepository.getForPrintRecipeCookWare(id);
+
+		return cookWare;
 	}
 
 	private void controlForPrintData(int loginedMemberId, Recipe recipe) {

@@ -76,10 +76,10 @@ public class UsrRecipeController {
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		List<Ingredient> Ingredient = recipeService.getForPrintRecipeIngredient(id);
+		List<CookWare> cookWare = recipeService.getForPrintRecipeCookWare(id);
 		Recipe recipe = recipeService.getForPrintRecipe(rq.getLoginedMemberId(), id);
-		Ingredient Ingredient = recipeService.getForPrintRecipeIngredient(rq.getLoginedMemberId(), id);
-		CookWare cookware = recipeService.getForPrintRecipeCookWare(rq.getLoginedMemberId(), id);
-		
+
 		boolean isAlreadyAddrecipeGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
 				"recipe");
 		boolean isAlreadyAddrecipeBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "recipe");
@@ -88,6 +88,8 @@ public class UsrRecipeController {
 		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "comment");
 		String relTypeCode = "Recipe";
 		model.addAttribute("recipe", recipe);
+		model.addAttribute("Ingredient", Ingredient);
+		model.addAttribute("cookWare", cookWare);
 		model.addAttribute("isLogined", rq.isLogined());
 		model.addAttribute("isAlreadyAddGoodRp", isAlreadyAddrecipeGoodRp);
 		model.addAttribute("isAlreadyAddBadRp", isAlreadyAddrecipeBadRp);
@@ -138,7 +140,8 @@ public class UsrRecipeController {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
 
-		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId,personnel,cookingTime,cookLevel);
+		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId,
+				personnel, cookingTime, cookLevel);
 
 		int id = (int) writeRecipeRd.getData1();
 

@@ -14,7 +14,4 @@ public class Ingredient {
 	private String ingredientName;
 	private String nutrients;
 	private String measure;
-
-	private boolean userCanModify;
-	private boolean userCanDelete;
 }

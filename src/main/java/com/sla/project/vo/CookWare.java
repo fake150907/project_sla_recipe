@@ -12,7 +12,4 @@ public class CookWare {
 	private int recipeId;
 	private int memberId;
 	private String name;
-	
-	private boolean userCanModify;
-	private boolean userCanDelete;
 }
