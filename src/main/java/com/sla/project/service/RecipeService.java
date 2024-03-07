@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.sla.project.repository.RecipeRepository;
 import com.sla.project.util.Ut;
+import com.sla.project.vo.CookWare;
+import com.sla.project.vo.Ingredient;
 import com.sla.project.vo.Recipe;
 import com.sla.project.vo.ResultData;
 
@@ -27,6 +29,18 @@ public class RecipeService {
 		controlForPrintData(loginedMemberId, recipe);
 
 		return recipe;
+	}
+
+	// ingredient가져오는 메서드
+	public Ingredient getForPrintRecipeIngredient(int loginedMemberId, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// cookWare가져오는 메서드
+	public CookWare getForPrintRecipeCookWare(int loginedMemberId, int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private void controlForPrintData(int loginedMemberId, Recipe recipe) {

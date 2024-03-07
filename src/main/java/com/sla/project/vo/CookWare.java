@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ingredient {
+public class CookWare {
 	private int id;
 	private int recipeId;
 	private int memberId;
-	private String ingredientName;
-	private String nutrients;
-	private String measure;
-
+	private String name;
+	
 	private boolean userCanModify;
 	private boolean userCanDelete;
 }

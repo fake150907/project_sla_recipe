@@ -14,7 +14,8 @@ import com.sla.project.service.ReactionPointService;
 import com.sla.project.service.RecipeService;
 import com.sla.project.service.ReplyService;
 import com.sla.project.util.Ut;
-import com.sla.project.vo.Board;
+import com.sla.project.vo.CookWare;
+import com.sla.project.vo.Ingredient;
 import com.sla.project.vo.Recipe;
 import com.sla.project.vo.ResultData;
 import com.sla.project.vo.Rq;
@@ -76,7 +77,9 @@ public class UsrRecipeController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Recipe recipe = recipeService.getForPrintRecipe(rq.getLoginedMemberId(), id);
-
+		Ingredient Ingredient = recipeService.getForPrintRecipeIngredient(rq.getLoginedMemberId(), id);
+		CookWare cookware = recipeService.getForPrintRecipeCookWare(rq.getLoginedMemberId(), id);
+		
 		boolean isAlreadyAddrecipeGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
 				"recipe");
 		boolean isAlreadyAddrecipeBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "recipe");

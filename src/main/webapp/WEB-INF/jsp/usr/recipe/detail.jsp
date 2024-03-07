@@ -108,7 +108,6 @@
 	}
 	
 	
-	
 	function doBadReaction(recipeId) {
 		
 		if(isNaN(params.memberId) == true){
@@ -236,7 +235,6 @@ function doModifyReply(replyId) {
 </script>
 
 <style>
-
 </style>
 
 <section class="mt-8 text-xl px-4 ">
@@ -285,10 +283,6 @@ function doModifyReply(replyId) {
 				<tr>
 					<th>제목</th>
 					<td>${recipe.title }</td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td>${recipe.body }</td>
 				</tr>
 				<tr>
 					<th>카테고리</th>
@@ -370,7 +364,18 @@ function doModifyReply(replyId) {
 					</c:if>
 					</td>
 				</tr>
-
+				<tr>
+					<th>요리재료</th>
+					<td>무언가</td>
+				</tr>
+				<tr>
+					<th>요리도구</th>
+					<td>무언가</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td>${recipe.body }</td>
+				</tr>
 			</tbody>
 		</table>
 		<div class="btns mt-5">

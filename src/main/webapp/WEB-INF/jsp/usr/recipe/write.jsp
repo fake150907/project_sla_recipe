@@ -78,19 +78,19 @@
 }
 
 .Thumbnail_box_bgc {
-	top: 18.8%;
+	top: 10.2%;
 }
 
 .title_box_bgc {
-	top: 65%;
-}
-
-.cookWare_box_bgc {
-	top: 65%;
+	top: 36.65%;
 }
 
 .ingredient_box_bgc {
-	top: 65%;
+	top: 63.1%;
+}
+
+.cookWare_box_bgc {
+	top: 89.55%;
 }
 
 .categoryId, .cookingTime, .cookLevel, .personnel {
@@ -114,27 +114,27 @@
 }
 
 .Thumbnail_text {
-	top: 11.7%;
+	top: 5.7%;
 	left: 1.8%;
 }
 
 .title_text {
-	top: 57.7%;
+	top: 32.2%;
 	left: 2.8%;
 }
 
 .ingredient_text {
-	top: 97.7%;
-	left: 2.8%;
+	top: 58.7%;
+	left: 1%;
 }
 
 .cookWare_text {
-	top: 147.7%;
-	left: 2.8%;
+	top: 85.2%;
+	left: 1%;
 }
 
 .body_text {
-	top: 468px;
+	top: 111.7%;
 	left: 2.8%;
 }
 
@@ -154,15 +154,23 @@
 }
 
 .Thumbnail_text_bgc {
-	top: 10%;
+	top: 5%;
 }
 
 .title_text_bgc {
-	top: 56.2%;
+	top: 31.5%;
+}
+
+.ingredient_text_bgc {
+	top: 58%;
+}
+
+.cookWare_text_bgc {
+	top: 84.5%;
 }
 
 .body_text_bgc {
-	top: 460px;
+	top: 111%;
 }
 
 .cooking_information_danger_text {
@@ -174,20 +182,22 @@
 
 .Thumbnail_data_box {
 	position: absolute;
-	top: 30%;
+	top: 17%;
 }
 
 .title_data_box {
 	position: absolute;
-	top: 75%;
+	top: 43%;
 }
 
 .ingredient_data_box {
-	
+	position: absolute;
+	top: 69%;
 }
 
 .cookWare_data_box {
-	
+	position: absolute;
+	top: 95%;
 }
 
 .categoryId_box, .personnel_box, .cookingTime_box, .cookLevel_box {
@@ -235,7 +245,7 @@
 
 .toast-ui-editor {
 	position: absolute;
-	top: 500px;
+	top: 116%;
 	width: 1000px;
 }
 
@@ -518,7 +528,7 @@ fieldset {
 						<div class="ingredient_text_bgc"></div>
 						<div class="ingredient_data_box">
 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="제목을 입력해주세요" name="ingredient" />
+								placeholder="요리재료를 입력해주세요" name="ingredient" />
 						</div>
 						<div class="ingredient_box_bgc">
 							<span class=""></span>
@@ -529,7 +539,7 @@ fieldset {
 						<div class="cookWare_text_bgc"></div>
 						<div class="cookWare_data_box">
 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="제목을 입력해주세요" name="cookWare" />
+								placeholder="요리도구를 입력해주세요" name="cookWare" />
 						</div>
 						<div class="cookWare_box_bgc">
 							<span class=""></span>
