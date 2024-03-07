@@ -76,7 +76,7 @@ public class UsrRecipeController {
 	public String showDetail(HttpServletRequest req, Model model, int id) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		List<Ingredient> Ingredient = recipeService.getForPrintRecipeIngredient(id);
+		List<Ingredient> ingredient = recipeService.getForPrintRecipeIngredient(id);
 		List<CookWare> cookWare = recipeService.getForPrintRecipeCookWare(id);
 		Recipe recipe = recipeService.getForPrintRecipe(rq.getLoginedMemberId(), id);
 
@@ -88,7 +88,7 @@ public class UsrRecipeController {
 		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "comment");
 		String relTypeCode = "Recipe";
 		model.addAttribute("recipe", recipe);
-		model.addAttribute("Ingredient", Ingredient);
+		model.addAttribute("ingredient", ingredient);
 		model.addAttribute("cookWare", cookWare);
 		model.addAttribute("isLogined", rq.isLogined());
 		model.addAttribute("isAlreadyAddGoodRp", isAlreadyAddrecipeGoodRp);

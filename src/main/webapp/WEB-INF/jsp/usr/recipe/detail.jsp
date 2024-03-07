@@ -366,11 +366,15 @@ function doModifyReply(replyId) {
 				</tr>
 				<tr>
 					<th>요리재료</th>
-					<td>무언가</td>
+					<c:forEach var="ingredient" items="${ingredient }">
+						<td>${ingredient.name}</td>
+					</c:forEach>
 				</tr>
 				<tr>
 					<th>요리도구</th>
-					<td>무언가</td>
+					<c:forEach var="cookWare" items="${cookWare }">
+						<td>${cookWare.name}</td>
+					</c:forEach>
 				</tr>
 				<tr>
 					<th>내용</th>
