@@ -268,7 +268,7 @@
 	background-color: #EDC127;
 	border-radius: 10px;
 	opacity: 0.7;
-	top: 1150px;
+	top: 1500px;
 }
 
 .submitBtn_box:hover>.submitBtn {

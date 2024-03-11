@@ -12,4 +12,5 @@ public class CookWare {
 	private int recipeId;
 	private int memberId;
 	private String name;
+	private int count;
 }

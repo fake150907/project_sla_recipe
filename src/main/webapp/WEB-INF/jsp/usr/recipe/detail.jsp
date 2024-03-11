@@ -2,9 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/toastUiEditorLib.jspf"%>
+<!-- 헤드랑, 토스트 유아이랑 겹치는거 확인해보고, 다시 체크해보기 -->
 
 <!-- <iframe src="http://localhost:8081/usr/recipe/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
-<link rel="stylesheet" href="styles.css">
 <!-- 변수 -->
 <script>
 	const params = {};
@@ -233,10 +234,7 @@ function doModifyReply(replyId) {
 	})
 };
 /* 좋아요버튼 */
-function toggleLike() {
-	  var button = document.querySelector('.like-button');
-	  button.classList.toggle('liked');
-	}
+
 </script>
 
 <script>
@@ -249,6 +247,32 @@ document.addEventListener('mousemove', function(event) {
   character.style.left = mouseX + 'px';
   character.style.top = mouseY + 'px';
 });
+
+function toggleLike() {
+	  var button = document.querySelector('.like-button');
+	  button.classList.toggle('liked');
+	}
+	
+$(document).ready(function() {
+	  $('.regDate_text').css('background-color', '#CDEAC0');
+    $('.regDate_text').click(function() {
+        $('.regDate_data').show();
+        $('.updateDate_data').hide();
+        $('.regDate_text').css('background-color', '#CDEAC0');
+        $('.updateDate_text').css('background-color', 'white');
+    });
+
+    $('.updateDate_text').click(function() {
+        $('.regDate_data').hide();
+        $('.updateDate_data').show();
+        $('.updateDate_text').css('background-color', '#CDEAC0');
+        $('.regDate_text').css('background-color', 'white');
+    });
+});
+function toggleLike() {
+    var button = document.querySelector('.favorite-button');
+    button.classList.toggle('liked');
+}
 </script>
 
 <style>
@@ -257,14 +281,14 @@ document.addEventListener('mousemove', function(event) {
 	position: absolute;
 	width: 980px;
 	height: 550px;
-	top: -5%;
-	left: 35%;
+	top: 15%;
+	left: 23.5%;
 }
 
 .Thumnail {
 	border-radius: 10px;
-	width: 550px;
-	height: 980px;
+	width: 980px;
+	height: 580PX;
 }
 /* 제목관련 css */
 .title_box {
@@ -301,13 +325,73 @@ document.addEventListener('mousemove', function(event) {
 	font-size: 25px;
 	position: absolute;
 	left: 35%;
-	top: 120%;
+	top: 105%;
+	left: 35%;
 }
 
 .favorite-button {
 	position: absolute;
-	top: 80%;
-	left: 180%;
+	width: 40px; /* Button width */
+	height: 40px; /* Button height */
+	border: none;
+	cursor: pointer;
+	outline: none;
+	background-color: transparent;
+	left: 83%;
+	top: -320%;
+}
+
+/* Star icon */
+.favorite-button::after {
+	content: '\2606'; /* Unicode character for empty star */
+	font-size: 50px;
+	color: #262626; /* Default color */
+}
+
+/* Filled star */
+.favorite-button.liked::after {
+	content: '\2605'; /* Unicode character for filled star */
+	color: #FFD700; /* Yellow color */
+}
+
+/* 날짜관련 css */
+.date_container {
+	position: absolute;
+	width: 240px;
+	height: 80px;
+	top: 95%;
+	left: 61%;
+}
+
+.regDate_text, .updateDate_text {
+	width: 80px;
+	height: 30px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	border: .5px solid rgba(0, 0, 0, 0.3);
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.updateDate_text {
+	left: 33%;
+}
+
+.regDate_data, .updateDate_data {
+	position: absolute;
+	width: 240px;
+	height: 35px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	display: flex;
+	justify-content: center;
+	z-index: -1;
+	top: 37%;
+	background-color: #fff;
+	justify-content: center;
 }
 
 /* link, goodReaction, hitCount */
@@ -320,31 +404,34 @@ document.addEventListener('mousemove', function(event) {
 	left: 61%;
 	top: 88%;
 	z-index: -1;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* 공유관련 */
 .link_box {
 	diplay: flex;
 	position: relative;
-	left: 5%;
+	top: 7%;
+	left: 8%;
 }
 
 .link_data {
 	position: absolute;
-	top: 18%;
+	top: 16%;
 	left: 15%;
 }
 
 .linksym {
 	position: absolute;
 	font-size: 28px;
-	top: 26%;
+	top: 23%;
 }
 
 /* 좋아요관련 */
 .like_box {
 	position: absolute;
-	left: 35%;
+	top: 68%;
+	left: 39%;
 }
 
 .like_data {
@@ -361,13 +448,15 @@ document.addEventListener('mousemove', function(event) {
 /* 조회수관련 */
 .hitCount_box {
 	diplay: inline-block;
-	position: relative;
-	top: -45%;
+	position: absolute;
+	top: 25%;
 	left: 70%;
 }
 
-.hitCount_data {
-	position: relative;
+.recipe-detail__hit-count {
+	position: absolute;
+	top: -10%;
+	right: -100%;
 }
 
 /* 좋아요버튼 */
@@ -397,6 +486,68 @@ document.addEventListener('mousemove', function(event) {
 	stroke: #ff4d4d; /* Liked color */
 }
 
+/* 요리정보 관련 css */
+.cook_information_container {
+	display: flex;
+	width: 800px;
+	justify-content: space-around;
+	position: absolute;
+	left: 28%;
+	top: 115%;
+}
+
+.cookInforSymbol {
+	font-size: 65px;
+}
+
+.category_text, .personnel_text, .cookingTime_text, .cookLevel_text {
+	position: absolute;
+	font-size: 15px;
+	top: 80%;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.category_text {
+	left: 11.2%;
+}
+
+.personnel_text {
+	left: 37.9%;
+}
+
+.cookingTime_text {
+	left: 61.4%;
+}
+
+.cookLevel_text {
+	left: 87.4%;
+}
+
+.category_data, .personnel_data, .cookingTime_data, .cookLevel_data {
+	position: absolute;
+	top: 120%;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.personnel_data {
+	left: 36.6%;
+}
+
+.cookingTime_data {
+	left: 59.9%;
+}
+
+.cookLevel_data {
+	left: 85.2%;
+}
+
+/* 내용관련 css */
+.body_data {
+	font-size: 200px;
+}
+
 /* 마우스 따라다니는 캐릭터 */
 .character {
 	position: fixed;
@@ -419,16 +570,8 @@ document.addEventListener('mousemove', function(event) {
 		<div class="div-box-1 ">
 			<div>
 				<div class="Thumnail_box">
-					<img class="Thumnail" style="transform: rotate(-90deg)"
-						src="https://velog.velcdn.com/images/fake150907/post/9afd19f2-8b78-4287-9a32-ef4a94406d41/image.jpg" alt="" />
-				</div>
-				<div class="regDate_box">
-					<div class="regDate_text">작성날짜</div>
-					<div class="regDate_data">${recipe.regDate }</div>
-				</div>
-				<div class="updateDate_box">
-					<div class="updateDate_text">수정날짜</div>
-					<div class="updateDate_data">${recipe.updateDate }</div>
+					<img class="Thumnail"
+						src="https://velog.velcdn.com/images/fake150907/post/053ea857-e9b2-471e-90ce-7da83de3d468/image.jpg" alt="" />
 				</div>
 
 				<%-- 	<div class="link_box">
@@ -471,6 +614,16 @@ document.addEventListener('mousemove', function(event) {
 					</div>
 				</div>
 			</div>
+			<div class="date_container">
+				<div class="regDate_box">
+					<div class="regDate_text" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.6);">작성날짜</div>
+					<div class="regDate_data" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.6);">${recipe.regDate }</div>
+				</div>
+				<div class="updateDate_box">
+					<div class="updateDate_text" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.6);">수정날짜</div>
+					<div class="updateDate_data" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.6);">${recipe.updateDate }</div>
+				</div>
+			</div>
 			<div class="profile_box">
 				<img class="profile_img"
 					src="https://velog.velcdn.com/images/fake150907/post/9703cf41-5437-4a4c-8594-f93646887e30/image.jpg" alt="" />
@@ -478,107 +631,126 @@ document.addEventListener('mousemove', function(event) {
 				<div class="follow_box">
 					<span class="follow_data">팔로워201</span>
 					<span class="following_data">팔로잉3</span>
-					<button class="favorite-button" onclick="toggleFavorite()">
-						<span class="material-symbols-outlined" style="font-size: 50px;"> kid_star </span>
-					</button>
-					<script src="script.js"></script>
+					<button class="favorite-button" onclick="toggleLike()" id="likeButton"></button>
 				</div>
 			</div>
-			<div class="category_box">
-				<div class="category_text">카테고리</div>
-				<div class="category_data">
-					<c:if test="${recipe.categoryId == 1 }">
+			<div class="cook_information_container">
+				<div class="category_box">
+					<div class="category_items">
+						<span class="material-symbols-outlined cookInforSymbol"> stacks </span>
+						<span class="category_text">카테고리</span>
+					</div>
+					<div class="category_data">
+						<c:if test="${recipe.categoryId == 1 }">
 					집밥
 					</c:if>
-					<c:if test="${recipe.categoryId == 2 }">
+						<c:if test="${recipe.categoryId == 2 }">
 					다이터트
 					</c:if>
-					<c:if test="${recipe.categoryId == 3 }">
+						<c:if test="${recipe.categoryId == 3 }">
 					탄단지
 					</c:if>
-					<c:if test="${recipe.categoryId == 4 }">
+						<c:if test="${recipe.categoryId == 4 }">
 					초간단
 					</c:if>
-					<c:if test="${recipe.categoryId == 5}">
+						<c:if test="${recipe.categoryId == 5}">
 					대접
 					</c:if>
+					</div>
 				</div>
-			</div>
-			<div class="personnel_box">
-				<div class="personnel_text">인원</div>
-				<div class="personnel_data">
-					<c:if test="${recipe.personnel == 1 }">
+				<div class="personnel_box">
+					<div class="personnel_items">
+						<span class="material-symbols-outlined cookInforSymbol"> groups </span>
+						<span class="personnel_text">인원</span>
+					</div>
+					<div class="personnel_data">
+						<c:if test="${recipe.personnel == 1 }">
 					1인분
 					</c:if>
-					<c:if test="${recipe.personnel == 2 }">
+						<c:if test="${recipe.personnel == 2 }">
 					2인분
 					</c:if>
-					<c:if test="${recipe.personnel == 3 }">
+						<c:if test="${recipe.personnel == 3 }">
 					3인분
 					</c:if>
-					<c:if test="${recipe.personnel == 4 }">
+						<c:if test="${recipe.personnel == 4 }">
 					4인분
 					</c:if>
-					<c:if test="${recipe.personnel == 5 }">
+						<c:if test="${recipe.personnel == 5 }">
 					5인분이상
 					</c:if>
+					</div>
 				</div>
-			</div>
-			<div class="cookingTime_box">
-				<div class="cookingTime_text">소요시간</div>
-				<div class="cookingTime_data">
-					<c:if test="${recipe.cookingTime == 1 }">
+				<div class="cookingTime_box">
+					<div class="cookingTime_items">
+						<span class="material-symbols-outlined cookInforSymbol"> pace </span>
+						<span class="cookingTime_text">소요시간</span>
+					</div>
+					<div class="cookingTime_data">
+						<c:if test="${recipe.cookingTime == 1 }">
 					10분이내
 					</c:if>
-					<c:if test="${recipe.cookingTime == 2 }">
+						<c:if test="${recipe.cookingTime == 2 }">
 					20분이내
 					</c:if>
-					<c:if test="${recipe.cookingTime == 3 }">
+						<c:if test="${recipe.cookingTime == 3 }">
 					30분이내
 					</c:if>
-					<c:if test="${recipe.cookingTime == 4 }">
+						<c:if test="${recipe.cookingTime == 4 }">
 					60분이내
 					</c:if>
-					<c:if test="${recipe.cookingTime == 5 }">
+						<c:if test="${recipe.cookingTime == 5 }">
 					90분이내
 					</c:if>
+					</div>
 				</div>
-			</div>
-			<div class="cookLevel_box">
-				<div class="cookLevel_text">난이도</div>
-				<div class="cookLevel_data">
-					<c:if test="${recipe.cookLevel == 1 }">
+				<div class="cookLevel_box">
+					<div class="cookLevel_items">
+						<span class="material-symbols-outlined cookInforSymbol"> hotel_class </span>
+						<span class="cookLevel_text">난이도</span>
+					</div>
+					<div class="cookLevel_data">
+						<c:if test="${recipe.cookLevel == 1 }">
 					초하수달
 					</c:if>
-					<c:if test="${recipe.cookLevel == 2 }">
+						<c:if test="${recipe.cookLevel == 2 }">
 					하수달
 					</c:if>
-					<c:if test="${recipe.cookLevel == 3 }">
+						<c:if test="${recipe.cookLevel == 3 }">
 					중수달
 					</c:if>
-					<c:if test="${recipe.cookLevel == 4 }">
+						<c:if test="${recipe.cookLevel == 4 }">
 					고수달
 					</c:if>
-					<c:if test="${recipe.cookLevel == 5 }">
+						<c:if test="${recipe.cookLevel == 5 }">
 					초고수달
 					</c:if>
+					</div>
 				</div>
 			</div>
 			<div class="ingredient_box">
 				<div class="ingredient_text">요리재료</div>
 				<c:forEach var="ingredient" items="${ingredient }">
-					<div class="ingredient_data">${ingredient.name}</div>
+					<div class="ingredient_data">
+						<span class="ingredient_name">${ingredient.name}</span>
+						<span class="ingredient_measure">${ingredient.measure}</span>
+					</div>
 				</c:forEach>
 			</div>
 			<div class="cookWare_box">
 				<div class="cookWare_text">요리도구</div>
 				<c:forEach var="cookWare" items="${cookWare }">
-					<div class="cookWare_data">${cookWare.name}</div>
+					<div class="cookWare_data">
+						<span class="cookWare_name">${cookWare.name}</span>
+						<span class="cookWare_count">${cookWare.count}</span>
+					</div>
 				</c:forEach>
 			</div>
 			<div class="body_box">
 				<div class="body_text">내용</div>
-				<div class="body_data">${recipe.body }</div>
+				<div class="toast-ui-viewer">
+					<script class="body_data" type="text/x-template">${recipe.body}</script>
+				</div>
 			</div>
 		</div>
 	</div>
