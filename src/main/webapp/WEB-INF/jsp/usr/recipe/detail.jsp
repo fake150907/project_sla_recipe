@@ -490,57 +490,89 @@ function toggleLike() {
 .cook_information_container {
 	display: flex;
 	width: 800px;
+	height: 150px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
 	justify-content: space-around;
+	border-radius: 10px;
 	position: absolute;
 	left: 28%;
 	top: 115%;
+	justify-content: space-around;
 }
 
-.cookInforSymbol {
+.categorySymbol, .personnelSymbol, .cookingTimeSymbol, .cookLevelSymbol
+	{
+	position: absolute;
+	top: 10%;
 	font-size: 65px;
+}
+
+.categorySymbol {
+	left: 10%;
+}
+
+.personnelSymbol {
+	left: 35%
+}
+
+.cookingTimeSymbol {
+	left: 60%;
+}
+
+.cookLevelSymbol {
+	left: 83.4%;
 }
 
 .category_text, .personnel_text, .cookingTime_text, .cookLevel_text {
 	position: absolute;
+	top: 48%;
 	font-size: 15px;
-	top: 80%;
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.8);
+	font-size: 15px;
 }
 
 .category_text {
-	left: 11.2%;
+	left: 10.2%;
 }
 
 .personnel_text {
-	left: 37.9%;
+	left: 37.2%;
 }
 
 .cookingTime_text {
-	left: 61.4%;
+	left: 60.4%;
 }
 
 .cookLevel_text {
-	left: 87.4%;
+	left: 84.8%;
 }
 
 .category_data, .personnel_data, .cookingTime_data, .cookLevel_data {
 	position: absolute;
-	top: 120%;
+	top: 70%;
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	width: 90px;
+	height: 30px;
+}
+
+.category_data {
+	left: 8.2%;
 }
 
 .personnel_data {
-	left: 36.6%;
+	left: 33.6%;
 }
 
 .cookingTime_data {
-	left: 59.9%;
+	left: 58.8%;
 }
 
 .cookLevel_data {
-	left: 85.2%;
+	left: 81.8%;
 }
 
 /* 내용관련 css */
@@ -637,7 +669,7 @@ function toggleLike() {
 			<div class="cook_information_container">
 				<div class="category_box">
 					<div class="category_items">
-						<span class="material-symbols-outlined cookInforSymbol"> stacks </span>
+						<span class="material-symbols-outlined categorySymbol"> stacks </span>
 						<span class="category_text">카테고리</span>
 					</div>
 					<div class="category_data">
@@ -660,7 +692,7 @@ function toggleLike() {
 				</div>
 				<div class="personnel_box">
 					<div class="personnel_items">
-						<span class="material-symbols-outlined cookInforSymbol"> groups </span>
+						<span class="material-symbols-outlined personnelSymbol"> groups </span>
 						<span class="personnel_text">인원</span>
 					</div>
 					<div class="personnel_data">
@@ -683,7 +715,7 @@ function toggleLike() {
 				</div>
 				<div class="cookingTime_box">
 					<div class="cookingTime_items">
-						<span class="material-symbols-outlined cookInforSymbol"> pace </span>
+						<span class="material-symbols-outlined cookingTimeSymbol"> pace </span>
 						<span class="cookingTime_text">소요시간</span>
 					</div>
 					<div class="cookingTime_data">
@@ -706,7 +738,7 @@ function toggleLike() {
 				</div>
 				<div class="cookLevel_box">
 					<div class="cookLevel_items">
-						<span class="material-symbols-outlined cookInforSymbol"> hotel_class </span>
+						<span class="material-symbols-outlined cookLevelSymbol"> kid_star </span>
 						<span class="cookLevel_text">난이도</span>
 					</div>
 					<div class="cookLevel_data">
