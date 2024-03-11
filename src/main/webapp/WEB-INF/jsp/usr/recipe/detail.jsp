@@ -341,6 +341,24 @@ function toggleLike() {
 	top: -320%;
 }
 
+.middle_line1 {
+	position: absolute;
+	width: 950px;
+	height: 0px;
+	left: 24%;
+	top: 92%;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.middle_line2 {
+	position: absolute;
+	width: 950px;
+	height: 0px;
+	left: 24%;
+	top: 112%;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 /* Star icon */
 .favorite-button::after {
 	content: '\2606'; /* Unicode character for empty star */
@@ -402,7 +420,7 @@ function toggleLike() {
 	border-radius: 15px;
 	position: absolute;
 	left: 61%;
-	top: 88%;
+	top: 86%;
 	z-index: -1;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -496,7 +514,7 @@ function toggleLike() {
 	border-radius: 10px;
 	position: absolute;
 	left: 28%;
-	top: 115%;
+	top: 117%;
 	justify-content: space-around;
 }
 
@@ -575,9 +593,261 @@ function toggleLike() {
 	left: 81.8%;
 }
 
+/* 요리도구 관련 css */
+.cookWareContainer {
+	width: 1000px;
+	height: auto;
+	left: 22.5%;
+	top: 1250px;
+	position: relative;
+	background: white;
+	border-radius: 10px;
+	border: 1px rgba(0, 0, 0, 0.40) solid;
+}
+
+.cookWare_data_Box {
+	width: 1000px;
+	height: 300px;
+	left: 10%;
+	top: 10%;
+	position: static;
+}
+
+.cookWare_text_box {
+	width: 119.40px;
+	height: 48px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+}
+
+.cookWare_text_bgc {
+	width: 119.40px;
+	height: 48px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	background: #CDEAC0;
+	border-top-left-radius: 10px;
+}
+
+.cookWare_text {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	color: black;
+	font-size: 25px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	width: 119.40px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	background: #CDEAC0;
+	border-top-left-radius: 10px;
+	color: black;
+}
+
+.cookWareContent {
+	top: 26%;
+	left: 2%;
+	width: 308.44px;
+	height: 40px;
+	position: relative;
+	display: inline-block;
+	width: 308.44px;
+	width: 308.44px;
+	width: 308.44px;
+}
+
+.cookWareName {
+	width: 220px;
+	color: black;
+	font-size: 25px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	display: inline-block;
+	position: static;
+}
+
+.cookWareCount {
+	width: 80px;
+	color: rgba(0, 0, 0, 0.70);
+	font-size: 20px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	display: inline-block;
+	position: static;
+}
+
+.cookWare_Line {
+	width: 290.44px;
+	height: 0px;
+	left: 0px;
+	top: 40px;
+	border: 1px black solid;
+}
+
+/* 요리재료 관련 css */
+.ingredientContainer {
+	width: 1000px;
+	height: auto;
+	left: 22.5%;
+	top: 1200px;
+	position: relative;
+	background: white;
+	border-radius: 10px;
+	border: 1px rgba(0, 0, 0, 0.40) solid;
+}
+
+.ingredient_data_Box {
+	width: 1000px;
+	height: 300px;
+	left: 10%;
+	top: 10%;
+	position: static;
+}
+
+.ingredient_text_box {
+	width: 119.40px;
+	height: 48px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+}
+
+.ingredient_text_bgc {
+	width: 119.40px;
+	height: 48px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	background: #CDEAC0;
+	border-top-left-radius: 10px;
+}
+
+.ingredient_text {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	color: black;
+	font-size: 25px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	width: 119.40px;
+	height: 40px;
+	position: absolute;
+	background: #CDEAC0;
+	border-top-left-radius: 10px;
+	color: black;
+	color: black;
+}
+
+.ingredientContent {
+	top: 26%;
+	left: 2%;
+	width: 308.44px;
+	height: 40px;
+	position: relative;
+	display: inline-block;
+	width: 308.44px;
+}
+
+.ingredientName {
+	width: 220px;
+	color: black;
+	font-size: 25px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	display: inline-block;
+	position: static;
+}
+
+.ingredientMeasure {
+	width: 80px;
+	color: rgba(0, 0, 0, 0.70);
+	font-size: 20px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	display: inline-block;
+	position: static;
+}
+
+.ingredient_Line {
+	width: 290.44px;
+	height: 0px;
+	left: 0px;
+	top: 40px;
+	border: 1px black solid;
+}
+
 /* 내용관련 css */
+.body_box {
+	width: 1000px;
+	height: auto;
+	left: 22.5%;
+	top: 1300px;
+	position: relative;
+	background: white;
+	border-radius: 10px;
+	border: 1px rgba(0, 0, 0, 0.40) solid;
+}
+
+.body_text {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	color: black;
+	font-size: 25px;
+	font-family: Inter;
+	font-weight: 400;
+	word-wrap: break-word;
+	width: 119.40px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	position: static;
+	background: #CDEAC0;
+	border-top-left-radius: 10px;
+	color: black;
+}
+
 .body_data {
-	font-size: 200px;
+	width: 1000px;
+	height: auto;
+	left: 10%;
+	top: 10%;
+	position: static;
+}
+
+/* 수정, 삭제 버튼 관련 css */
+.btns_box {
+	position: absolute;
+	top: 102%;
+	left: 66.7%;
+}
+
+.modify_btn:hover .btn, .delete_btn:hover .btn {
+	background-color: #FFF06C;
+}
+
+.modify_btn, .delete_btn {
+	display: inline-block;
+}
+
+.btn {
+	background-color: #FFFACD;
+}
+
+.btn {
+	background-color: #FFFACD;
 }
 
 /* 마우스 따라다니는 캐릭터 */
@@ -590,8 +860,8 @@ function toggleLike() {
 }
 /* 댓글 관련 css */
 .reply_container {
-	position: absolute;
-	top: 1500px;
+	position: relative;
+	top: 1400px;
 }
 </style>
 <div class="character" id="character">
@@ -656,6 +926,20 @@ function toggleLike() {
 					<div class="updateDate_data" style="font-size: 16px; font-weight: bold; color: rgba(0, 0, 0, 0.6);">${recipe.updateDate }</div>
 				</div>
 			</div>
+			<div class="btns_box mt-5">
+				<c:if test="${recipe.userCanModify }">
+					<div class="modify_btn">
+						<a class="btn" href="../recipe/modify?id=${recipe.id }">수정</a>
+					</div>
+				</c:if>
+				<c:if test="${recipe.userCanDelete }">
+					<div class="delete_btn">
+						<a class="btn" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+							href="../recipe/doDelete?id=${recipe.id }">삭제</a>
+					</div>
+				</c:if>
+			</div>
+			<div class="middle_line1"></div>
 			<div class="profile_box">
 				<img class="profile_img"
 					src="https://velog.velcdn.com/images/fake150907/post/9703cf41-5437-4a4c-8594-f93646887e30/image.jpg" alt="" />
@@ -666,6 +950,7 @@ function toggleLike() {
 					<button class="favorite-button" onclick="toggleLike()" id="likeButton"></button>
 				</div>
 			</div>
+			<div class="middle_line2"></div>
 			<div class="cook_information_container">
 				<div class="category_box">
 					<div class="category_items">
@@ -760,42 +1045,48 @@ function toggleLike() {
 					</div>
 				</div>
 			</div>
-			<div class="ingredient_box">
-				<div class="ingredient_text">요리재료</div>
-				<c:forEach var="ingredient" items="${ingredient }">
-					<div class="ingredient_data">
-						<span class="ingredient_name">${ingredient.name}</span>
-						<span class="ingredient_measure">${ingredient.measure}</span>
-					</div>
-				</c:forEach>
+			<div class="ingredientContainer">
+				<div class="ingredient_text_box">
+					<div class="ingredient_text">요리재료</div>
+				</div>
+				<div class="ingredient_data_Box">
+					<c:forEach var="ingredient" items="${ingredient}">
+						<div class="ingredientContent">
+							<div class="ingredientName">${ingredient.name}</div>
+							<div class="ingredientMeasure">${ingredient.measure}</div>
+							<div class="ingredient_Line"></div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
-			<div class="cookWare_box">
-				<div class="cookWare_text">요리도구</div>
-				<c:forEach var="cookWare" items="${cookWare }">
-					<div class="cookWare_data">
-						<span class="cookWare_name">${cookWare.name}</span>
-						<span class="cookWare_count">${cookWare.count}</span>
-					</div>
-				</c:forEach>
+			<div class="cookWareContainer">
+				<div class="cookWare_text_box">
+					<div class="cookWare_text">요리도구</div>
+				</div>
+				<div class="cookWare_data_Box">
+					<c:forEach var="cookWare" items="${cookWare}">
+						<div class="cookWareContent">
+							<div class="cookWareName">${cookWare.name}</div>
+							<div class="cookWareCount">${cookWare.count}개</div>
+							<div class="cookWare_Line"></div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			<div class="body_box">
-				<div class="body_text">내용</div>
-				<div class="toast-ui-viewer">
-					<script class="body_data" type="text/x-template">${recipe.body}</script>
+				<div class="body_text">요리순서</div>
+				<div class=" body_data">
+					<div class="toast-ui-viewer">
+						<script class="body_data" type="text/x-template">${recipe.body}</script>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="btns mt-5">
 		<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
-		<c:if test="${recipe.userCanModify }">
-			<a class="btn btn-outline" href="../recipe/modify?id=${recipe.id }">수정</a>
-		</c:if>
-		<c:if test="${recipe.userCanDelete }">
-			<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-				href="../recipe/doDelete?id=${recipe.id }">삭제</a>
-		</c:if>
 	</div>
+
 </section>
 
 <section class="reply_container mt-5 px-3">

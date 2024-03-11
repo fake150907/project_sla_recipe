@@ -39,8 +39,6 @@
 <!-- 토스트 UI 에디터 플러그인, UML -->
 <script src="https://uicdn.toast.com/editor-plugin-uml/latest/toastui-editor-plugin-uml.min.js"></script>
 
-
-
 <style>
 /* 토스트 UI */
 .absolute {
