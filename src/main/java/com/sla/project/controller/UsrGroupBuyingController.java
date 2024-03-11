@@ -129,7 +129,7 @@ public class UsrGroupBuyingController {
 
 	@RequestMapping("/usr/groupBuying/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, String title, String body) {
+	public String doWrite(HttpServletRequest req, String title, String body, String hashTag, String location) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
@@ -139,9 +139,15 @@ public class UsrGroupBuyingController {
 		if (Ut.isNullOrEmpty(body)) {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
+		if (Ut.isNullOrEmpty(hashTag)) {
+			return Ut.jsHistoryBack("F-3", "해쉬태그를 입력해주세요");
+		}
+		if (Ut.isNullOrEmpty(location)) {
+			return Ut.jsHistoryBack("F-4", "지역을 설정해주세요");
+		}
 
 		ResultData<Integer> writeGroupBuyingRd = groupBuyingService.writeGroupBuying(rq.getLoginedMemberId(), title,
-				body);
+				body, hashTag, location);
 
 		int id = (int) writeGroupBuyingRd.getData1();
 

@@ -54,8 +54,8 @@ public class GroupBuyingService {
 		return ResultData.from("S-1", Ut.f("%d번 글을 수정했습니다", groupBuying.getId()));
 	}
 
-	public ResultData<Integer> writeGroupBuying(int memberId, String title, String body) {
-		groupBuyingRepository.writeGroupBuying(memberId, title, body);
+	public ResultData<Integer> writeGroupBuying(int memberId, String title, String body, String hashTag, String location) {
+		groupBuyingRepository.writeGroupBuying(memberId, title, body,hashTag,location);
 
 		int id = groupBuyingRepository.getLastInsertId();
 

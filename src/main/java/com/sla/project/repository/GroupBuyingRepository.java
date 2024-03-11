@@ -18,9 +18,12 @@ public interface GroupBuyingRepository {
 			regDate = NOW(),
 			updateDate = NOW(),
 			memberId = #{memberId},
-			title = #{title}, `body` = #{body}
+			title = #{title},
+			`body` = #{body},
+			hashTag = #{hashTag},
+			location = #{location}
 			""")
-	public void writeGroupBuying(int memberId, String title, String body);
+	public void writeGroupBuying(int memberId, String title, String body, String hashTag, String location);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
