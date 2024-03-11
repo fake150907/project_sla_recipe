@@ -650,7 +650,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 								src="https://velog.velcdn.com/images/fake150907/post/8ce2087f-9ea9-433b-94e6-d3f38de359a3/image.jpg" />
 						</div>
 					</div>
-					<a href="../GroupBuying/location">
+					<a href="../groupBuying/list">
 						<div class="startPage_bottom_content">
 							재료공구
 							<div class="icon">
