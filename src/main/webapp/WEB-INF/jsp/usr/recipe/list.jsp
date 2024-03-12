@@ -39,7 +39,6 @@
 			</tr>
 		</thead>
 		<tbody>
-
 			<c:forEach var="recipe" items="${recipes }">
 				<tr class="hover">
 					<td>${recipe.id }</td>
@@ -59,8 +58,6 @@
 		<c:set var="paginationLen" value="3" />
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
-
-		<c:set var="baseUri" value="?boardId=${boardId }" />
 		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
 		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
 
@@ -84,7 +81,7 @@
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">
 			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}">${i }</a>
+				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
 			</c:forEach>
 		</div>
 	</div>

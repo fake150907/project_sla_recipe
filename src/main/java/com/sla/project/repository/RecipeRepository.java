@@ -152,7 +152,7 @@ public interface RecipeRepository {
 			FROM recipe AS R
 			INNER JOIN `member` AS M
 			ON R.memberId = M.id
-			LEFT JOIN `reply` AS RP
+			LEFT JOIN reply AS RP
 			ON R.id = RP.relId
 			WHERE 1
 			<if test="searchKeyword != ''">

@@ -13,7 +13,6 @@ CREATE TABLE `member` (
     nickname  CHAR(20) NOT NULL UNIQUE,
     cellphoneNum  CHAR(20) NOT NULL UNIQUE,
     email  CHAR(50) NOT NULL UNIQUE,
-    locationId INT(10) UNSIGNED NOT NULL,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부(0=탈퇴 전, 1=탈퇴 후)',
     delDate DATETIME COMMENT '탈퇴 날짜',
     mannerWeather INT(10) UNSIGNED NOT NULL DEFAULT 3 COMMENT '순서대로 1,2,3,4,5 1이 매너 제일 안좋음 5가 매너 제일 좋음'
@@ -85,26 +84,25 @@ CREATE TABLE groupBuying(
     updateDate DATETIME NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
     title CHAR(100) NOT NULL,
-    `body`TEXT NOT NULL,
-    hashTagId INT(10) UNSIGNED NOT NULL
+    `body`TEXT NOT NULL
 );
-
-INSERT INTO groupBuying
-SET regDate = NOW(),
-updateDate = NOW(),
-
 
 CREATE TABLE hashTag(
 	 id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	 groupBuyingId INT(10) UNSIGNED NOT NULL,
+	 regDate DATETIME NOT NULL,
+     updateDate DATETIME NOT NULL,
+	 relId INT(10) UNSIGNED NOT NULL,
+	 relTypeCode  VARCHAR(50) NOT NULL,
 	 `name` VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE location(
 	 id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	 memberId INT(10) UNSIGNED NOT NULL,
+	 cityName  VARCHAR(30) NOT NULL,
 	 locationName VARCHAR(30) NOT NULL
 );
+
 #########################################################################
 # SELECT
 SELECT * FROM `member`;
@@ -126,6 +124,16 @@ SELECT * FROM category;
 SELECT * FROM hashTag;
 
 SELECT * FROM location;
+
+SELECT R.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+FROM recipe AS R
+INNER JOIN `member` AS M
+ON R.memberId = M.id
+LEFT JOIN reply AS RP
+ON R.id = RP.relId
+WHERE 1
+GROUP BY R.id
+ORDER BY R.id DESC;
 
 #########################################################################
 # recipe table insert data
@@ -278,6 +286,38 @@ memberId = 3,
 `count` = 1;
 
 #########################################################################
+# groupBuying table insert data
+INSERT INTO groupBuying
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+title = '연어공구할사람!',
+`body`='둔산동으로 모여잇!';
+
+#########################################################################
+# hashTag table insert data
+INSERT INTO hashTag
+SET regDate = NOW(),
+updateDate = NOW(),
+relId = 1,
+relTypeCode = 'groupBuying',
+`name` = '연어';
+
+INSERT INTO hashTag
+SET regDate = NOW(),
+updateDate = NOW(),
+relId = 1,
+relTypeCode = 'groupBuying',
+`name` = '둔산동';
+
+INSERT INTO hashTag
+SET regDate = NOW(),
+updateDate = NOW(),
+relId = 1,
+relTypeCode = 'groupBuying',
+`name` = '탄방동';
+
+#########################################################################
 # member table insert data
 INSERT INTO `member`
 SET regDate = NOW(),
@@ -309,6 +349,3 @@ loginPw = 'user3',
 nickname = '멈무이',
 cellphoneNum = '01012345678',
 email = 'mummu33@gmail.com';
-
-
-

@@ -123,7 +123,7 @@ public class RecipeService {
 		return recipeRepository.getRecipeHitCount(id);
 	}
 
-	public List<Recipe> getForPrintRecipes(int page, int itemsInAPage, String searchKeywordTypeCode,
+	public List<Recipe> getForPrintRecipes(int itemsInAPage, int page, String searchKeywordTypeCode,
 			String searchKeyword) {
 
 //		SELECT * FROM recipe WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
