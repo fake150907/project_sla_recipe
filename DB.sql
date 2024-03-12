@@ -13,6 +13,7 @@ CREATE TABLE `member` (
     nickname  CHAR(20) NOT NULL UNIQUE,
     cellphoneNum  CHAR(20) NOT NULL UNIQUE,
     email  CHAR(50) NOT NULL UNIQUE,
+    locationId INT(10) UNSIGNED NOT NULL,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부(0=탈퇴 전, 1=탈퇴 후)',
     delDate DATETIME COMMENT '탈퇴 날짜',
     mannerWeather INT(10) UNSIGNED NOT NULL DEFAULT 3 COMMENT '순서대로 1,2,3,4,5 1이 매너 제일 안좋음 5가 매너 제일 좋음'
@@ -40,7 +41,7 @@ CREATE TABLE ingredient(
     memberId INT(10) UNSIGNED NOT NULL,
     `name` CHAR(20) NOT NULL,
     nutrients  CHAR(20) NOT NULL,
-    measure CHAR(30) NOT NULL
+    measure CHAR(10) NOT NULL
 );
 
 CREATE TABLE cookWare(
@@ -50,7 +51,6 @@ CREATE TABLE cookWare(
     `name` CHAR(20) NOT NULL,
     `count` INT(10) UNSIGNED NOT NULL
 );
-
 
 CREATE TABLE category(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -79,17 +79,32 @@ CREATE TABLE reply (
     badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0
 );
 
-CREATE TABLE groupBuyingArticle (
+CREATE TABLE groupBuying(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
     title CHAR(100) NOT NULL,
     `body`TEXT NOT NULL,
-    hashTag VARCHAR(50) NOT NULL,
-    location VARCHAR(50) NOT NULL
+    hashTagId INT(10) UNSIGNED NOT NULL
 );
 
+INSERT INTO groupBuying
+SET regDate = NOW(),
+updateDate = NOW(),
+
+
+CREATE TABLE hashTag(
+	 id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	 groupBuyingId INT(10) UNSIGNED NOT NULL,
+	 `name` VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE location(
+	 id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	 memberId INT(10) UNSIGNED NOT NULL,
+	 locationName VARCHAR(30) NOT NULL
+);
 #########################################################################
 # SELECT
 SELECT * FROM `member`;
@@ -98,9 +113,19 @@ SELECT * FROM recipe;
 
 SELECT * FROM reply;
 
+SELECT * FROM reactionPoint;
+
 SELECT * FROM ingredient;
 
 SELECT * FROM cookWare;
+
+SELECT * FROM groupBuying;
+
+SELECT * FROM category;
+
+SELECT * FROM hashTag;
+
+SELECT * FROM location;
 
 #########################################################################
 # recipe table insert data
@@ -112,8 +137,8 @@ title = '나만의 김치찜 만들기',
 `body` = '일단 옆집 꼬꼬를 죽이고 털 뽑아서 내장 버리고 머리 버리고 정육해서 김치넣고 끓이면 완성!',
 categoryId = 1,
 personnel = 1,
-cookingTime = 1,
-cookLevel = 1;
+cookingTime = 5,
+cookLevel = 4;
 
 INSERT INTO recipe
 SET regDate = NOW(),
@@ -123,7 +148,7 @@ title = '오리훈제 샐러드',
 `body` = '옆집 꽥꽥이 죽이고 털뽑아서 내장 버리고 머리 버리고 정육해서 훈연하고 샐러드 만들면 완성!',
 categoryId = 2,
 personnel = 1,
-cookingTime = 1,
+cookingTime = 5,
 cookLevel = 1;
 
 INSERT INTO recipe
@@ -202,6 +227,23 @@ memberId = 3,
 nutrients = '단백질',
 measure = '1마리';
 
+#########################################################################
+# category table insert data
+
+INSERT INTO category
+SET `name` = '집밥';
+
+INSERT INTO category
+SET `name` = '다이어트';
+
+INSERT INTO category
+SET `name` = '탄단지';
+
+INSERT INTO category
+SET `name` = '초간단';
+
+INSERT INTO category
+SET `name` = '대접';
 
 #########################################################################
 # cookWare table insert data
@@ -268,21 +310,5 @@ nickname = '멈무이',
 cellphoneNum = '01012345678',
 email = 'mummu33@gmail.com';
 
-#########################################################################
-# category table insert data
 
-insert into category
-set `name` = '집밥';
-
-INSERT INTO category
-SET `name` = '다이어트';
-
-INSERT INTO category
-SET `name` = '탄단지';
-
-INSERT INTO category
-SET `name` = '초간단';
-
-INSERT INTO category
-SET `name` = '대접';
 
