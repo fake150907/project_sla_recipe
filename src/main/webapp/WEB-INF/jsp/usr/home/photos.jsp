@@ -1,11 +1,25 @@
-<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="PHOTOS"></c:set>
-<%@ include file="../common/head.jspf"%>
-<h1>Uploaded Photos</h1>
-<c:forEach var="photoUrl" items="${photoUrls}">
-	<img src="${photoUrl}" alt="Uploaded Photo">
-</c:forEach>
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	/* 이미지 업로드 */
+	$("#fileItem").on("change", function(e) {
+		alert("동작");
+	});
+</script>
+</head>
+<form action="">
+	<div class="form_section">
+		<div class="form_section_title">
+			<label>상품 이미지</label>
+		</div>
+		<div class="form_section_content">
+			<input type="file" id="fileItem" name='uploadFile' style="height: 30px;">
+		</div>
+	</div>
+	<button class="">등록</button>
+</form>
 </body>
 </html>

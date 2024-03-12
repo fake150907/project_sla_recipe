@@ -13,3 +13,5 @@ spring:
     password: 
 mybatis:
   type-aliases-package: com.sla.project.vo
+file:
+  upload-dir: /path/to/your/upload/directory
