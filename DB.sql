@@ -103,6 +103,13 @@ CREATE TABLE location(
 	 locationName VARCHAR(30) NOT NULL
 );
 
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    image_path VARCHAR(255)
+);
+
 #########################################################################
 # SELECT
 SELECT * FROM `member`;
