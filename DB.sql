@@ -103,11 +103,11 @@ CREATE TABLE location(
 	 locationName VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE posts (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
-    content TEXT NOT NULL,
-    image_path VARCHAR(255)
+CREATE TABLE imgTestFile (
+    id INT(10) AUTO_INCREMENT PRIMARY KEY,
+	original_file_name VARCHAR(255) not null,
+    image_path VARCHAR(255) not null,
+    file_size long not null
 );
 
 #########################################################################
@@ -131,6 +131,8 @@ SELECT * FROM category;
 SELECT * FROM hashTag;
 
 SELECT * FROM location;
+
+SELECT * FROM imgTestFile;
 
 SELECT R.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
 FROM recipe AS R
