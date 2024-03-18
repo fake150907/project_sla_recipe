@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="Recipe WRITE"></c:set>
+<c:set var="pageTitle" value="RECIPE WRITE"></c:set>
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 <!-- Recipe write 관련 -->
@@ -23,20 +23,14 @@
 			editor.focus();
 			return;
 		}
+		
+		$('#fileInput').attr('name', 'file__recipe__' + ${currentId} + '__extra__Img__1');
+		
 		form.body.value = markdown;
 		RecipeWrite__submitFormDone = true;
 		form.submit();
 	};
 
-	function previewThumbnail(event) {
-		var reader = new FileReader();
-		reader.onload = function() {
-			var thumbnailPreview = document.getElementById('thumbnail-preview');
-			thumbnailPreview.src = reader.result;
-			thumbnailPreview.style.display = 'block'; // 이미지를 보여줌
-		}
-		reader.readAsDataURL(event.target.files[0]);
-	}
 </script>
 
 <style>
@@ -339,6 +333,7 @@ fieldset {
 	<div class="mx-auto">
 		<form action="../recipe/doWrite" method="POST" onsubmit="RecipeWrite__submit(this); return false;"
 			enctype="multipart/form-data">
+			<input type="hidden" name=">${currentId }">
 			<input type="hidden" name="body">
 			<div class="cooking_information_text_box">
 				<span class="cooking_information_text" style="font-weight: bold;">요리정보</span>
@@ -476,15 +471,15 @@ fieldset {
 				<div class="cookLevel_btn_box">
 					<label>
 						<input type="radio" name="cookLevel" value="1" />
-						<span style="width: 75px; display: inline-block;">아무나</span>
-					</label>
-					<label>
-						<input type="radio" name="cookLevel" value="2" />
 						<span style="width: 75px; display: inline-block;">초하수달</span>
 					</label>
 					<label>
-						<input type="radio" name="cookLevel" value="3" />
+						<input type="radio" name="cookLevel" value="2" />
 						<span style="width: 75px; display: inline-block;">하수달</span>
+					</label>
+					<label>
+						<input type="radio" name="cookLevel" value="3" />
+						<span style="width: 75px; display: inline-block;">중수달</span>
 					</label>
 					<label>
 						<input type="radio" name="cookLevel" value="4" />
@@ -502,11 +497,7 @@ fieldset {
 						<span class="Thumbnail_text" style="font-weight: bold;">썸네일</span>
 						<div class="Thumbnail_text_bgc"></div>
 						<div class="Thumbnail_data_box">
-							<input type="file" name="files" multiple="multiple" />
-							<input type="submit" id="submit" value="전송" />
-							<input class="input input-bordered input-primary w-full max-w-xs" type="file" name="divumbnail" accept="image/*"
-								onchange="previewThumbnail(event)">
-							<img id="divumbnail-preview" style="display: none; max-widdiv: 200px; margin-top: 10px;" alt="Thumbnail Preview">
+							<input id="fileInput" placeholder="이미지를 선택해주세요" type="file" />
 						</div>
 						<div class="Thumbnail_box_bgc">
 							<span class=""></span>
@@ -528,7 +519,9 @@ fieldset {
 						<div class="ingredient_text_bgc"></div>
 						<div class="ingredient_data_box">
 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="요리재료를 입력해주세요" name="ingredient" />
+								placeholder="요리재료를 입력해주세요" name="ingredienName" />
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="용량을 입력해주세요" name="ingredienMeasure" />
 						</div>
 						<div class="ingredient_box_bgc">
 							<span class=""></span>
@@ -539,7 +532,9 @@ fieldset {
 						<div class="cookWare_text_bgc"></div>
 						<div class="cookWare_data_box">
 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="요리도구를 입력해주세요" name="cookWare" />
+								placeholder="요리도구를 입력해주세요" name="cookWareName" />
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="개수를 입력해주세요" name="cookWareCount" />
 						</div>
 						<div class="cookWare_box_bgc">
 							<span class=""></span>

@@ -183,4 +183,9 @@ public class RecipeService {
 		return recipeRepository.getBadRP(relId);
 	}
 
+	public int getCurrentRecipeId() {
+		return recipeRepository.getCurrentRecipeId();
+
+	}
+
 }

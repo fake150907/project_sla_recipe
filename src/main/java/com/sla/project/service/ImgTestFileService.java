@@ -1,6 +1,7 @@
 package com.sla.project.service;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,18 @@ public class ImgTestFileService {
 	@Autowired
 	private ImgTestFile imgTestFile;
 
-	public void inputImgTestFile(MultipartFile inputImgFile) throws Exception {
+	public void inputImgTestFile(List<MultipartFile> inputImgFile) throws Exception {
 		String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/files";
 
 		UUID uuid = UUID.randomUUID();
+		for (MultipartFile m : inputImgFile) {
 
-		String fileName = uuid + "_" + inputImgFile.getOriginalFilename();
+			String fileName = uuid + "_" + m.getOriginalFilename();
+			File saveFile = new File(projectPath, fileName);
+			m.transferTo(saveFile);
+			imgTestFileRepository.save(fileName, projectPath, m.getSize());
+		}
 
-		File saveFile = new File(projectPath, fileName);
-
-		inputImgFile.transferTo(saveFile);
 	}
 
 	public ImgTestFile getImgTestFile(int id) {

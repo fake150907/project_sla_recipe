@@ -13,37 +13,42 @@
 }
 
 .Frame1 {
-	width: 949px;
+	width: 600px;
 	height: 60px;
-	left: 73px;
-	top: 143px;
+	left: 23%;
+	top: 130%;
 	position: absolute;
-	justify-content: flex-start;
-	align-items: flex-start;
+	justify-content: center;
 	gap: 30px;
 	display: inline-flex;
 }
 
 /*	인기검색어 tag css  */
-.popularity_tag1, .popularity_tag2, .popularity_tag3, .popularity_tag4,
-	.popularity_tag5, .popularity_tag6 {
+.popularity_tag1_box, .popularity_tag2_box, .popularity_tag3_box,
+	.popularity_tag4_box, .popularity_tag5_box, .popularity_tag6_box {
 	width: 130px;
 	height: 60px;
 	position: relative;
 }
 
-.Rectangle5 {
-	width: 130px;
-	height: 60px;
+.popularity_tag1, .popularity_tag2, .popularity_tag3, .popularity_tag4,
+	.popularity_tag5, .popularity_tag6 {
+	width: 80px;
+	height: 40px;
 	left: 0px;
 	top: 0px;
 	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-content: center;
 	background: rgba(123.93, 230.56, 230.56, 0.60);
 	border-radius: 30px;
 	border: 3px rgba(0, 0, 0, 0.50) solid;
+	background: rgba(123.93, 230.56, 230.56, 0.60);
+	background: rgba(123.93, 230.56, 230.56, 0.60)
 }
 
-.TodayTop10Text {
+.TodayTop10_box {
 	width: 1093.50px;
 	height: 61px;
 	left: 12px;
@@ -51,23 +56,39 @@
 	position: absolute;
 }
 
-.Line7 {
+.TodayTop10_Text {
+	font-size: 50px;
+	position: absolute;
+	left: 38%;
+	top: 20%;
+}
+
+.Line1 {
 	width: 1093.50px;
 	height: 0px;
 	left: 0px;
-	top: 30.50px;
+	top: 0;
 	position: absolute;
-	border: 3px #180A6B solid;
+	border: 2px #180A6B solid;
+}
+
+.Line2 {
+	width: 1093.50px;
+	height: 0px;
+	left: 0px;
+	top: 150%;
+	position: absolute;
+	border: 2px #180A6B solid;
 }
 
 /* 검색창 css  */
 .searchKeyword_box {
-	left: 1.5%;
-	top: 15%;
+	left: 32%;
+	top: 90%;
 	position: absolute;
 }
 
-.inputsearchKeyword {
+.searchKeyword {
 	width: 350px;
 	height: 46.5px;
 	background-color: #FFFACD;
@@ -111,8 +132,12 @@
 }
 
 .searchKeywordTypeCode {
+	position: absolute;
+	top: 90%;
+	left: 22%;
 	color: rgba(0, 0, 0, 0.6);
 	background-color: #FFFACD;
+	color: rgba(0, 0, 0, 0.6)
 }
 
 .searchKeywordTypeCode .op {
@@ -122,52 +147,74 @@
 .op:hover {
 	background: rgba(205, 234, 192, 1);
 }
-
 </style>
 
+<script type="text/javascript">
+	let searchKeyword__submitFormDone = false;
+	function searchKeyword__submit(form) {
+		if (searchKeyword__submitFormDone) {
+			return;
+		}
+		form.searchKeywordTypeCode.value = form.searchKeywordTypeCode.value
+				.trim();
+		form.inputsearchKeyword.value = form.inputsearchKeyword.value.trim();
+
+		if (form.inputsearchKeyword.value == 0) {
+			alert('검색어를 입력해주세요');
+			editor.focus();
+			return;
+		}
+
+		searchKeyword__submitFormDone = true;
+		form.submit();
+	}
+</script>
+
 <div class="PopularitySearchBar">
-	<form action="">
+	<div class="TodayTop10_box">
+		<div class="Line1"></div>
+		<div class="TodayTop10_Text">인기검색어</div>
+		<div class="Line2"></div>
+	</div>
+	<form action="../recipe/searchList" method="POST" onsubmit="searchKeyword__submit(this); return false;">
 		<select data-value="${param.searchKeywordTypeCode }"
 			class="searchKeywordTypeCode select select-bordered select-sm max-w-xs" name="searchKeywordTypeCode">
 			<option class="op" value="title">제목</option>
-			<option class="op" value="body">작성자</option>
+			<option class="op" value="extra__writer">작성자</option>
 			<option class="op" value="category">카테고리</option>
 		</select>
 		<div class="searchKeyword_box">
 			<div class="searchKeyword_data">
-				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputsearchKeyword w-full"
-					autocomplete="off" type="text" placeholder="위치를 입력해주세요" name="InputsearchKeyword?" />
+				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="searchKeyword w-full"
+					autocomplete="off" type="text" placeholder="검색어를 입력해주세요" name="searchKeyword" />
 			</div>
 			<div class="searchKeyword_submit_btn">
-				<span class="material-symbols-outlined"> search </span>
 				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value="" class="SearchBtn" />
+				<span class="material-symbols-outlined"> search </span>
 			</div>
 		</div>
 	</form>
 	<div class="Frame1">
-		<div class="popularity_tag1">
-			<div class="Rectangle5">다이어트</div>
+		<div class="popularity_tag1_box">
+			<div class="popularity_tag1">다이어트</div>
 		</div>
-		<div class="popularity_tag2">
-			<div class="Rectangle5">단백질</div>
+		<div class="popularity_tag2_box">
+			<div class="popularity_tag2">단백질</div>
 		</div>
-		<div class="popularity_tag3">
-			<div class="Rectangle5">자취생</div>
+		<div class="popularity_tag3_box">
+			<div class="popularity_tag3">자취생</div>
 		</div>
-		<div class="popularity_tag4">
-			<div class="Rectangle5">짜투리</div>
+		<div class="popularity_tag4_box">
+			<div class="popularity_tag4">짜투리</div>
 		</div>
-		<div class="popularity_tag5">
-			<div class="Rectangle5">간단</div>
+		<div class="popularity_tag5_box">
+			<div class="popularity_tag5">간단</div>
 		</div>
-		<div class="popularity_tag6">
-			<div class="Rectangle5">집밥</div>
+		<div class="popularity_tag6_box">
+			<div class="popularity_tag6">집밥</div>
 		</div>
 	</div>
-	<div class="TodayTop10Text">
-		<div class="Line7"></div>
-		<div>인기검색어</div>
-	</div>
+
 </div>
 
 <%@ include file="../common/foot.jspf"%>

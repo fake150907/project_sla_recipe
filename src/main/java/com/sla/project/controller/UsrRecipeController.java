@@ -1,6 +1,7 @@
 package com.sla.project.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.sla.project.service.BoardService;
+import com.sla.project.service.GenFileService;
 import com.sla.project.service.ReactionPointService;
 import com.sla.project.service.RecipeService;
 import com.sla.project.service.ReplyService;
@@ -31,16 +35,56 @@ public class UsrRecipeController {
 	private RecipeService recipeService;
 
 	@Autowired
+	private GenFileService genFileService;
+
+	@Autowired
 	private ReactionPointService reactionPointService;
 	@Autowired
 	private UsrReplyController usrReplyController;
+
 	@Autowired
 	private ReplyService replyService;
+
 	@Autowired
 	private BoardService boardService;
 
 	public UsrRecipeController() {
 
+	}
+
+	@RequestMapping("/usr/recipe/search")
+	public String showSearhPage() {
+
+		return "/usr/recipe/search";
+	}
+
+	@RequestMapping("/usr/recipe/searchList")
+	public String showSearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int recipesCount = recipeService.getRecipesCount(searchKeywordTypeCode, searchKeyword);
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(recipesCount / (double) itemsInAPage);
+
+		List<Recipe> recipes = recipeService.getForPrintRecipes(itemsInAPage, page, searchKeywordTypeCode,
+				searchKeyword);
+
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("recipesCount", recipesCount);
+		model.addAttribute("recipes", recipes);
+
+		return "/usr/recipe/searchList";
 	}
 
 	@RequestMapping("/usr/recipe/list")
@@ -78,6 +122,7 @@ public class UsrRecipeController {
 
 		List<Ingredient> ingredient = recipeService.getForPrintRecipeIngredient(id);
 		List<CookWare> cookWare = recipeService.getForPrintRecipeCookWare(id);
+
 		Recipe recipe = recipeService.getForPrintRecipe(rq.getLoginedMemberId(), id);
 
 		boolean isAlreadyAddrecipeGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
@@ -86,7 +131,9 @@ public class UsrRecipeController {
 		boolean isAlreadyAddReplyGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
 				"comment");
 		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "comment");
+
 		String relTypeCode = "Recipe";
+
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredient", ingredient);
 		model.addAttribute("cookWare", cookWare);
@@ -121,17 +168,18 @@ public class UsrRecipeController {
 	}
 
 	@RequestMapping("/usr/recipe/write")
-	public String showWrite(HttpServletRequest req) {
+	public String showWrite(HttpServletRequest req, Model model) {
+		int currentId = recipeService.getCurrentRecipeId();
 
+		model.addAttribute("currentId", currentId);
 		return "usr/recipe/write";
 	}
 
 	@RequestMapping("/usr/recipe/doWrite")
 	@ResponseBody
 	public String doWrite(HttpServletRequest req, String title, String body, int categoryId, int personnel,
-			int cookingTime, int cookLevel) {
-
-		Rq rq = (Rq) req.getAttribute("rq");
+			int cookingTime, int cookLevel, String ingredientName, String ingredientMeasure, String cookWareName,
+			String cookWareCount, String replaceUri, MultipartRequest multipartRequest) {
 
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
@@ -146,6 +194,16 @@ public class UsrRecipeController {
 		int id = (int) writeRecipeRd.getData1();
 
 		Recipe recipe = recipeService.getRecipe(id);
+
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				genFileService.save(multipartFile, id);
+			}
+		}
 
 		return Ut.jsReplace(writeRecipeRd.getResultCode(), writeRecipeRd.getMsg(), "../recipe/detail?id=" + id);
 

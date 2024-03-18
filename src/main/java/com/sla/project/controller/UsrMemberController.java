@@ -93,11 +93,12 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doJoin(HttpServletRequest req, String JoinId, String JoinPw, String JoinName, String JoinNickName,
 			String JoinCellPhoneNum, String JoinEmail) {
+		
 		Rq rq = (Rq) req.getAttribute("rq");
+		
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("F-A", "이미 로그인 상태입니다");
 		}
-
 		if (Ut.isNullOrEmpty(JoinId)) {
 			return Ut.jsHistoryBack("F-1", "아이디를 입력해주세요");
 		}
@@ -113,7 +114,6 @@ public class UsrMemberController {
 
 		if (Ut.isNullOrEmpty(JoinCellPhoneNum)) {
 			return Ut.jsHistoryBack("F-5", "전화번호를 입력해주세요");
-
 		}
 		if (Ut.isNullOrEmpty(JoinEmail)) {
 			return Ut.jsHistoryBack("F-6", "이메일을 입력해주세요");

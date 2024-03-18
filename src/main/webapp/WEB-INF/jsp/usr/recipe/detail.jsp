@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="ARTICLE DETAIL"></c:set>
+<c:set var="pageTitle" value="RECIPE DETAIL"></c:set>
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 <!-- 헤드랑, 토스트 유아이랑 겹치는거 확인해보고, 다시 체크해보기 -->
@@ -421,7 +421,7 @@ function toggleLike() {
 	position: absolute;
 	left: 61%;
 	top: 86%;
-	z-index: -1;
+	z-index: 5;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -872,8 +872,9 @@ function toggleLike() {
 		<div class="div-box-1 ">
 			<div>
 				<div class="Thumnail_box">
-					<img class="Thumnail"
-						src="https://velog.velcdn.com/images/fake150907/post/053ea857-e9b2-471e-90ce-7da83de3d468/image.jpg" alt="" />
+					<img class="Thumnail rounded-xl" src="${rq.getImgUri(recipe.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}"
+						alt="" />
+					<%-- 	<div>${rq.getImgUri(recipe.id)}</div> --%>
 				</div>
 
 				<%-- 	<div class="link_box">

@@ -9,7 +9,7 @@
 	<div class="mx-auto">
 		<form action="../home/doImgTest" enctype="multipart/form-data" method="POST">
 			<div class="imgFile_box">
-				<input type="file" id="fileItem" name='inputImgFile' style="height: 30px;">
+				<input type="file" id="fileItem" name='inputImgFile' style="height: 30px;" multiple />
 			</div>
 			<input type="submit" class="btn imgFile_submit_Btn" />
 		</form>

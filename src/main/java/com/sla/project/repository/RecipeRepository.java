@@ -14,7 +14,6 @@ import com.sla.project.vo.Recipe;
 
 @Mapper
 public interface RecipeRepository {
-
 	@Insert("""
 			INSERT INTO
 			recipe SET
@@ -148,7 +147,7 @@ public interface RecipeRepository {
 
 	@Select("""
 			<script>
-			SELECT R.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			SELECT R.*, M.nickName AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
 			FROM recipe AS R
 			INNER JOIN `member` AS M
 			ON R.memberId = M.id
@@ -160,8 +159,8 @@ public interface RecipeRepository {
 					<when test="searchKeywordTypeCode == 'title'">
 						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test="searchKeywordTypeCode == 'body'">
-						AND R.body LIKE CONCAT('%',#{searchKeyword},'%')
+					<when test="searchKeywordTypeCode == 'extra__writer'">
+						AND M.nickName LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
 						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
@@ -220,5 +219,11 @@ public interface RecipeRepository {
 			WHERE id = #{relId}
 			""")
 	public int getBadRP(int relId);
+
+	@Select("""
+			SELECT MAX(id) + 1
+			FROM recipe
+			""")
+	public int getCurrentRecipeId();
 
 }

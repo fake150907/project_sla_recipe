@@ -19,16 +19,16 @@ public interface ImgTestFileRepository {
 			""")
 	public ImgTestFile getImgTestFile(int id);
 
+	public ImgTestFile save(ImgTestFile imgTestFile);
+
 	@Insert("""
 			<script>
 			INSERT INTO imgTestFile
-			SET original_file_name = #{original_file_name}
-			image_path = #{imagePath}
+			SET original_file_name = #{original_file_name},
+			imagepath = #{imagePath},
 			file_size = #{file_size}
 			</script>
 			""")
-	public ImgTestFile save(ImgTestFile imgTestFile);
-
 	public void save(String original_file_name, String imagePath, long file_size);
 
 }
