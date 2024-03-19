@@ -29,6 +29,57 @@
 	}
 </script>
 
+<style>
+label {
+	font-size: 18px;
+	line-height: 2rem;
+	padding: 0.2em 0.4em;
+}
+
+[type="radio"], span {
+	vertical-align: middle;
+}
+
+[type="radio"] {
+	appearance: none;
+	border: max(2px, 0.1em) solid #CDEAC0;
+	border-radius: 50%;
+	width: 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+}
+
+[type="radio"]:checked {
+	border: 0.4em solid #ECDF66;
+}
+
+[type="radio"]:focus-visible {
+	outline-offset: max(2px, 0.1em);
+	outline: max(2px, 0.1em) dotted #ECDF66;
+}
+
+[type="radio"]:hover {
+	box-shadow: 0 0 0 max(4px, 0.2em) #CDEAC0;
+	cursor: pointer;
+}
+
+[type="radio"]:hover+span {
+	cursor: pointer;
+}
+
+[type="radio"]:disabled {
+	background-color: lightgray;
+	box-shadow: none;
+	opacity: 1;
+	cursor: not-allowed;
+}
+
+[type="radio"]:disabled+span {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+</style>
+
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
 		<form action="../groupBuying/doWrite" method="POST" onsubmit="GroupBuyingWrite__submit(this); return false;">
@@ -39,6 +90,34 @@
 						<th>작성자</th>
 						<td>
 							<div>${rq.loginedMember.nickname }</div>
+						</td>
+					</tr>
+					<tr>
+						<th>위치</th>
+						<td>
+							<div class="memberLocationTag_box">
+								<div class="memberLocationTag_btn_box">
+									<label>
+										<input type="radio" name="memberLocationTag" value="1" />
+										<span style="width: 75px; display: inline-block;">둔산동</span>
+									</label>
+									<label>
+										<input type="radio" name="memberLocationTag" value="2" />
+										<span style="width: 75px; display: inline-block;">갈마동</span>
+									</label>
+									<label>
+										<input type="radio" name="memberLocationTag" value="3" />
+										<span style="width: 75px; display: inline-block;">탄방동</span>
+									</label>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>구매장소</th>
+						<td>
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="구매장소를 입력해주세요" name="buyingLocation" />
 						</td>
 					</tr>
 					<tr>

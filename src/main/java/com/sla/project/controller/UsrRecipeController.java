@@ -212,4 +212,5 @@ public class UsrRecipeController {
 		return Ut.jsReplace(writeRecipeRd.getResultCode(), writeRecipeRd.getMsg(), "../recipe/detail?id=" + id);
 
 	}
+
 }
