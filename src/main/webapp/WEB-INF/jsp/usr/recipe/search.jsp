@@ -214,7 +214,6 @@
 			<div class="popularity_tag6">집밥</div>
 		</div>
 	</div>
-
 </div>
 
 <%@ include file="../common/foot.jspf"%>

@@ -84,7 +84,9 @@ CREATE TABLE groupBuying(
     updateDate DATETIME NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
     title CHAR(100) NOT NULL,
-    `body`TEXT NOT NULL
+    `body`TEXT NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    buyingLocation VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE hashTag(
@@ -156,14 +158,14 @@ SELECT * FROM location;
 
 SELECT * FROM imgTestFile;
 
-SELECT R.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+SELECT R.*, M.nickName AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
 FROM recipe AS R
 INNER JOIN `member` AS M
 ON R.memberId = M.id
 LEFT JOIN reply AS RP
 ON R.id = RP.relId
 WHERE 1
-AND M.nickname = '초고수달'
+AND M.nickName = '초고수달'
 GROUP BY R.id
 ORDER BY R.id DESC;
 
@@ -358,7 +360,7 @@ loginId = 'user1',
 loginPw = 'user1',
 `authLevel` = 7,
 `name` = '고수달',
-nickname = '초고수달',
+nickName = '초고수달',
 cellphoneNum = '01012341234',
 email = 'sudal123@gmail.com';
 
@@ -368,7 +370,7 @@ updateDate = NOW(),
 loginId = 'user2',
 loginPw = 'user2',
 `name` = '고양이',
-nickname = '고먐미',
+nickName = '고먐미',
 cellphoneNum = '01011112222',
 email = 'nyang22@gmail.com';
 
@@ -378,6 +380,6 @@ updateDate = NOW(),
 loginId = 'user3',
 loginPw = 'user3',
 `name` = '강아지',
-nickname = '멈무이',
+nickName = '멈무이',
 cellphoneNum = '01012345678',
 email = 'mummu33@gmail.com';
