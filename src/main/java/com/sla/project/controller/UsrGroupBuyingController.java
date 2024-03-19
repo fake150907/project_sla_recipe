@@ -46,6 +46,12 @@ public class UsrGroupBuyingController {
 
 		return "/usr/groupBuying/location";
 	}
+
+	@RequestMapping("/usr/groupBuying/locationTest")
+	public String showLocationTestPage() {
+
+		return "/usr/groupBuying/locationTest";
+	}
 	// 액션 메서드
 
 	@RequestMapping("/usr/groupBuying/list")

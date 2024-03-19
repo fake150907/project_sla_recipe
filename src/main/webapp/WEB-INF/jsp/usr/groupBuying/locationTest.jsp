@@ -1,211 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Location Map"></c:set>
-
-<%@ include file="../common/head.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>지도 이동시키기</title>
+<title>키워드로 장소검색하고 목록으로 표출하기</title>
 <style>
-#map {
-	position: absolute;
-	width: 75%;
-	height: 845px;
-	left: 25%;
-	top: 11.3%;
-}
-
-body>p {
-	position: absolute;
-	left: 25%;
-	z-index: 6;
-}
-
-.p1 {
-	top: 80%;
-	background-color: #FFFACD;
-}
-
-.p2 {
-	top: 85%;
-}
-
-.p2>button {
-	background-color: #FFFACD;
-}
-
-.p3 {
-	background-color: #FFFACD;
-	top: 90%;
-}
-
-.p4 {
-	background-color: #FFFACD;
-	top: 95%;
-}
-
-.location_box {
-	left: 1.5%;
-	top: 15%;
-	position: absolute;
-}
-
-.inputLocation {
-	width: 350px;
-	height: 46.5px;
-	background-color: #FFFACD;
-	border: 0.50px rgba(0, 0, 0, 0.20) solid;
-	border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
-}
-
-.material-symbols-outlined {
-	font-size: 40px;
-	top: 8%;
-	left: 15%;
-	position: absolute;
-	z-index: 6;
-}
-
-.logcation_submit_btn {
-	width: 70.56px;
-	height: 46px;
-	left: 100%;
-	top: 0;
-	position: absolute;
-	background: rgba(205, 234, 192, 0.60);
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
-	border: 0.50px rgba(0, 0, 0, 0.10) solid;
-}
-
-.searchLocationBtn {
-	width: 70.56px;
-	height: 46px;
-	position: absolute;
-	background: rgba(205, 234, 192, 0.60);
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
-	border: 0.50px rgba(0, 0, 0, 0.10) solid;
-}
-
-.logcation_submit_btn:hover>.searchLocationBtn {
-	background: rgba(205, 234, 192, 1);
-}
-
-.group_buying_content_box {
-	left: 2.5%;
-	top: 23%;
-	position: absolute;
-}
-
-.group_buying_content_img {
-	width: 380px;
-	height: 208.3px;
-	border-radius: 10px;
-}
-
-.IngredientProfileContent {
-	width: 226px;
-	height: 70px;
-	position: relative;
-}
-
-.IngredientProfileContent_title {
-	width: 155px;
-	height: 20.83px;
-	left: 77px;
-	top: 8.62px;
-	position: absolute;
-	text-align: center;
-	color: rgba(0, 0, 0, 0.80);
-	font-size: 20px;
-	font-family: Inter;
-	font-weight: 600;
-	word-wrap: break-word;
-}
-
-.profile-username {
-	width: 65px;
-	height: 16.30px;
-	left: 81px;
-	top: 35px;
-	position: absolute;
-	text-align: center;
-	color: rgba(0, 0, 0, 0.70);
-	font-size: 16px;
-	font-family: Inter;
-	font-weight: 600;
-	word-wrap: break-word;
-}
-
-.profile-image {
-	width: 70px;
-	height: 70px;
-	left: 0px;
-	top: 0px;
-	position: absolute;
-	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
-	border-radius: 9999px;
-}
-
-.follow_follower {
-	width: 120px;
-	position: absolute;
-	left: 81px;
-	top: 55px;
-	color: rgba(0, 0, 0, 0.50);
-	font-size: 12px;
-	font-family: Inter;
-	font-weight: 400;
-	word-wrap: break-word;
-}
-
-.MannerWeather {
-	width: 82px;
-	height: 26px;
-	left: 300px;
-	top: 65%;
-	position: relative;
-}
-
-.Rectangle70 {
-	width: 82px;
-	height: 26px;
-	left: 0px;
-	top: 0px;
-	position: absolute;
-	background: #CDEAC0;
-	border-radius: 10px;
-}
-
-.weather-text {
-	left: 4px;
-	top: 5px;
-	position: absolute;
-	text-align: center;
-}
-
-.main-text {
-	color: rgba(0, 0, 0, 0.70);
-	font-size: 13px;
-	font-family: Inter;
-	font-weight: 600;
-	word-wrap: break-word;
-}
-
-.partly_cloudy_day {
-	width: 22px;
-	height: 20px;
-	font-size: 24px;
-	left: 56px;
-	top: 3px;
-	position: absolute;
-}
-
-/* 검색어 리스트 */
 .map_wrap, .map_wrap * {
 	margin: 0;
 	padding: 0;
@@ -393,43 +194,10 @@ body>p {
 }
 </style>
 </head>
+
 <body>
-	<form action="">
-		<div class="location_box">
-			<div class="location_data">
-				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLocation w-full"
-					autocomplete="off" type="text" placeholder="위치를 입력해주세요" name="InputLocation" />
-			</div>
-			<div class="logcation_submit_btn">
-				<span class="material-symbols-outlined">pin_drop</span>
-				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value=""
-					class="searchLocationBtn" />
-			</div>
-		</div>
-	</form>
-	<div class="group_buying_content_box">
-		<img class="group_buying_content_img"
-			src="https://velog.velcdn.com/images/fake150907/post/9f912887-de04-489b-88d8-32ea2598e83a/image.jpg" alt="" />
-		<div class="group_buying_content_hashTag">#둔산동 #당근 #대전</div>
-		<!-- 공구글에 저장되어있는 hashTag를 가져와서 보여줌 -->
-		<div class="IngredientProfileContent">
-			<div class="IngredientProfileContent_title">당근 공구할사람</div>
-			<div class="profile-username">당근러버</div>
-			<div class="follow_follower">팔로우 3.1k 팔로우 0</div>
-			<img class="profile-image"
-				src="https://velog.velcdn.com/images/fake150907/post/4c31dbe1-b756-4382-ad7e-96a9d3b50b7f/image.jpg"
-				alt="Profile Image">
-			<div class="MannerWeather">
-				<div class="Rectangle70"></div>
-				<div class="weather-text">
-					<span class="main-text">매너날씨</span>
-				</div>
-				<span class="material-symbols-outlined partly_cloudy_day">partly_cloudy_day</span>
-			</div>
-		</div>
-	</div>
 	<div class="map_wrap">
-		<div id="map" position: relative; overflow:hidden;"></div>
+		<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
@@ -686,5 +454,3 @@ body>p {
 	</script>
 </body>
 </html>
-
-<%@ include file="../common/foot.jspf"%>
