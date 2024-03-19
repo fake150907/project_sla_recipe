@@ -11,15 +11,25 @@
 			return;
 		}
 		form.title.value = form.title.value.trim();
+		form.memberLocationTag.value = form.memberLocationTag.value.trim();
+		form.buyingLocation.value = form.buyingLocation.value.trim();
 		if (form.title.value == 0) {
-			alert('제목을 입력해주세요');
+			alert('제목을 입력해주세요.');
+			return;
+		}
+		if (form.memberLocationTag.value == 0) {
+			alert('위치를 선택해주세요.');
+			return;
+		}
+		if (form.buyingLocation.value == 0) {
+			alert('구매장소를 입력해주세요.');
 			return;
 		}
 		const editor = $(form).find('.toast-ui-editor').data(
 				'data-toast-editor');
 		const markdown = editor.getMarkdown().trim();
 		if (markdown.length == 0) {
-			alert('내용 써라');
+			alert('내용을 입력해주세요.');
 			editor.focus();
 			return;
 		}
