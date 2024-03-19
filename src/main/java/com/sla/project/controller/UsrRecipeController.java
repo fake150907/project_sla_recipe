@@ -65,6 +65,10 @@ public class UsrRecipeController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		if (searchKeyword == null) {
+			return Ut.jsHistoryBack("F-1", "검색어가 존재하지 않습니다.");
+		}
+
 		int recipesCount = recipeService.getRecipesCount(searchKeywordTypeCode, searchKeyword);
 
 		// 한페이지에 글 10개씩이야
