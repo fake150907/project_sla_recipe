@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="Location Map"></c:set>
-
 <%@ include file="../common/head.jspf"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>지도 이동시키기</title>
 <style>
@@ -14,7 +15,7 @@
 	width: 75%;
 	height: 845px;
 	left: 25%;
-	top: 11.3%;
+	top: 5.5%;
 }
 
 body>p {
@@ -226,10 +227,11 @@ body>p {
 
 #menu_wrap {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 10%;
+	left: 24.7%;
 	bottom: 0;
-	width: 250px;
+	width: 350px;
+	height: 800px;
 	margin: 10px 0 30px 10px;
 	padding: 5px;
 	overflow-y: auto;
@@ -237,10 +239,11 @@ body>p {
 	z-index: 1;
 	font-size: 12px;
 	border-radius: 10px;
+	margin: 10px 0 30px 10px;
 }
 
 .bg_white {
-	background: #fff;
+	background: #FFFACD;
 }
 
 #menu_wrap hr {
@@ -391,6 +394,40 @@ body>p {
 	cursor: default;
 	color: #777;
 }
+
+.keyword_submit_btn {
+	position: absolute;
+	top: 1.4%;
+}
+
+.search_icon {
+	position: absolute;
+	border: 3px solid green;
+}
+
+.keyword {
+	width: 200px;
+	height: 35px;
+	background-color: #FFFACD;
+	border: 0.50px rgba(0, 0, 0, 0.20) solid;
+	border-radius: 10px;
+}
+
+/* 채팅방 참여 버튼 */
+.in_chat_btn {
+	background-color: #FFFACD;
+}
+
+.in_chat_btn_box:hover .in_chat_btn {
+	background-color: #FFF06C;
+}
+
+.in_chat_btn_box {
+	position: absolute;
+	top: 74%;
+	left: 83.4%;
+	z-index: 30;
+}
 </style>
 </head>
 <body>
@@ -427,17 +464,21 @@ body>p {
 				<span class="material-symbols-outlined partly_cloudy_day">partly_cloudy_day</span>
 			</div>
 		</div>
+		<div class="in_chat_btn_box">
+			<a class="in_chat_btn btn" href="">참가</a>
+		</div>
 	</div>
 	<div class="map_wrap">
-		<div id="map" position: relative; overflow:hidden;"></div>
-
+		<div id="map" style="position: relative; overflow: hidden;"></div>
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 :
-						<input type="text" value="이태원 맛집" id="keyword" size="15">
-						<button type="submit">검색하기</button>
+						<input class="keyword" type="text" placeholder="검색어를 입력해주세요" value="" id="keyword" size="15">
+						<button class="keyword_submit_btn" type="submit">
+							<img style="width: 30px; height: 30px;"
+								src="https://velog.velcdn.com/images/fake150907/post/c3ce7de3-1a43-42f7-88bf-e8d45e5fdd04/image.svg" alt="" />
+						</button>
 					</form>
 				</div>
 			</div>

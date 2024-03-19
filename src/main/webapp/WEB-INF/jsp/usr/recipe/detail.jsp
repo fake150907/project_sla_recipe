@@ -845,11 +845,6 @@ function toggleLike() {
 .btn {
 	background-color: #FFFACD;
 }
-
-.btn {
-	background-color: #FFFACD;
-}
-
 /* 마우스 따라다니는 캐릭터 */
 .character {
 	position: fixed;

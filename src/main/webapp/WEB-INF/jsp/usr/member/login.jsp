@@ -278,7 +278,7 @@
 				<div class="inputLoginPw_box">
 					<img src="https://velog.velcdn.com/images/fake150907/post/1286d64c-f81c-4b1f-95a3-bb555e940bd9/image.svg" alt="" />
 					<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginPw input w-full"
-						autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+						autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
 				</div>
 				<div class="LockFill0Wght400Grad0Opsz241">
 					<div class="Vector"></div>
