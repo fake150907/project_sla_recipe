@@ -128,14 +128,14 @@ public class UsrGroupBuyingController {
 	}
 
 	@RequestMapping("/usr/groupBuying/write")
-	public String showJoin(HttpServletRequest req) {
+	public String showWrite(HttpServletRequest req) {
 
 		return "usr/groupBuying/write";
 	}
 
 	@RequestMapping("/usr/groupBuying/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, String title, String body, String hashTag, String location) {
+	public String doWrite(HttpServletRequest req, String title, String body, String memberLocationTag, String buyingLocation) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
@@ -145,15 +145,15 @@ public class UsrGroupBuyingController {
 		if (Ut.isNullOrEmpty(body)) {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
-		if (Ut.isNullOrEmpty(hashTag)) {
-			return Ut.jsHistoryBack("F-3", "해쉬태그를 입력해주세요");
+		if (Ut.isNullOrEmpty(memberLocationTag)) {
+			return Ut.jsHistoryBack("F-3", "지역태그를 선택해주세요");
 		}
-		if (Ut.isNullOrEmpty(location)) {
+		if (Ut.isNullOrEmpty(buyingLocation)) {
 			return Ut.jsHistoryBack("F-4", "지역을 설정해주세요");
 		}
 
 		ResultData<Integer> writeGroupBuyingRd = groupBuyingService.writeGroupBuying(rq.getLoginedMemberId(), title,
-				body, hashTag, location);
+				body, memberLocationTag, buyingLocation);
 
 		int id = (int) writeGroupBuyingRd.getData1();
 

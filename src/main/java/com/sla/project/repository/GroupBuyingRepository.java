@@ -20,10 +20,10 @@ public interface GroupBuyingRepository {
 			memberId = #{memberId},
 			title = #{title},
 			`body` = #{body},
-			hashTag = #{hashTag},
-			location = #{location}
+			address = #{memberLocationTag},
+			buyingLocation = #{buyingLocation}
 			""")
-	public void writeGroupBuying(int memberId, String title, String body, String hashTag, String location);
+	public void writeGroupBuying(int memberId, String title, String body, String hashTag, String buyingLocation);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();

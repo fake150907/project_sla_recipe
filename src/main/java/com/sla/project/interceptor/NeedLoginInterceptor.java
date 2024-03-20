@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.sla.project.util.Ut;
 import com.sla.project.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +21,6 @@ public class NeedLoginInterceptor implements HandlerInterceptor {
 
 		if (!rq.isLogined()) {
 			System.out.println("==============로그인 하고 써============");
-
 			rq.printHistoryBack("로그인 하고 써라");
 
 			return false;
