@@ -135,7 +135,8 @@ public class UsrGroupBuyingController {
 
 	@RequestMapping("/usr/groupBuying/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, String title, String body, String memberLocationTag, String buyingLocation) {
+	public String doWrite(HttpServletRequest req, String title, String body, String memberLocationTag,
+			String buyingLocation) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
