@@ -14,8 +14,8 @@ public class GroupBuying {
 	private int memberId;
 	private String title;
 	private String body;
-	private String hashTag;
-	private String location;
+	private String memberLocationTag;
+	private String buyingLocation;
 
 	private int extra__groupBuyingCnt;
 	private String extra__writer;

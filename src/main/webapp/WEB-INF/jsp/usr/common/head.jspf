@@ -212,7 +212,7 @@
 						</a>
 					</div>
 					<div class="SearchIcon">
-						<a class="hover:underline" href="../home/search">
+						<a class="hover:underline" href="../recipe/search">
 							<span class="material-symbols-outlined"> search </span>
 							<span class="Icon_text">Search</span>
 						</a>

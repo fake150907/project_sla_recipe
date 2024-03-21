@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="ARTICLE WRITE"></c:set>
+<c:set var="pageTitle" value="GROUPBUYING WRITE"></c:set>
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 <!-- GroupBuying write 관련 -->
@@ -95,56 +95,61 @@ label {
 	justify-content: center;
 }
 
+.write_container {
+	display: flex;
+	justify-content: center;
+}
+
 /* box 노멀라이즈 */
-.writer_box, .memberLocationTag_box, .buyingLocation_box, .title_box {
+.write_box {
 	position: absolute;
-	width: 1000px;
-	height: 150px;
+	width: 1040px;
+	height: 1000px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
+	border-radius: 10px;
 	z-index: -1;
 }
 
-.writer_box {
-	top: 15%;
+.writer_box, .memberLocationTag_box, .buyingLocation_box, .title_box {
+	position: absolute;
+	width: 380px;
 }
 
 .memberLocationTag_box {
-	top: 36.65%;
+	top: 3%;
+	left: 2%;
 }
 
 .buyingLocation_box {
-	top: 63.1%;
+	top: 8%;
+	left: 2%;
 }
 
 .title_box {
-	top: 89.55%;
+	top: 13.5%;
+	left: 2%;
 }
 
 .body_box {
 	position: absolute;
 	width: 1000px;
-	top: 110%;
+	top: 25%;
 }
 
 .submit_btn_box {
 	position: absolute;
-	top: 180%;
+	top: 90%;
 }
 
 /* text 노멀라이즈 */
-.writer_text, .memberLocationTag_text, .buyingLocation_text, .title_text,
-	.body_text {
+.memberLocationTag_text, .buyingLocation_text, .title_text, .body_text {
 	width: 80px;
 	height: 35px;
 	font-size: 16.6px;
 	font-weight: semi bold;
 	position: absolute;
 	background-color: #CDEAC0;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
+	border-radius: 10px;
 	display: flex;
 	justify-content: center;
 	align-content: :center;
@@ -152,12 +157,32 @@ label {
 
 .writer_text, .memberLocationTag_text, .buyingLocation_text, .title_text
 	{
-	top: -23%;
+	top: 22%;
 	left: -0.1%;
 }
 
 .body_text {
 	top: -5%;
+}
+
+/* data_box 노말라이즈 */
+.memberLocationTag_btn_box, .buyingLocation_data_box, .title_data_box {
+	position: absolute;
+	left: 23%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	display: flex;
+}
+
+/* input 요소 노말라이즈 */
+.buyingLocation, .title_data {
+	width: 350px;
+	height: 46.5px;
+	background-color: #FFFACD;
+	border: 0.50px rgba(0, 0, 0, 0.20) solid;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
 }
 </style>
 
@@ -165,54 +190,49 @@ label {
 	<div class="mx-auto">
 		<form action="../groupBuying/doWrite" method="POST" onsubmit="GroupBuyingWrite__submit(this); return false;">
 			<input type="hidden" name="body">
-			<div class="write_box">
-				<div class="writer_box">
-					<div class="writer_text">작성자</div>
-					<div class="writer_data_box">
-						<div class="writer_data">${rq.loginedMember.nickname }</div>
-					</div>
-				</div>
-				<div class="memberLocationTag_box">
-					<div class="memberLocationTag_text">위치</div>
-					<div class="memberLocationTag_btn_box">
-						<label>
-							<input type="radio" name="memberLocationTag" value="1" />
-							<span style="widdiv: 75px; display: inline-block;">둔산동</span>
-						</label>
-						<label>
-							<input type="radio" name="memberLocationTag" value="2" />
-							<span style="widdiv: 75px; display: inline-block;">갈마동</span>
-						</label>
-						<label>
-							<input type="radio" name="memberLocationTag" value="3" />
-							<span style="widdiv: 75px; display: inline-block;">탄방동</span>
-						</label>
-					</div>
-				</div>
-				<div class="buyingLocation_box">
-					<div class="buyingLocation_text">구매장소</div>
-					<div class="buyingLocation_data_box">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="구매장소를 입력해주세요" name="buyingLocation" />
-					</div>
-				</div>
-				<div class="title_box">
-					<div class="title_text">제목</div>
-					<div class="title_data_box">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="제목을 입력해주세요" name="title" />
-					</div>
-				</div>
-				<div class="body_box">
-					<span class="body_text" style="font-weight: bold;">내용</span>
-					<div class="body_data_box">
-						<div class="toast-ui-editor">
-							<script type="text/x-template"></script>
+			<div class="write_container">
+				<div class="write_box">
+					<div class="memberLocationTag_box">
+						<div class="memberLocationTag_text">위치</div>
+						<div class="memberLocationTag_btn_box">
+							<label>
+								<input type="radio" name="memberLocationTag" value="1" />
+								<span style="widdiv: 75px; display: inline-block;">둔산동</span>
+							</label>
+							<label>
+								<input type="radio" name="memberLocationTag" value="2" />
+								<span style="widdiv: 75px; display: inline-block;">갈마동</span>
+							</label>
+							<label>
+								<input type="radio" name="memberLocationTag" value="3" />
+								<span style="widdiv: 75px; display: inline-block;">탄방동</span>
+							</label>
 						</div>
 					</div>
-				</div>
-				<div class="submit_btn_box">
-					<button class="btn btn-outline btn-info" type="submit" value="작성">작성</button>
+					<div class="buyingLocation_box">
+						<div class="buyingLocation_text">구매장소</div>
+						<div class="buyingLocation_data_box">
+							<input class="input buyingLocation" autocomplete="off" type="text" placeholder="구매장소를 입력해주세요"
+								name="buyingLocation" />
+						</div>
+					</div>
+					<div class="title_box">
+						<div class="title_text">제목</div>
+						<div class="title_data_box">
+							<input class="input title_data" autocomplete="off" type="text" placeholder="제목을 입력해주세요" name="title" />
+						</div>
+					</div>
+					<div class="body_box">
+						<span class="body_text" style="font-weight: bold;">내용</span>
+						<div class="body_data_box">
+							<div class="toast-ui-editor">
+								<script type="text/x-template"></script>
+							</div>
+						</div>
+					</div>
+					<div class="submit_btn_box">
+						<button class="btn btn-outline btn-info" type="submit" value="작성">작성</button>
+					</div>
 				</div>
 			</div>
 		</form>

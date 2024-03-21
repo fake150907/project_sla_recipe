@@ -161,7 +161,6 @@ public class UsrGroupBuyingController {
 
 		return Ut.jsReplace(writeGroupBuyingRd.getResultCode(), writeGroupBuyingRd.getMsg(),
 				"../groupBuying/detail?id=" + id);
-00000
 	}
 
 	@RequestMapping("/usr/groupBuying/modify")
