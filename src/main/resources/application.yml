@@ -1,6 +1,17 @@
 server:
   port: 8081
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: yungayeon28@gmail.com
+    password: vpuz yexm yuho vgga
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   servlet:
     multipart:
       max-file-size: 100MB
@@ -18,5 +29,9 @@ spring:
 mybatis:
   type-aliases-package: com.sla.project.vo
 custom:
-  genFileDirPath: C:\work\sts-4.19.1.RELEASE-workspace2\project_sla_recipe\images
+  siteName: 2024_01_Spring_AM
+  siteMainUri: http://localhost:8081
+  emailFrom: no-reply@localhost
+  emailFromName: 2024_01_Spring_AM
+  genFileDirPath: C:\work\sts-4.19.1.RELEASE-workspace2\demo\images
   

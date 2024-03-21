@@ -243,6 +243,12 @@
 .history_back_text {
 	font-size: 20px;
 }
+/* find_member css */
+.find_member_Box {
+	position: absolute;
+	top: 80%;
+	left: 60%;
+}
 </style>
 </head>
 <body>
@@ -287,6 +293,10 @@
 			</div>
 			<div class="LoginBtn_box">
 				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value="로그인" class="LoginBtn" />
+			</div>
+			<div class="find_member_Box">
+				<a class="btn btn-active btn-ghost" href="${rq.findLoginIdUri }">아이디 찾기</a>
+				<a class="btn btn-ghost btn-active" href="${rq.findLoginPwUri }">비밀번호찾기</a>
 			</div>
 		</form>
 

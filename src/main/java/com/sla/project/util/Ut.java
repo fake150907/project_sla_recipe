@@ -3,13 +3,15 @@ package com.sla.project.util;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.net.URLEncoder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +27,14 @@ public class Ut {
 
 	public static boolean isNullOrEmpty(String str) {
 		return str == null || str.trim().length() == 0;
+	}
+
+	public static <T> T ifEmpty(T data, T defaultValue) {
+		if (isEmpty(data)) {
+			return defaultValue;
+		}
+
+		return data;
 	}
 
 	public static boolean isEmpty(Object obj) {
@@ -49,14 +59,6 @@ public class Ut {
 		}
 
 		return false;
-	}
-
-	public static <T> T ifEmpty(T data, T defaultValue) {
-		if (isEmpty(data)) {
-			return defaultValue;
-		}
-
-		return data;
 	}
 
 	public static String jsHistoryBack(String resultCode, String msg) {
@@ -111,6 +113,17 @@ public class Ut {
 			// 실제 프로덕션 환경에서는 로깅 프레임워크를 사용하거나 적절한 예외 처리를 해야 합니다.
 			return null;
 		}
+	}
+
+	public static String getEncodedCurrentUri(String currentUri) {
+
+		try {
+			return URLEncoder.encode(currentUri, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return currentUri;
+		}
+
 	}
 
 	public static String getDateStrLater(long seconds) {
@@ -280,13 +293,39 @@ public class Ut {
 		return (T) ifNull(req.getAttribute(attrName), defaultValue);
 	}
 
-	public static String getEncodedCurrentUri(String currentUri) {
+	// sha256
+	public static String sha256(String input) {
 		try {
-			return URLEncoder.encode(currentUri, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] hash = md.digest(input.getBytes("UTF-8"));
+			StringBuffer hexString = new StringBuffer();
+
+			for (int i = 0; i < hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if (hex.length() == 1)
+					hexString.append('0');
+				hexString.append(hex);
+			}
+
+			return hexString.toString();
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			e.printStackTrace();
-			return currentUri;
+			return null;
+		}
+	}
+
+	public static String getTempPassword(int length) {
+		int index = 0;
+		char[] charArr = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+				'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+		StringBuffer sb = new StringBuffer();
+
+		for (int i = 0; i < length; i++) {
+			index = (int) (charArr.length * Math.random());
+			sb.append(charArr[index]);
 		}
 
+		return sb.toString();
 	}
 }
