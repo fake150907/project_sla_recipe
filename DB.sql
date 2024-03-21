@@ -85,7 +85,7 @@ CREATE TABLE groupBuying(
     memberId INT(10) UNSIGNED NOT NULL,
     title CHAR(100) NOT NULL,
     `body`TEXT NOT NULL,
-    address VARCHAR(200) NOT NULL,
+    memberLocationTag VARCHAR(200) NOT NULL,
     buyingLocation VARCHAR(200) NOT NULL
 );
 
@@ -362,7 +362,7 @@ loginPw = 'user1',
 `name` = '고수달',
 nickName = '초고수달',
 cellphoneNum = '01012341234',
-email = 'sudal123@gmail.com';
+email = 'yungayeon28@gmail.com';
 
 INSERT INTO `member`
 SET regDate = NOW(),
