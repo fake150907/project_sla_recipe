@@ -328,6 +328,20 @@ memberId = 3,
 title = '연어공구할사람!',
 `body`='둔산동으로 모여잇!';
 
+INSERT INTO groupBuying
+(
+    regDate, updateDate, memberId, title, `body`,memberLocationTag,buyingLocation
+)
+SELECT NOW(),NOW(), FLOOR(RAND() * 2) + 2, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()),'탄방동','서부농협하나로마트'
+FROM groupBuying;
+
+INSERT INTO groupBuying
+(
+    regDate, updateDate, memberId, title, `body`,memberLocationTag,buyingLocation
+)
+SELECT NOW(),NOW(), FLOOR(RAND() * 2) + 2, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()),'둔산동','갤러리아식품관'
+FROM groupBuying;
+
 #########################################################################
 # hashTag table insert data
 INSERT INTO hashTag
