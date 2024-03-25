@@ -58,7 +58,8 @@
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
 
-		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
+
+		<c:set var="baseUri" value="?${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
 		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
 
 		<c:if test="${startPage > 1 }">
@@ -76,7 +77,6 @@
 		</c:if>
 
 	</div>
-
 	<!-- 	원래 페이징 -->
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">
