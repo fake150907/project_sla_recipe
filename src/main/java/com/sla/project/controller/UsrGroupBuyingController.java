@@ -52,8 +52,8 @@ public class UsrGroupBuyingController {
 
 		return "/usr/groupBuying/locationTest";
 	}
+	
 	// 액션 메서드
-
 	@RequestMapping("/usr/groupBuying/list")
 	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
@@ -120,11 +120,9 @@ public class UsrGroupBuyingController {
 
 		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount",
 				groupBuyingService.getGroupBuyingHitCount(id));
-
 		rd.setData2("id", id);
 
 		return rd;
-
 	}
 
 	@RequestMapping("/usr/groupBuying/write")

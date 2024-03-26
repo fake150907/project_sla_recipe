@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="GROUPBUYING LIST"></c:set>
+<c:set var="pageTitle" value="RECIPE LIST"></c:set>
 <%@ include file="../common/head.jspf"%>
 
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
 		<div class="mb-4 flex">
-			<div class="badge badge-outline">${groupBuyingsCount }개</div>
+			<div class="badge badge-outline">${recipesCount }개</div>
 			<div class="flex-grow"></div>
 			<form action="">
 				<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
@@ -22,85 +22,43 @@
 			</form>
 		</div>
 	</div>
-	<div class="gap-x-10">
-		<table class="table-box-1 table" border="1">
-			<colgroup>
-				<col style="width: 10%" />
-				<col style="width: 10%" />
-				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>위치</th>
-					<th>번호</th>
-					<th>날짜</th>
-					<th>제목</th>
-					<th>작성자</th>
+	<table class="table-box-1 table" border="1">
+		<colgroup>
+			<col style="width: 10%" />
+			<col style="width: 20%" />
+			<col style="width: 60%" />
+			<col style="width: 10%" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>날짜</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="recipe" items="${recipes }">
+				<tr class="hover">
+					<td>${recipe.id }</td>
+					<td>${recipe.regDate.substring(0,10) }</td>
+					<td>
+						<a href="detail?id=${recipe.id }">${recipe.title }</a>
+					</td>
+					<td>${recipe.extra__writer }</td>
+					<td>${recipe.hitCount }</td>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="groupBuying" items="${groupBuyings }">
-					<c:if test="${groupBuying.memberLocationTag == '탄방동' }">
-						<tr class="hover">
-							<td>${groupBuying.memberLocationTag }</td>
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	<div>
-		<table class="table-box-1 table" border="1">
-			<colgroup>
-				<col style="width: 10%" />
-				<col style="width: 10%" />
-				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>위치</th>
-					<th>번호</th>
-					<th>날짜</th>
-					<th>제목</th>
-					<th>작성자</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="groupBuying" items="${groupBuyings }">
-					<c:if test="${groupBuying.memberLocationTag == '둔산동' }">
-						<tr class="hover">
-							<td>${groupBuying.memberLocationTag }</td>
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+			</c:forEach>
+		</tbody>
+	</table>
 
 	<!-- 	동적 페이징 -->
 	<div class="pagination flex justify-center mt-3">
 		<c:set var="paginationLen" value="3" />
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
-
-
-		<c:set var="baseUri" value="?${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
+		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
 		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
 
 		<c:if test="${startPage > 1 }">
@@ -118,6 +76,7 @@
 		</c:if>
 
 	</div>
+
 	<!-- 	원래 페이징 -->
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">

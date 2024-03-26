@@ -22,75 +22,34 @@
 			</form>
 		</div>
 	</div>
-	<div class="gap-x-10">
-		<table class="table-box-1 table" border="1">
-			<colgroup>
-				<col style="width: 10%" />
-				<col style="width: 10%" />
-				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>위치</th>
-					<th>번호</th>
-					<th>날짜</th>
-					<th>제목</th>
-					<th>작성자</th>
+	<table class="table-box-1 table" border="1">
+		<colgroup>
+			<col style="width: 10%" />
+			<col style="width: 20%" />
+			<col style="width: 60%" />
+			<col style="width: 10%" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>날짜</th>
+				<th>제목</th>
+				<th>작성자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="groupBuying" items="${groupBuyings }">
+				<tr class="hover">
+					<td>${groupBuying.id }</td>
+					<td>${groupBuying.regDate.substring(0,10) }</td>
+					<td>
+						<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+					</td>
+					<td>${groupBuying.extra__writer }</td>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="groupBuying" items="${groupBuyings }">
-					<c:if test="${groupBuying.memberLocationTag == '탄방동' }">
-						<tr class="hover">
-							<td>${groupBuying.memberLocationTag }</td>
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	<div>
-		<table class="table-box-1 table" border="1">
-			<colgroup>
-				<col style="width: 10%" />
-				<col style="width: 10%" />
-				<col style="width: 20%" />
-				<col style="width: 60%" />
-				<col style="width: 10%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>위치</th>
-					<th>번호</th>
-					<th>날짜</th>
-					<th>제목</th>
-					<th>작성자</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="groupBuying" items="${groupBuyings }">
-					<c:if test="${groupBuying.memberLocationTag == '둔산동' }">
-						<tr class="hover">
-							<td>${groupBuying.memberLocationTag }</td>
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</tbody>
-		</table>
+			</c:forEach>
+		</tbody>
+	</table>
 	</div>
 
 	<!-- 	동적 페이징 -->
