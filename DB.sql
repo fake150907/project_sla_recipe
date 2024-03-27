@@ -339,7 +339,14 @@ INSERT INTO groupBuying
 (
     regDate, updateDate, memberId, title, `body`,memberLocationTag,buyingLocation
 )
-SELECT NOW(),NOW(), FLOOR(RAND() * 2) + 2, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()),'둔산동','갤러리아식품관'
+SELECT NOW(),NOW(), FLOOR(RAND() * 2) + 2, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()),'둔산동','이마트'
+FROM groupBuying;
+
+INSERT INTO groupBuying           
+(
+    regDate, updateDate, memberId, title, `body`,memberLocationTag,buyingLocation
+)
+SELECT NOW(),NOW(), FLOOR(RAND() * 2) + 2, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()),'갈마동','홈세이브마트'
 FROM groupBuying;
 
 #########################################################################
