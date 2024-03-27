@@ -69,8 +69,15 @@ public class UsrGroupBuyingController {
 		int itemsInAPage = 10;
 
 		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
-
-		List<GroupBuying> groupBuyings = groupBuyingService.getForPrintGroupBuyings(itemsInAPage, page,
+		
+		String address1 = "탄방동";
+		String address2 = "둔산동";
+		String address3 = "갈마동";
+		List<GroupBuying> groupBuyingsByAddress1 = groupBuyingService.getForPrintGroupBuyings(address1,itemsInAPage, page,
+				searchKeywordTypeCode, searchKeyword);
+		List<GroupBuying> groupBuyingsByAddress2 = groupBuyingService.getForPrintGroupBuyings(address2,itemsInAPage, page,
+				searchKeywordTypeCode, searchKeyword);
+		List<GroupBuying> groupBuyingsByAddress3 = groupBuyingService.getForPrintGroupBuyings(address3,itemsInAPage, page,
 				searchKeywordTypeCode, searchKeyword);
 
 		model.addAttribute("page", page);
@@ -78,7 +85,12 @@ public class UsrGroupBuyingController {
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("groupBuyingsCount", groupBuyingsCount);
-		model.addAttribute("groupBuyings", groupBuyings);
+		model.addAttribute("address1", address1);
+		model.addAttribute("address2", address2);
+		model.addAttribute("address3", address3);
+		model.addAttribute("groupBuyingsByAddress1", groupBuyingsByAddress1);
+		model.addAttribute("groupBuyingsByAddress2", groupBuyingsByAddress2);
+		model.addAttribute("groupBuyingsByAddress3", groupBuyingsByAddress3);
 
 		return "usr/groupBuying/list";
 	}

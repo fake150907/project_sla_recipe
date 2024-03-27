@@ -101,7 +101,7 @@ public class GroupBuyingService {
 		return groupBuyingRepository.getGroupBuyingHitCount(id);
 	}
 
-	public List<GroupBuying> getForPrintGroupBuyings(int itemsInAPage, int page,
+	public List<GroupBuying> getForPrintGroupBuyings(String address, int itemsInAPage, int page,
 			String searchKeywordTypeCode, String searchKeyword) {
 
 //		SELECT * FROM groupBuying WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
@@ -110,7 +110,7 @@ public class GroupBuyingService {
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
 
-		return groupBuyingRepository.getForPrintGroupBuyings(limitFrom, limitTake, searchKeywordTypeCode,
+		return groupBuyingRepository.getForPrintGroupBuyings(address,limitFrom, limitTake, searchKeywordTypeCode,
 				searchKeyword);
 	}
 

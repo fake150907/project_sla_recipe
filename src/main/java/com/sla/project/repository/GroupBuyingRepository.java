@@ -142,14 +142,15 @@ public interface GroupBuyingRepository {
 					</otherwise>
 				</choose>
 			</if>
+			AND memberLocationtag = #{address}
 			ORDER BY G.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
 			</if>
 			</script>
 			""")
-	public List<GroupBuying> getForPrintGroupBuyings(int limitFrom, int limitTake, String searchKeywordTypeCode,
-			String searchKeyword);
+	public List<GroupBuying> getForPrintGroupBuyings(String address, int limitFrom, int limitTake,
+			String searchKeywordTypeCode, String searchKeyword);
 
 	@Update("""
 			UPDATE groupBuying
