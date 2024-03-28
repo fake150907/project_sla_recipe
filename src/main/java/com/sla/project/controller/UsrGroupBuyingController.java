@@ -61,8 +61,6 @@ public class UsrGroupBuyingController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
-
 		String address1 = "탄방동";
 		String address2 = "둔산동";
 		String address3 = "갈마동";
@@ -75,7 +73,6 @@ public class UsrGroupBuyingController {
 
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
-		model.addAttribute("groupBuyingsCount", groupBuyingsCount);
 		model.addAttribute("address1", address1);
 		model.addAttribute("address2", address2);
 		model.addAttribute("address3", address3);
