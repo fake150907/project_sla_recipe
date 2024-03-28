@@ -43,27 +43,35 @@
 			</form>
 		</div>
 	</div>
-	<div>
-		<div class="div-box-1 div" border="1">
-			<div class="">
-				<div class="">번호</div>
-				<div class="">날짜</div>
-				<div class="">제목</div>
-				<div class="">작성자</div>
-			</div>
-			<div>
+	<div style="width: 100%; height: 200px; overflow: auto">
+		<table class="table-box-1 table" border="1">
+			<colgroup>
+				<col style="width: 10%" />
+				<col style="width: 20%" />
+				<col style="width: 60%" />
+				<col style="width: 10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>제목</th>
+					<th>작성자</th>
+				</tr>
+			</thead>
+			<tbody>
 				<c:forEach var="groupBuying" items="${groupBuyingsByAddress1 }">
-					<div class="hover">
-						<div class="">${groupBuying.id }</div>
-						<div class="">${groupBuying.regDate.substring(0,10) }</div>
-						<div class="">
+					<tr class="hover">
+						<td>${groupBuying.id }</td>
+						<td>${groupBuying.regDate.substring(0,10) }</td>
+						<td>
 							<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-						</div>
-						<div class="">${groupBuying.extra__writer }</div>
-					</div>
+						</td>
+						<td>${groupBuying.extra__writer }</td>
+					</tr>
 				</c:forEach>
-			</div>
-		</div>
+			</tbody>
+		</table>
 	</div>
 </section>
 <div class="address2_text_box">
@@ -86,27 +94,35 @@
 			</form>
 		</div>
 	</div>
-	<div>
-		<div class="div-box-1 div" border="1">
-			<div class="">
-				<div class="">번호</div>
-				<div class="">날짜</div>
-				<div class="">제목</div>
-				<div class="">작성자</div>
-			</div>
-			<div>
+	<div style="width: 100%; height: 200px; overflow: auto">
+		<table class="table-box-1 table" border="1">
+			<colgroup>
+				<col style="width: 10%" />
+				<col style="width: 20%" />
+				<col style="width: 60%" />
+				<col style="width: 10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>제목</th>
+					<th>작성자</th>
+				</tr>
+			</thead>
+			<tbody>
 				<c:forEach var="groupBuying" items="${groupBuyingsByAddress2 }">
-					<div class="hover">
-						<div class="">${groupBuying.id }</div>
-						<div class="">${groupBuying.regDate.substring(0,10) }</div>
-						<div class="">
+					<tr class="hover">
+						<td>${groupBuying.id }</td>
+						<td>${groupBuying.regDate.substring(0,10) }</td>
+						<td>
 							<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-						</div>
-						<div class="">${groupBuying.extra__writer }</div>
-					</div>
+						</td>
+						<td>${groupBuying.extra__writer }</td>
+					</tr>
 				</c:forEach>
-			</div>
-		</div>
+			</tbody>
+		</table>
 	</div>
 
 </section>
@@ -130,27 +146,35 @@
 			</form>
 		</div>
 	</div>
-	<div>
-		<div class="div-box-1 div" border="1">
-			<div class="">
-				<div class="">번호</div>
-				<div class="">날짜</div>
-				<div class="">제목</div>
-				<div class="">작성자</div>
-			</div>
-			<div>
+	<div style="width: 100%; height: 200px; overflow: auto">
+		<table class="table-box-1 table" border="1">
+			<colgroup>
+				<col style="width: 10%" />
+				<col style="width: 20%" />
+				<col style="width: 60%" />
+				<col style="width: 10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th>
+					<th>제목</th>
+					<th>작성자</th>
+				</tr>
+			</thead>
+			<tbody>
 				<c:forEach var="groupBuying" items="${groupBuyingsByAddress3 }">
-					<div class="hover">
-						<div class="">${groupBuying.id }</div>
-						<div class="">${groupBuying.regDate.substring(0,10) }</div>
-						<div class="">
+					<tr class="hover">
+						<td>${groupBuying.id }</td>
+						<td>${groupBuying.regDate.substring(0,10) }</td>
+						<td>
 							<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-						</div>
-						<div class="">${groupBuying.extra__writer }</div>
-					</div>
+						</td>
+						<td>${groupBuying.extra__writer }</td>
+					</tr>
 				</c:forEach>
-			</div>
-		</div>
+			</tbody>
+		</table>
 	</div>
 </section>
 
