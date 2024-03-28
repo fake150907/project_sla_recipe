@@ -564,7 +564,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 					</a>
 				</div>
 				<div class="noneLogin-SearchIcon">
-					<a class="hover:underline" href="../home/search">
+					<a class="hover:underline" href="../recipe/search">
 						<span class="material-symbols-outlined"> search </span>
 						<span class="Icon_text">Search</span>
 					</a>
