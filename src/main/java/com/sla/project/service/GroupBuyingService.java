@@ -100,6 +100,15 @@ public class GroupBuyingService {
 	public Object getGroupBuyingHitCount(int id) {
 		return groupBuyingRepository.getGroupBuyingHitCount(id);
 	}
+	
+
+	public List<GroupBuying> getForPrintGroupBuyingsByMemberLocationTag(String address, String searchKeywordTypeCode, String searchKeyword) {
+
+
+		return groupBuyingRepository.getForPrintGroupBuyingsByMemberLocationTag(address, searchKeywordTypeCode,
+				searchKeyword);
+	}
+
 
 	public List<GroupBuying> getForPrintGroupBuyings(String address, int itemsInAPage, int page,
 			String searchKeywordTypeCode, String searchKeyword) {

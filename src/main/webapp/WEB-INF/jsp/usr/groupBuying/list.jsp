@@ -54,40 +54,6 @@
 			</tbody>
 		</table>
 	</div>
-
-	<!-- 	동적 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
-
-
-		<c:set var="baseUri" value="?${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
-		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
-
-		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
-		</c:forEach>
-
-		<c:if test="${endPage < pagesCount }">
-			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
-		</c:if>
-
-	</div>
-	<!-- 	원래 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<div class="btn-group">
-			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
-			</c:forEach>
-		</div>
-	</div>
 </section>
 <div>
 	<span class="">${address2 }</span>
@@ -141,39 +107,6 @@
 		</table>
 	</div>
 
-	<!-- 	동적 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
-
-
-		<c:set var="baseUri" value="?${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
-		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
-
-		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
-		</c:forEach>
-
-		<c:if test="${endPage < pagesCount }">
-			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
-		</c:if>
-
-	</div>
-	<!-- 	원래 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<div class="btn-group">
-			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
-			</c:forEach>
-		</div>
-	</div>
 </section>
 <div>
 	<span class="">${address3 }</span>
@@ -225,40 +158,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-
-	<!-- 	동적 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
-
-
-		<c:set var="baseUri" value="?${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
-		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
-
-		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
-		</c:forEach>
-
-		<c:if test="${endPage < pagesCount }">
-			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
-		</c:if>
-
-	</div>
-	<!-- 	원래 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<div class="btn-group">
-			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
-			</c:forEach>
-		</div>
 	</div>
 </section>
 

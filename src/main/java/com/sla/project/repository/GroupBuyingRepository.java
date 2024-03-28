@@ -144,6 +144,35 @@ public interface GroupBuyingRepository {
 			</if>
 			AND memberLocationtag = #{address}
 			ORDER BY G.id DESC
+			LIMIT 15
+			</script>
+			""")
+	public List<GroupBuying> getForPrintGroupBuyingsByMemberLocationTag(String address, String searchKeywordTypeCode,
+			String searchKeyword);
+	
+	@Select("""
+			<script>
+			SELECT G.*, M.nickname AS extra__writer
+			FROM groupBuying G
+			INNER JOIN `member` AS M
+			ON G.memberId = M.id
+			WHERE 1
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND G.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND G.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND G.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR G.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			AND memberLocationtag = #{address}
+			ORDER BY G.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
 			</if>
@@ -193,4 +222,6 @@ public interface GroupBuyingRepository {
 			WHERE id = #{id}
 			""")
 	public int getBadRqCount(int id);
+
+
 }

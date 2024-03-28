@@ -52,10 +52,43 @@ public class UsrGroupBuyingController {
 
 		return "/usr/groupBuying/locationTest";
 	}
-	
+
 	// 액션 메서드
 	@RequestMapping("/usr/groupBuying/list")
-	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page,
+	public String showList(HttpServletRequest req, Model model,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
+
+		String address1 = "탄방동";
+		String address2 = "둔산동";
+		String address3 = "갈마동";
+		List<GroupBuying> groupBuyingsByAddress1 = groupBuyingService
+				.getForPrintGroupBuyingsByMemberLocationTag(address1, searchKeywordTypeCode, searchKeyword);
+		List<GroupBuying> groupBuyingsByAddress2 = groupBuyingService
+				.getForPrintGroupBuyingsByMemberLocationTag(address2, searchKeywordTypeCode, searchKeyword);
+		List<GroupBuying> groupBuyingsByAddress3 = groupBuyingService
+				.getForPrintGroupBuyingsByMemberLocationTag(address3, searchKeywordTypeCode, searchKeyword);
+
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("groupBuyingsCount", groupBuyingsCount);
+		model.addAttribute("address1", address1);
+		model.addAttribute("address2", address2);
+		model.addAttribute("address3", address3);
+		model.addAttribute("groupBuyingsByAddress1", groupBuyingsByAddress1);
+		model.addAttribute("groupBuyingsByAddress2", groupBuyingsByAddress2);
+		model.addAttribute("groupBuyingsByAddress3", groupBuyingsByAddress3);
+
+		return "usr/groupBuying/list";
+	}
+
+	@RequestMapping("/usr/groupBuying/listByMemberLocationTag1")
+	public String showListByMemberLocationTag1(HttpServletRequest req, Model model,
+			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
@@ -69,16 +102,11 @@ public class UsrGroupBuyingController {
 		int itemsInAPage = 10;
 
 		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
-		
+
 		String address1 = "탄방동";
-		String address2 = "둔산동";
-		String address3 = "갈마동";
-		List<GroupBuying> groupBuyingsByAddress1 = groupBuyingService.getForPrintGroupBuyings(address1,itemsInAPage, page,
-				searchKeywordTypeCode, searchKeyword);
-		List<GroupBuying> groupBuyingsByAddress2 = groupBuyingService.getForPrintGroupBuyings(address2,itemsInAPage, page,
-				searchKeywordTypeCode, searchKeyword);
-		List<GroupBuying> groupBuyingsByAddress3 = groupBuyingService.getForPrintGroupBuyings(address3,itemsInAPage, page,
-				searchKeywordTypeCode, searchKeyword);
+
+		List<GroupBuying> groupBuyingsByAddress1 = groupBuyingService.getForPrintGroupBuyings(address1, itemsInAPage,
+				page, searchKeywordTypeCode, searchKeyword);
 
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
@@ -86,10 +114,72 @@ public class UsrGroupBuyingController {
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("groupBuyingsCount", groupBuyingsCount);
 		model.addAttribute("address1", address1);
-		model.addAttribute("address2", address2);
-		model.addAttribute("address3", address3);
 		model.addAttribute("groupBuyingsByAddress1", groupBuyingsByAddress1);
+
+		return "usr/groupBuying/list";
+	}
+
+	@RequestMapping("/usr/groupBuying/listByMemberLocationTag2")
+	public String showListByMemberLocationTag2(HttpServletRequest req, Model model,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
+
+		String address2 = "둔산동";
+
+		List<GroupBuying> groupBuyingsByAddress2 = groupBuyingService.getForPrintGroupBuyings(address2, itemsInAPage,
+				page, searchKeywordTypeCode, searchKeyword);
+
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("groupBuyingsCount", groupBuyingsCount);
+		model.addAttribute("address2", address2);
 		model.addAttribute("groupBuyingsByAddress2", groupBuyingsByAddress2);
+
+		return "usr/groupBuying/list";
+	}
+
+	@RequestMapping("/usr/groupBuying/listByMemberLocationTag3")
+	public String showListByMemberLocationTag3(HttpServletRequest req, Model model,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
+
+		String address3 = "갈마동";
+
+		List<GroupBuying> groupBuyingsByAddress3 = groupBuyingService.getForPrintGroupBuyings(address3, itemsInAPage,
+				page, searchKeywordTypeCode, searchKeyword);
+
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("groupBuyingsCount", groupBuyingsCount);
+		model.addAttribute("address3", address3);
 		model.addAttribute("groupBuyingsByAddress3", groupBuyingsByAddress3);
 
 		return "usr/groupBuying/list";
