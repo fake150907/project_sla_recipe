@@ -5,7 +5,28 @@
 
 <style>
 /* list container */
-.table_box {
+.list_container {
+	display: flex;
+	justify-content: center;
+}
+
+.table_container1, .table_container2, .table_container3 {
+	position: absolute;
+}
+
+.table_container1 {
+	top: 20%;
+}
+
+.table_container2 {
+	top: 70%;
+}
+
+.table_container3 {
+	top: 120%;
+}
+
+.table_box1, .table_box2, .table_box3 {
 	border: 1px solid #FFFACD;
 	background-color: #FFFACD;
 }
@@ -41,7 +62,7 @@
 
 /* search_location_form_box */
 .location_box {
-	left: 8%;
+	left: 20%;
 	top: 15%;
 	position: absolute;
 }
@@ -93,7 +114,7 @@
 .search_groupBuying_box {
 	position: absolute;
 	top: 15%;
-	left: 35%;
+	left: 48%;
 }
 
 .searchKeyword {
@@ -140,12 +161,9 @@
 }
 
 .searchKeywordTypeCode {
-	position: absolute;
-	top: 90%;
-	left: 22%;
+	width: 150px;
 	color: rgba(0, 0, 0, 0.6);
 	background-color: #FFFACD;
-	color: rgba(0, 0, 0, 0.6)
 }
 
 .searchKeywordTypeCode .op {
@@ -156,187 +174,196 @@
 	background: rgba(205, 234, 192, 1);
 }
 </style>
-<div class="search_location_form_box">
-	<form action="">
-		<div class="location_box">
-			<div class="location_data">
-				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLocation w-full"
-					autocomplete="off" type="text" placeholder="위치를 입력해주세요" name="InputLocation" />
-			</div>
-			<div class="logcation_submit_btn">
-				<span class="material-symbols-outlined">pin_drop</span>
-				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value=""
-					class="searchLocationBtn" />
-			</div>
-		</div>
-	</form>
-</div>
-<div class="search_groupBuying_box">
-	<form action="" method="POST" onsubmit="searchKeyword__submit(this); return false;">
-		<select data-value="${param.searchKeywordTypeCode }"
-			class="searchKeywordTypeCode select select-bordered select-sm w-full max-w-xs" name="searchKeywordTypeCode">
-			<option class="op" value="title">title</option>
-			<option class="op" value="body">body</option>
-			<option class="op" value="title,body">title+body</option>
-		</select>
-		<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-			class="searchKeyword input-sm input input-bordered w-48 max-w-xs" />
-		<button class="SearchBtn btn btn-ghost btn-sm" type="submit">검색</button>
-	</form>
-</div>
 <div class="list_container">
-	<div class="address1_text_box">
-		<span class="address1_text">${address1 }</span>
+	<div class="search_container">
+		<div class="search_location_form_box">
+			<form action="">
+				<div class="location_box">
+					<div class="location_data">
+						<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLocation w-full"
+							autocomplete="off" type="text" placeholder="위치를 입력해주세요" name="InputLocation" />
+					</div>
+					<div class="logcation_submit_btn">
+						<span class="material-symbols-outlined">pin_drop</span>
+						<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value=""
+							class="searchLocationBtn" />
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="search_groupBuying_box">
+			<form action="" method="POST" onsubmit="searchKeyword__submit(this); return false;">
+				<select data-value="${param.searchKeywordTypeCode }"
+					class="searchKeywordTypeCode select select-bordered select-sm w-full max-w-xs" name="searchKeywordTypeCode">
+					<option class="op" value="title">title</option>
+					<option class="op" value="body">body</option>
+					<option class="op" value="title,body">title+body</option>
+				</select>
+				<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
+					class="searchKeyword input-sm input input-bordered w-48 max-w-xs" />
+				<button class="SearchBtn btn btn-ghost btn-sm" type="submit">검색</button>
+			</form>
+		</div>
 	</div>
-	<section class="mt-8 text-xl px-4">
-		<div class="mx-auto overflow-x-auto">
-			<div class="mb-4 flex">
-				<div class="flex-grow"></div>
-				<form action="">
-					<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-						name="searchKeywordTypeCode">
-						<option value="title">title</option>
-						<option value="body">body</option>
-						<option value="title,body">title+body</option>
-					</select>
-					<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-						class="input-sm input input-bordered w-48 max-w-xs" />
-					<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-				</form>
+	<div class="table_container1">
+		<div class="address1_text_box">
+			<span class="address1_text">${address1 }</span>
+		</div>
+		<section class="mt-8 text-xl px-4">
+			<div class="mx-auto overflow-x-auto">
+				<div class="mb-4 flex">
+					<div class="flex-grow"></div>
+					<form action="">
+						<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+							name="searchKeywordTypeCode">
+							<option value="title">title</option>
+							<option value="body">body</option>
+							<option value="title,body">title+body</option>
+						</select>
+						<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
+							class="input-sm input input-bordered w-48 max-w-xs" />
+						<button class="btn btn-ghost btn-sm" type="submit">검색</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="table_box" style="width: 100%; height: 350px; overflow: auto">
-			<table class="table-box-1 table" border="1">
-				<colgroup>
-					<col style="width: 10%" />
-					<col style="width: 20%" />
-					<col style="width: 60%" />
-					<col style="width: 10%" />
-				</colgroup>
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>날짜</th>
-						<th>제목</th>
-						<th>작성자</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="groupBuying" items="${groupBuyingsByAddress1 }">
-						<tr class="hover">
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
+			<div class="table_box1" style="width: 100%; height: 350px; overflow: auto">
+				<table class="table-box-1 table" border="1">
+					<colgroup>
+						<col style="width: 10%" />
+						<col style="width: 20%" />
+						<col style="width: 60%" />
+						<col style="width: 10%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>날짜</th>
+							<th>제목</th>
+							<th>작성자</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</section>
-	<div class="address2_text_box">
-		<span class="address2_text">${address2 }</span>
+					</thead>
+					<tbody>
+						<c:forEach var="groupBuying" items="${groupBuyingsByAddress1 }">
+							<tr class="hover">
+								<td>${groupBuying.id }</td>
+								<td>${groupBuying.regDate.substring(0,10) }</td>
+								<td>
+									<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+								</td>
+								<td>${groupBuying.extra__writer }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</section>
 	</div>
-	<section class="mt-8 text-xl px-4">
-		<div class="mx-auto overflow-x-auto">
-			<div class="mb-4 flex">
-				<div class="flex-grow"></div>
-				<form action="">
-					<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-						name="searchKeywordTypeCode">
-						<option value="title">title</option>
-						<option value="body">body</option>
-						<option value="title,body">title+body</option>
-					</select>
-					<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-						class="input-sm input input-bordered w-48 max-w-xs" />
-					<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-				</form>
+	<div class="table_container2">
+		<div class="address2_text_box">
+			<span class="address2_text">${address2 }</span>
+		</div>
+		<section class="mt-8 text-xl px-4">
+			<div class="mx-auto overflow-x-auto">
+				<div class="mb-4 flex">
+					<div class="flex-grow"></div>
+					<form action="">
+						<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+							name="searchKeywordTypeCode">
+							<option value="title">title</option>
+							<option value="body">body</option>
+							<option value="title,body">title+body</option>
+						</select>
+						<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
+							class="input-sm input input-bordered w-48 max-w-xs" />
+						<button class="btn btn-ghost btn-sm" type="submit">검색</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="table_box" style="width: 100%; height: 350px; overflow: auto">
-			<table class="table-box-1 table" border="1">
-				<colgroup>
-					<col style="width: 10%" />
-					<col style="width: 20%" />
-					<col style="width: 60%" />
-					<col style="width: 10%" />
-				</colgroup>
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>날짜</th>
-						<th>제목</th>
-						<th>작성자</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="groupBuying" items="${groupBuyingsByAddress2 }">
-						<tr class="hover">
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
+			<div class="table_box2" style="width: 100%; height: 350px; overflow: auto">
+				<table class="table-box-1 table" border="1">
+					<colgroup>
+						<col style="width: 10%" />
+						<col style="width: 20%" />
+						<col style="width: 60%" />
+						<col style="width: 10%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>날짜</th>
+							<th>제목</th>
+							<th>작성자</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</section>
-	<div class="address3_text_box">
-		<span class="address3_text">${address3 }</span>
+					</thead>
+					<tbody>
+						<c:forEach var="groupBuying" items="${groupBuyingsByAddress2 }">
+							<tr class="hover">
+								<td>${groupBuying.id }</td>
+								<td>${groupBuying.regDate.substring(0,10) }</td>
+								<td>
+									<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+								</td>
+								<td>${groupBuying.extra__writer }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</section>
 	</div>
-	<section class="mt-8 text-xl px-4">
-		<div class="mx-auto overflow-x-auto">
-			<div class="mb-4 flex">
-				<div class="flex-grow"></div>
-				<form action="">
-					<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-						name="searchKeywordTypeCode">
-						<option value="title">title</option>
-						<option value="body">body</option>
-						<option value="title,body">title+body</option>
-					</select>
-					<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-						class="input-sm input input-bordered w-48 max-w-xs" />
-					<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-				</form>
+	<div class="table_container3">
+		<div class="address3_text_box">
+			<span class="address3_text">${address3 }</span>
+		</div>
+		<section class="mt-8 text-xl px-4">
+			<div class="mx-auto overflow-x-auto">
+				<div class="mb-4 flex">
+					<div class="flex-grow"></div>
+					<form action="">
+						<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+							name="searchKeywordTypeCode">
+							<option value="title">title</option>
+							<option value="body">body</option>
+							<option value="title,body">title+body</option>
+						</select>
+						<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
+							class="input-sm input input-bordered w-48 max-w-xs" />
+						<button class="btn btn-ghost btn-sm" type="submit">검색</button>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="table_box" style="width: 100%; height: 350px; overflow: auto">
-			<table class="table-box-1 table" border="1">
-				<colgroup>
-					<col style="width: 10%" />
-					<col style="width: 20%" />
-					<col style="width: 60%" />
-					<col style="width: 10%" />
-				</colgroup>
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>날짜</th>
-						<th>제목</th>
-						<th>작성자</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="groupBuying" items="${groupBuyingsByAddress3 }">
-						<tr class="hover">
-							<td>${groupBuying.id }</td>
-							<td>${groupBuying.regDate.substring(0,10) }</td>
-							<td>
-								<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-							</td>
-							<td>${groupBuying.extra__writer }</td>
+			<div class="table_box3" style="width: 100%; height: 350px; overflow: auto">
+				<table class="table-box-1 table" border="1">
+					<colgroup>
+						<col style="width: 10%" />
+						<col style="width: 20%" />
+						<col style="width: 60%" />
+						<col style="width: 10%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>날짜</th>
+							<th>제목</th>
+							<th>작성자</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</section>
+					</thead>
+					<tbody>
+						<c:forEach var="groupBuying" items="${groupBuyingsByAddress3 }">
+							<tr class="hover">
+								<td>${groupBuying.id }</td>
+								<td>${groupBuying.regDate.substring(0,10) }</td>
+								<td>
+									<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+								</td>
+								<td>${groupBuying.extra__writer }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
 </div>
+
 <%@ include file="../common/foot.jspf"%>
