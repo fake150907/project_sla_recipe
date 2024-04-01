@@ -81,6 +81,11 @@ public class GroupBuyingService {
 	public int getGroupBuyingsCount(String searchKeywordTypeCode, String searchKeyword) {
 		return groupBuyingRepository.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
 	}
+	
+
+	public int getGroupBuyingsCountByTag(String address, String searchKeywordTypeCode, String searchKeyword) {
+		return groupBuyingRepository.getGroupBuyingsCountByTag(address,searchKeywordTypeCode, searchKeyword);
+	}
 //
 //	public List<GroupBuying> getForPrintGroupBuyings(int boardId) {
 //		return groupBuyingRepository.getForPrintGroupBuyings(boardId);
@@ -103,8 +108,6 @@ public class GroupBuyingService {
 	
 
 	public List<GroupBuying> getForPrintGroupBuyingsByMemberLocationTag(String address, String searchKeywordTypeCode, String searchKeyword) {
-
-
 		return groupBuyingRepository.getForPrintGroupBuyingsByMemberLocationTag(address, searchKeywordTypeCode,
 				searchKeyword);
 	}
@@ -147,5 +150,6 @@ public class GroupBuyingService {
 	public int getBadRpCount(int id) {
 		return groupBuyingRepository.getBadRqCount(id);
 	}
+
 
 }

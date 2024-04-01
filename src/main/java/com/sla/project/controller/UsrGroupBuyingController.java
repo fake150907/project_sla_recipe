@@ -91,7 +91,10 @@ public class UsrGroupBuyingController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
+		String address1 = "탄방동";
+
+		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCountByTag(address1, searchKeywordTypeCode,
+				searchKeyword);
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
@@ -99,8 +102,6 @@ public class UsrGroupBuyingController {
 		int itemsInAPage = 10;
 
 		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
-
-		String address1 = "탄방동";
 
 		List<GroupBuying> groupBuyingsByAddress1 = groupBuyingService.getForPrintGroupBuyings(address1, itemsInAPage,
 				page, searchKeywordTypeCode, searchKeyword);
@@ -113,7 +114,7 @@ public class UsrGroupBuyingController {
 		model.addAttribute("address1", address1);
 		model.addAttribute("groupBuyingsByAddress1", groupBuyingsByAddress1);
 
-		return "usr/groupBuying/list";
+		return "usr/groupBuying/listByMemberLocationTag1";
 	}
 
 	@RequestMapping("/usr/groupBuying/listByMemberLocationTag2")
@@ -146,7 +147,7 @@ public class UsrGroupBuyingController {
 		model.addAttribute("address2", address2);
 		model.addAttribute("groupBuyingsByAddress2", groupBuyingsByAddress2);
 
-		return "usr/groupBuying/list";
+		return "usr/groupBuying/listByMemberLocationTag2";
 	}
 
 	@RequestMapping("/usr/groupBuying/listByMemberLocationTag3")
@@ -179,7 +180,7 @@ public class UsrGroupBuyingController {
 		model.addAttribute("address3", address3);
 		model.addAttribute("groupBuyingsByAddress3", groupBuyingsByAddress3);
 
-		return "usr/groupBuying/list";
+		return "usr/groupBuying/listByMemberLocationTag3";
 	}
 
 	@RequestMapping("/usr/groupBuying/detail")

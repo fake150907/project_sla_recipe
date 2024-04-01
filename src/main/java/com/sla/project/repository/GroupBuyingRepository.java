@@ -107,6 +107,31 @@ public interface GroupBuyingRepository {
 			""")
 	public int getGroupBuyingsCount(String searchKeywordTypeCode, String searchKeyword);
 
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM groupBuying G
+			WHERE 1
+			AND memberLocationTag = #{address}
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND G.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND G.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND G.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR G.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			ORDER BY id DESC
+			</script>
+			""")
+	public int getGroupBuyingsCountByTag(String address, String searchKeywordTypeCode, String searchKeyword);
+
 	@Update("""
 			UPDATE groupBuying
 			SET hitCount = hitCount + 1
@@ -149,7 +174,7 @@ public interface GroupBuyingRepository {
 			""")
 	public List<GroupBuying> getForPrintGroupBuyingsByMemberLocationTag(String address, String searchKeywordTypeCode,
 			String searchKeyword);
-	
+
 	@Select("""
 			<script>
 			SELECT G.*, M.nickname AS extra__writer
@@ -222,6 +247,5 @@ public interface GroupBuyingRepository {
 			WHERE id = #{id}
 			""")
 	public int getBadRqCount(int id);
-
 
 }
