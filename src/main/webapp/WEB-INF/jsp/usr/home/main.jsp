@@ -623,7 +623,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 					<div class="introduce_box"></div>
 					<a href="">
 						<div class="startPage_bottom_content">
-							아무개소개
+							슬라레시피소개
 							<div class="icon">
 								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
 							</div>

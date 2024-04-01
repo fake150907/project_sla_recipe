@@ -10,54 +10,63 @@
 	justify-content: center;
 }
 
+.table_container {
+	position: relative;
+	top: 10%;
+	display: felx;
+	align-content: space-between;
+	align-content: center;
+	width: 1000px;
+	height: 1500px;
+}
+
 .table_container1, .table_container2, .table_container3 {
-	position: absolute;
-}
-
-.table_container1 {
-	top: 20%;
-}
-
-.table_container2 {
-	top: 70%;
-}
-
-.table_container3 {
-	top: 120%;
+	width: auto;
+	height: 400px;
 }
 
 .table_box1, .table_box2, .table_box3 {
-	border: 1px solid #FFFACD;
+	position: absolute;
+	left: 0;
 	background-color: #FFFACD;
+	border: 1px solid #FFFACD;
+}
+
+.table_box1 {
+	top: 10.8%;
+}
+
+.table_box2 {
+	top: 39.8%;
+}
+
+.table_box3 {
+	top: 68.8%;
 }
 
 .address1_text_box, .address2_text_box, .address3_text_box {
 	width: 75px;
 	height: 30px;
-	left: 1%;
 	position: absolute;
-	border-radius: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 	background-color: #CDEAC0;
 	border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.address1_text_box {
-	top: 16%;
-}
-
 .address2_text_box {
-	top: 64%;
+	top: 37.8%;
 }
 
 .address3_text_box {
-	top: 112%;
+	top: 66.8%;
 }
 
 .address1_text, .address2_text, .address3_text {
-	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-content: center;
 	font-weight: bold;
-	left: 16.5%;
-	top: 10%;
 }
 
 /* search_location_form_box */
@@ -173,6 +182,27 @@
 .op:hover {
 	background: rgba(205, 234, 192, 1);
 }
+/* 태그별 전체 게시글 보기 버튼 */
+.show_LT1, .show_LT2, .show_LT3 {
+	position: absolute;
+	left: 7%;
+}
+
+.show_LT1 {
+	top: 8%;
+}
+
+.show_LT2 {
+	top: 37%;
+}
+
+.show_LT3 {
+	top: 66%;
+}
+
+.LT1, .LT2, .LT3 {
+	color: rgba(0, 0, 0, 0.6);
+}
 </style>
 <div class="list_container">
 	<div class="search_container">
@@ -205,164 +235,127 @@
 			</form>
 		</div>
 	</div>
-	<div class="table_container1">
-		<div class="address1_text_box">
-			<span class="address1_text">${address1 }</span>
-		</div>
-		<section class="mt-8 text-xl px-4">
-			<div class="mx-auto overflow-x-auto">
-				<div class="mb-4 flex">
-					<div class="flex-grow"></div>
-					<form action="">
-						<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-							name="searchKeywordTypeCode">
-							<option value="title">title</option>
-							<option value="body">body</option>
-							<option value="title,body">title+body</option>
-						</select>
-						<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-							class="input-sm input input-bordered w-48 max-w-xs" />
-						<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-					</form>
-				</div>
+	<div class="table_container">
+		<div class="table_container1">
+			<div class="address1_text_box">
+				<span class="address1_text">${address1 }</span>
 			</div>
-			<div class="table_box1" style="width: 100%; height: 350px; overflow: auto">
-				<table class="table-box-1 table" border="1">
-					<colgroup>
-						<col style="width: 10%" />
-						<col style="width: 20%" />
-						<col style="width: 60%" />
-						<col style="width: 10%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>날짜</th>
-							<th>제목</th>
-							<th>작성자</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="groupBuying" items="${groupBuyingsByAddress1 }">
-							<tr class="hover">
-								<td>${groupBuying.id }</td>
-								<td>${groupBuying.regDate.substring(0,10) }</td>
-								<td>
-									<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-								</td>
-								<td>${groupBuying.extra__writer }</td>
+			<div class="show_LT1">
+				<a class="LT1 btn btn-active btn-link" href="../groupBuying/listByMemberLocationTag1">전체보기</a>
+			</div>
+			<section class="mt-8 text-xl px-4">
+				<div class="table_box1" style="width: 100%; height: 350px; overflow: auto">
+					<table class="table-box-1 table" border="1">
+						<colgroup>
+							<col style="width: 10%" />
+							<col style="width: 20%" />
+							<col style="width: 60%" />
+							<col style="width: 10%" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>날짜</th>
+								<th>제목</th>
+								<th>작성자</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</div>
-	<div class="table_container2">
-		<div class="address2_text_box">
-			<span class="address2_text">${address2 }</span>
-		</div>
-		<section class="mt-8 text-xl px-4">
-			<div class="mx-auto overflow-x-auto">
-				<div class="mb-4 flex">
-					<div class="flex-grow"></div>
-					<form action="">
-						<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-							name="searchKeywordTypeCode">
-							<option value="title">title</option>
-							<option value="body">body</option>
-							<option value="title,body">title+body</option>
-						</select>
-						<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-							class="input-sm input input-bordered w-48 max-w-xs" />
-						<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-					</form>
+						</thead>
+						<tbody>
+							<c:forEach var="groupBuying" items="${groupBuyingsByAddress1 }">
+								<tr class="hover">
+									<td>${groupBuying.id }</td>
+									<td>${groupBuying.regDate.substring(0,10) }</td>
+									<td>
+										<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+									</td>
+									<td>${groupBuying.extra__writer }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
-			</div>
-			<div class="table_box2" style="width: 100%; height: 350px; overflow: auto">
-				<table class="table-box-1 table" border="1">
-					<colgroup>
-						<col style="width: 10%" />
-						<col style="width: 20%" />
-						<col style="width: 60%" />
-						<col style="width: 10%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>날짜</th>
-							<th>제목</th>
-							<th>작성자</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="groupBuying" items="${groupBuyingsByAddress2 }">
-							<tr class="hover">
-								<td>${groupBuying.id }</td>
-								<td>${groupBuying.regDate.substring(0,10) }</td>
-								<td>
-									<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-								</td>
-								<td>${groupBuying.extra__writer }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</section>
-	</div>
-	<div class="table_container3">
-		<div class="address3_text_box">
-			<span class="address3_text">${address3 }</span>
+			</section>
 		</div>
-		<section class="mt-8 text-xl px-4">
-			<div class="mx-auto overflow-x-auto">
-				<div class="mb-4 flex">
-					<div class="flex-grow"></div>
-					<form action="">
-						<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-							name="searchKeywordTypeCode">
-							<option value="title">title</option>
-							<option value="body">body</option>
-							<option value="title,body">title+body</option>
-						</select>
-						<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-							class="input-sm input input-bordered w-48 max-w-xs" />
-						<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-					</form>
-				</div>
+		<div class="table_container2">
+			<div class="address2_text_box">
+				<span class="address2_text">${address2 }</span>
 			</div>
-			<div class="table_box3" style="width: 100%; height: 350px; overflow: auto">
-				<table class="table-box-1 table" border="1">
-					<colgroup>
-						<col style="width: 10%" />
-						<col style="width: 20%" />
-						<col style="width: 60%" />
-						<col style="width: 10%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>날짜</th>
-							<th>제목</th>
-							<th>작성자</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="groupBuying" items="${groupBuyingsByAddress3 }">
-							<tr class="hover">
-								<td>${groupBuying.id }</td>
-								<td>${groupBuying.regDate.substring(0,10) }</td>
-								<td>
-									<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
-								</td>
-								<td>${groupBuying.extra__writer }</td>
+			<div class="show_LT2">
+				<a class="LT2 btn btn-active btn-link" href="../groupBuying/listByMemberLocationTag2">전체보기</a>
+			</div>
+			<section class="mt-8 text-xl px-4">
+				<div class="table_box2" style="width: 100%; height: 350px; overflow: auto">
+					<table class="table-box-1 table" border="1">
+						<colgroup>
+							<col style="width: 10%" />
+							<col style="width: 20%" />
+							<col style="width: 60%" />
+							<col style="width: 10%" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>날짜</th>
+								<th>제목</th>
+								<th>작성자</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach var="groupBuying" items="${groupBuyingsByAddress2 }">
+								<tr class="hover">
+									<td>${groupBuying.id }</td>
+									<td>${groupBuying.regDate.substring(0,10) }</td>
+									<td>
+										<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+									</td>
+									<td>${groupBuying.extra__writer }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</div>
+		<div class="table_container3">
+			<div class="address3_text_box">
+				<span class="address3_text">${address3 }</span>
 			</div>
-		</section>
+			<div class="show_LT3">
+				<a class="LT3 btn btn-active btn-link" href="../groupBuying/listByMemberLocationTag3">전체보기</a>
+			</div>
+			<section class="mt-8 text-xl px-4">
+				<div class="table_box3" style="width: 100%; height: 350px; overflow: auto">
+					<table class="table-box-1 table" border="1">
+						<colgroup>
+							<col style="width: 10%" />
+							<col style="width: 20%" />
+							<col style="width: 60%" />
+							<col style="width: 10%" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>날짜</th>
+								<th>제목</th>
+								<th>작성자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="groupBuying" items="${groupBuyingsByAddress3 }">
+								<tr class="hover">
+									<td>${groupBuying.id }</td>
+									<td>${groupBuying.regDate.substring(0,10) }</td>
+									<td>
+										<a href="detail?id=${groupBuying.id }">${groupBuying.title }</a>
+									</td>
+									<td>${groupBuying.extra__writer }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</div>
 	</div>
 </div>
 
