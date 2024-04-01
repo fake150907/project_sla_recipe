@@ -47,7 +47,7 @@
 	position: absolute;
 }
 
-.login_MenuIcon {
+.login_HomeIcon {
 	width: 43.96px;
 	height: 38.19px;
 	left: 130px;
@@ -57,23 +57,11 @@
 	justify-content: flex-start;
 	align-items: flex-start;
 	display: inline-flex;
+	z-index: 10;
 }
 
 .material-symbols-outlined {
 	font-size: 40px;
-}
-
-.Menu {
-	width: 43.08px;
-	height: 16.81px;
-	left: 250px;
-	top: 38.19px;
-	position: absolute;
-	color: rgba(0, 0, 0, 0.70);
-	font-size: 15px;
-	font-family: Inter;
-	font-weight: 600;
-	word-wrap: break-word;
 }
 
 .LoginIdBox, .LoginPwBox {
@@ -106,18 +94,6 @@
 	display: inline-flex;
 }
 
-.Rectangle58 {
-	width: 120px;
-	height: 60px;
-	left: 0px;
-	top: 0px;
-	position: absolute;
-	background: rgba(236, 94, 193, 0.43);
-	border-radius: 10px;
-	border: 1px rgba(0, 0, 0, 0.40) solid;
-	backdrop-filter: blur(4px);
-}
-
 .SlaRecipeMidTextBox {
 	top: 300px;
 	height: 148px;
@@ -127,19 +103,9 @@
 }
 
 /* 개별 스타일 */
-.Rectangle57 {
-	width: 720px;
-	height: 800px;
-	left: 870px;
-	top: 50px;
-	position: absolute;
-	background: rgba(255, 255, 255, 0.40);
-	border-radius: 10px;
-}
-
 .LoginIdBox {
-	left: 937px;
-	top: 294px;
+	top: 30%;
+	left: 10%;
 }
 
 .inputLoginId {
@@ -153,16 +119,16 @@
 }
 
 .LoginPwBox {
-	left: 933px;
-	top: 474px;
+	left: 10%;
+	top: 50%;
 }
 
 .LoginBtn {
 	width: 120px;
 	height: 60px;
 	position: absolute;
-	left: 1170px;
-	top: 678px;
+	left: 41%;
+	top: 75%;
 	background-color: #EDC127;
 	border-radius: 10px;
 	opacity: 0.7;
@@ -229,6 +195,7 @@
 	height: 140px;
 	left: 1180px;
 	top: 70px;
+	z-index: 10;
 }
 
 .history_back_btn {
@@ -243,11 +210,25 @@
 .history_back_text {
 	font-size: 20px;
 }
+/* 로그인 박스 */
+.login_form_box {
+	width: 720px;
+	height: 800px;
+	left: 870px;
+	top: 50px;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.40);
+	border-radius: 10px;
+}
 /* find_member css */
 .find_member_Box {
 	position: absolute;
-	top: 80%;
-	left: 60%;
+	top: 90%;
+	left: 34%;
+}
+
+.found {
+	color: rgba(0, 0, 0, 0.6);
 }
 </style>
 </head>
@@ -258,7 +239,7 @@
 			alt="Background Image">
 		<div class="Rectangle57"></div>
 		<div class="HeadIcons">
-			<div class="login_MenuIcon">
+			<div class="login_HomeIcon">
 				<a href="/">
 					<span class="material-symbols-outlined"> home </span>
 					Home
@@ -270,33 +251,35 @@
 				src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png" alt="Logo">
 		</a>
 		<form action="../member/doLogin" method="POST">
-			<div class="LoginIdBox">
-				<div style="font-size: 35px; font-family: Inter; font-weight: 600;">아이디</div>
-				<div class="inputLoginId_box">
-					<img src="https://velog.velcdn.com/images/fake150907/post/9385617a-3763-433f-8c7c-6b9134eff921/image.svg" alt="" />
-					<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginId input w-full"
-						autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
+			<div class="login_form_box">
+				<div class="LoginIdBox">
+					<div style="font-size: 35px; font-family: Inter; font-weight: 600;">아이디</div>
+					<div class="inputLoginId_box">
+						<img src="https://velog.velcdn.com/images/fake150907/post/9385617a-3763-433f-8c7c-6b9134eff921/image.svg" alt="" />
+						<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginId input w-full"
+							autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
+					</div>
+					<div class="Line21"></div>
 				</div>
-				<div class="Line21"></div>
-			</div>
-			<div class="LoginPwBox">
-				<div style="font-size: 35px; font-family: Inter; font-weight: 600;">비밀번호</div>
-				<div class="inputLoginPw_box">
-					<img src="https://velog.velcdn.com/images/fake150907/post/1286d64c-f81c-4b1f-95a3-bb555e940bd9/image.svg" alt="" />
-					<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginPw input w-full"
-						autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+				<div class="LoginPwBox">
+					<div style="font-size: 35px; font-family: Inter; font-weight: 600;">비밀번호</div>
+					<div class="inputLoginPw_box">
+						<img src="https://velog.velcdn.com/images/fake150907/post/1286d64c-f81c-4b1f-95a3-bb555e940bd9/image.svg" alt="" />
+						<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLoginPw input w-full"
+							autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+					</div>
+					<div class="LockFill0Wght400Grad0Opsz241">
+						<div class="Vector"></div>
+					</div>
+					<div class="Line21" style="left: 4px;"></div>
 				</div>
-				<div class="LockFill0Wght400Grad0Opsz241">
-					<div class="Vector"></div>
+				<div class="LoginBtn_box">
+					<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value="로그인" class="LoginBtn" />
 				</div>
-				<div class="Line21" style="left: 4px;"></div>
-			</div>
-			<div class="LoginBtn_box">
-				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value="로그인" class="LoginBtn" />
-			</div>
-			<div class="find_member_Box">
-				<a class="btn btn-active btn-ghost" href="${rq.findLoginIdUri }">아이디 찾기</a>
-				<a class="btn btn-ghost btn-active" href="${rq.findLoginPwUri }">비밀번호찾기</a>
+				<div class="find_member_Box">
+					<a class="found btn btn-active btn-link" href="${rq.findLoginIdUri }">아이디 찾기</a>
+					<a class="found btn btn-active btn-link" href="${rq.findLoginPwUri }">비밀번호찾기</a>
+				</div>
 			</div>
 		</form>
 
