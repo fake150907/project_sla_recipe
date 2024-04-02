@@ -125,7 +125,10 @@ public class UsrGroupBuyingController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
+		String address2 = "둔산동";
+
+		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCountByTag(address2, searchKeywordTypeCode,
+				searchKeyword);
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
@@ -133,8 +136,6 @@ public class UsrGroupBuyingController {
 		int itemsInAPage = 10;
 
 		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
-
-		String address2 = "둔산동";
 
 		List<GroupBuying> groupBuyingsByAddress2 = groupBuyingService.getForPrintGroupBuyings(address2, itemsInAPage,
 				page, searchKeywordTypeCode, searchKeyword);
@@ -158,7 +159,10 @@ public class UsrGroupBuyingController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCount(searchKeywordTypeCode, searchKeyword);
+		String address3 = "갈마동";
+
+		int groupBuyingsCount = groupBuyingService.getGroupBuyingsCountByTag(address3, searchKeywordTypeCode,
+				searchKeyword);
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
@@ -167,11 +171,8 @@ public class UsrGroupBuyingController {
 
 		int pagesCount = (int) Math.ceil(groupBuyingsCount / (double) itemsInAPage);
 
-		String address3 = "갈마동";
-
 		List<GroupBuying> groupBuyingsByAddress3 = groupBuyingService.getForPrintGroupBuyings(address3, itemsInAPage,
 				page, searchKeywordTypeCode, searchKeyword);
-
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
