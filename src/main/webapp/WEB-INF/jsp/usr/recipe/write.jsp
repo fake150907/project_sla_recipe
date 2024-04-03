@@ -527,6 +527,42 @@ fieldset {
 							<span class=""></span>
 						</div>
 					</div>
+					<section class="reply_container mt-5 px-3">
+						<form action="../ingredient/doWrite" method="POST" onsubmit="IngredientWrite__submit(this); return false;">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="요리재료를 입력해주세요" name="ingredienName" />
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="용량을 입력해주세요" name="ingredienMeasure" />
+							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
+						</form>
+						<div class="mx-auto">
+							<span class="ingredient_text" style="font-weight: bold;">요리재료</span>
+							<c:forEach var="ingredient" items="${ingredients }">
+								<div class="hover">
+									<div>${ingredient.id }</div>
+									<div>
+										<span id="ingredient-${ingredient.id }">${ingredient.body }</span>
+										<form method="POST" id="modify-form-${ingredient.id }" style="display: none;"
+											action="/usr/ingredient/doModify">
+											<input type="text" value="${ingredient.body }" name="ingredient-text-${ingredient.id }" />
+										</form>
+									</div>
+									<div>
+										<button onclick="toggleModifybtn('${ingredient.id}');" id="modify-btn-${ingredient.id }"
+											style="white-space: nowrap;" class="btn btn-outline">수정</button>
+										<button onclick="doModifyReply('${ingredient.id}');" style="white-space: nowrap; display: none;"
+											id="save-btn-${ingredient.id }" class="btn btn-outline">저장</button>
+
+									</div>
+									<div>
+										<a style="white-space: nowrap;" class="btn btn-outline"
+											onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+											href="../ingredient/doDelete?id=${ingredient.id }">삭제</a>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</section>
 					<div class="cookWare_box">
 						<span class="cookWare_text" style="font-weight: bold;">요리도구</span>
 						<div class="cookWare_text_bgc"></div>

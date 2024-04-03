@@ -1141,7 +1141,7 @@ function toggleLike() {
 						<td>
 							<span id="reply-${reply.id }">${reply.body }</span>
 							<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
-								<input type="text" value="${reply.body }" name="reply-text-${reply.id }" />
+								<input type="text" value="${reply.body }" name="reply-text-${reply.id }" />     
 							</form>
 						</td>
 						<td>${reply.extra__writer }</td>
@@ -1167,7 +1167,6 @@ function toggleLike() {
 			</tbody>
 		</table>
 	</div>
-
 </section>
 
 
