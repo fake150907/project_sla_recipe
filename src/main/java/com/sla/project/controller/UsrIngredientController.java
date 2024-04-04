@@ -48,7 +48,7 @@ public class UsrIngredientController {
 		int id = (int) writeIngredientRd.getData1();
 
 		return Ut.jsReplace(writeIngredientRd.getResultCode(), writeIngredientRd.getMsg(),
-				"../recipe/detail?id=" + relId);
+				"../recipe/detail?id=" + recipeId);
 
 	}
 
@@ -58,11 +58,11 @@ public class UsrIngredientController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		List<Ingredient> replies = ingredientService.getForPrintIngredients(rq.getLoginedMemberId(), relTypeCode, recipeId);
+		List<Ingredient> ingredients = ingredientService.getForPrintIngredients(rq.getLoginedMemberId(), recipeId);
 
-		model.addAttribute("ingredients", replies);
+		model.addAttribute("ingredients", ingredients);
 
-		return replies;
+		return ingredients;
 	}
 
 	@RequestMapping("/usr/ingredient/doDelete")
@@ -82,13 +82,13 @@ public class UsrIngredientController {
 			ingredientService.deleteIngredient(id);
 		}
 
-		if (Ut.isNullOrEmpty(replaceUri)) {
-			switch (ingredient.getRelTypeCode()) {
-			case "ingredient":
-				replaceUri = Ut.f("../ingredient/detail?id=%d", ingredient.getRelId());
-				break;
-			}
-		}
+//		if (Ut.isNullOrEmpty(replaceUri)) {
+//			switch (ingredient.getRelTypeCode()) {
+//			case "ingredient":
+//				replaceUri = Ut.f("../ingredient/detail?id=%d", ingredient.getRecipeId());
+//				break;
+//			}
+//		}
 
 		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(), replaceUri);
 	}
@@ -114,7 +114,7 @@ public class UsrIngredientController {
 
 		ingredient = ingredientService.getIngredient(id);
 
-		return ingredient.getBody();
+		return ingredient.getIngredientName();
 	}
 
 }

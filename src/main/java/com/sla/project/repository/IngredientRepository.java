@@ -4,57 +4,56 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.sla.project.vo.Reply;
+import com.sla.project.vo.Ingredient;
 
 @Mapper
-public class IngredientRepository {
+public interface IngredientRepository {
 
 	@Select("""
-				SELECT R.*, M.nickname AS extra__writer
-				FROM reply AS R
-				INNER JOIN `member` AS M
-				ON R.memberId = M.id
-				WHERE relTypeCode = #{relTypeCode}
-				AND relId = #{relId}
+				SELECT *
+				FROM ingredient
+				WHERE recipeId = #{relId}
+				AND memberId = #{loginedMemberId}
 				ORDER BY R.id ASC;
 			""")
-	List<Reply> getForPrintIngredients(int loginedMemberId, String relTypeCode, int relId);
+	List<Ingredient> getForPrintIngredients(int loginedMemberId, int relId);
 
 	@Insert("""
-				INSERT INTO reply
+				INSERT INTO ingredient
 				SET regDate = NOW(),
 				updateDate = NOW(),
 				memberId = #{loginedMemberId},
-				relTypeCode = #{relTypeCode},
-				relId = #{relId},
-				`body` = #{body}
+				ingredientName = #{ingredientName},
+				ingredientMeasure = #{ingredientMeasure},
+				recipeId = #{recipeId}
 			""")
-	void writeReply(int loginedMemberId, String relTypeCode, int relId, String body);
+	void writeIngredient(int loginedMemberId, String ingredientName, String ingredientMeasure, int recipeId);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
 
 	@Select("""
 				SELECT R.*
-				FROM reply AS R
+				FROM ingredient AS R
 				WHERE R.id = #{id}
 			""")
-	Reply getReply(int id);
+	Ingredient getIngredient(int id);
 
 	@Delete("""
-				DELETE FROM reply
+				DELETE FROM ingredient
 				WHERE id = #{id}
 			""")
-	void deleteReply(int id);
+	void deleteIngredient(int id);
 
 	@Update("""
-			UPDATE reply
-			SET `body` = #{body},
+			UPDATE ingredient
+			SET ingredientName = #{ingredientName},
 			updateDate = NOW()
 			WHERE id = #{id}
 				""")
-	public void modifyReply(int id, String body);
+	public void modifyIngredient(int id, String ingredientName);
 }

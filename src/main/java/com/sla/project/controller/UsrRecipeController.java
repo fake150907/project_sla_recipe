@@ -133,8 +133,8 @@ public class UsrRecipeController {
 				"recipe");
 		boolean isAlreadyAddrecipeBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "recipe");
 		boolean isAlreadyAddReplyGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
-				"comment");
-		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "comment");
+				"reply");
+		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "reply");
 
 		String relTypeCode = "Recipe";
 

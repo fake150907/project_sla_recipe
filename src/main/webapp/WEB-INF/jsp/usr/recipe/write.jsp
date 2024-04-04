@@ -33,6 +33,97 @@
 
 </script>
 
+<script>
+<!-- 요리재료 작성 -->
+
+function ingredientDoWrite(recipeId) {
+	
+ $.ajax({
+		url: '/usr/ingredient/doWrite',
+		type: 'POST',
+		data: {ingredientName : ingredientName, relId: recipeId},
+		dataType: 'json',
+		success: function(data){
+			console.log(data);
+			console.log('data.data1Name : ' + data.data1Name);
+			console.log('data.data1 : ' + data.data1);
+			console.log('data.data2Name : ' + data.data2Name);
+			console.log('data.data2 : ' + data.data2);
+			if(data.resultCode.startsWith('S-')){
+				var likeButton = $('#likeButton');
+				var likeCount = $('#likeCount');
+				var DislikeButton = $('#DislikeButton');
+				var DislikeCount = $('#DislikeCount');
+				
+				if(data.resultCode == 'S-1'){
+					DislikeButton.toggleClass('btn-outline');
+					DislikeCount.text(data.data2);
+				}else if(data.resultCode == 'S-2'){
+					likeButton.toggleClass('btn-outline');
+					likeCount.text(data.data1);
+					DislikeButton.toggleClass('btn-outline');
+					DislikeCount.text(data.data2);
+	
+				}else {
+					DislikeButton.toggleClass('btn-outline');
+					DislikeCount.text(data.data2);
+				}
+		
+			}else {
+				alert(data.msg);
+			}
+		},
+		error: function(jqXHR,textStatus,errorThrown) {
+			alert('싫어요 오류 발생 : ' + textStatus);
+		}
+		
+	});
+}
+
+function toggleModifybtn(ingredientId)) {
+	
+	console.log(ingredientId);
+	
+	$('#modify-btn-'+ingredientId).hide();
+	$('#save-btn-'+ingredientId).show();
+	$('#ingredient-'+ingredientId).hide();
+	$('#modify-form-'+ingredientId).show();
+}
+
+function doModifyReply(ingredientId) {
+	 console.log(ingredientId); // 디버깅을 위해 ingredientId를 콘솔에 출력
+	    
+	    // form 요소를 정확하게 선택
+	    var form = $('#modify-form-' + ingredientId);
+	    console.log(form); // 디버깅을 위해 form을 콘솔에 출력
+
+	    // form 내의 input 요소의 값을 가져옵니다
+	    var text = form.find('input[name="reply-text-' + ingredientId + '"]').val();
+	    console.log(text); // 디버깅을 위해 text를 콘솔에 출력
+
+	    // form의 action 속성 값을 가져옵니다
+	    var action = form.attr('action');
+	    console.log(action); // 디버깅을 위해 action을 콘솔에 출력
+	
+    $.post({
+    	url: '/usr/reply/doModify', // 수정된 URL
+        type: 'POST', // GET에서 POST로 변경
+        data: { id: ingredientId, body: text }, // 서버에 전송할 데이터
+        success: function(data) {
+        	$('#modify-form-'+ingredientId).hide();
+        	$('#reply-'+ingredientId).text(data);
+        	$('#reply-'+ingredientId).show();
+        	$('#save-btn-'+ingredientId).hide();
+        	$('#modify-btn-'+ingredientId).show();
+        },
+        error: function(xhr, status, error) {
+            alert('댓글 수정에 실패했습니다: ' + error);
+        }
+	})
+};
+
+</script>
+
 <style>
 .cooking_information {
 	height: 900px;
@@ -527,75 +618,41 @@ fieldset {
 							<span class=""></span>
 						</div>
 					</div>
-					<section class="reply_container mt-5 px-3">
-						<form action="../ingredient/doWrite" method="POST" onsubmit="IngredientWrite__submit(this); return false;">
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="요리재료를 입력해주세요" name="ingredienName" />
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="용량을 입력해주세요" name="ingredienMeasure" />
-							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
-						</form>
-						<div class="mx-auto">
-							<span class="ingredient_text" style="font-weight: bold;">요리재료</span>
-							<c:forEach var="ingredient" items="${ingredients }">
-								<div class="hover">
-									<div>${ingredient.id }</div>
-									<div>
-										<span id="ingredient-${ingredient.id }">${ingredient.body }</span>
-										<form method="POST" id="modify-form-${ingredient.id }" style="display: none;"
-											action="/usr/ingredient/doModify">
-											<input type="text" value="${ingredient.body }" name="ingredient-text-${ingredient.id }" />
-										</form>
-									</div>
-									<div>
-										<button onclick="toggleModifybtn('${ingredient.id}');" id="modify-btn-${ingredient.id }"
-											style="white-space: nowrap;" class="btn btn-outline">수정</button>
-										<button onclick="doModifyReply('${ingredient.id}');" style="white-space: nowrap; display: none;"
-											id="save-btn-${ingredient.id }" class="btn btn-outline">저장</button>
+				</div>
 
-									</div>
-									<div>
-										<a style="white-space: nowrap;" class="btn btn-outline"
-											onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-											href="../ingredient/doDelete?id=${ingredient.id }">삭제</a>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-					</section>
-					<div class="cookWare_box">
-						<span class="cookWare_text" style="font-weight: bold;">요리도구</span>
-						<div class="cookWare_text_bgc"></div>
-						<div class="cookWare_data_box">
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="요리도구를 입력해주세요" name="cookWareName" />
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="개수를 입력해주세요" name="cookWareCount" />
-						</div>
-						<div class="cookWare_box_bgc">
-							<span class=""></span>
-						</div>
+				<div class="cookWare_box">
+					<span class="cookWare_text" style="font-weight: bold;">요리도구</span>
+					<div class="cookWare_text_bgc"></div>
+					<div class="cookWare_data_box">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="요리도구를 입력해주세요" name="cookWareName" />
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="개수를 입력해주세요" name="cookWareCount" />
 					</div>
-					<div class="body_box">
-						<span class="body_text" style="font-weight: bold;">내용</span>
-						<div class="body_text_bgc"></div>
-						<div class="body_data_box">
-							<div class="toast-ui-editor">
-								<script type="text/x-template"></script>
-							</div>
-						</div>
-					</div>
-					<div class="submitBtn_Box">
-						<button class="submitBtn btn btn-outline" type="submit" value="">
-							<span style="font-size: 20px; font-weight: bold;">작성</span>
-						</button>
+					<div class="cookWare_box_bgc">
+						<span class=""></span>
 					</div>
 				</div>
+				<div class="body_box">
+					<span class="body_text" style="font-weight: bold;">내용</span>
+					<div class="body_text_bgc"></div>
+					<div class="body_data_box">
+						<div class="toast-ui-editor">
+							<script type="text/x-template"></script>
+						</div>
+					</div>
+				</div>
+				<div class="submitBtn_Box">
+					<button class="submitBtn btn btn-outline" type="submit" value="">
+						<span style="font-size: 20px; font-weight: bold;">작성</span>
+					</button>
+				</div>
 			</div>
-		</form>
-		<div class="btns">
-			<button class="btn btn-outline" class="" type="button" onclick="history.back();">뒤로가기</button>
-		</div>
+	</div>
+	</form>
+	<div class="btns">
+		<button class="btn btn-outline" class="" type="button" onclick="history.back();">뒤로가기</button>
+	</div>
 	</div>
 </section>
 

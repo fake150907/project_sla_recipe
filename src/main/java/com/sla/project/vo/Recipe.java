@@ -1,5 +1,7 @@
 package com.sla.project.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +23,9 @@ public class Recipe {
 	private int personnel;
 	private int cookingTime;
 	private int cookLevel;
-
+	private List<Ingredient> ingredients;
+	private List<CookWare> cookWares;
+	
 	private int extra__repliesCnt;
 	private String extra__writer;
 

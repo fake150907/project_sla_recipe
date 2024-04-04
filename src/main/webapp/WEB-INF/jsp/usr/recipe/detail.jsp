@@ -187,7 +187,6 @@
 
 			ReplyWrite__submitDone = true;
 			form.submit();
-
 		}
 </script>
 <!-- 댓글 수정 -->
@@ -233,7 +232,6 @@ function doModifyReply(replyId) {
         }
 	})
 };
-/* 좋아요버튼 */
 
 </script>
 
@@ -1048,7 +1046,7 @@ function toggleLike() {
 				<div class="ingredient_data_Box">
 					<c:forEach var="ingredient" items="${ingredient}">
 						<div class="ingredientContent">
-							<div class="ingredientName">${ingredient.name}</div>
+							<div class="ingredientName">${ingredient.ingredientName}</div>
 							<div class="ingredientMeasure">${ingredient.measure}</div>
 							<div class="ingredient_Line"></div>
 						</div>
@@ -1082,7 +1080,6 @@ function toggleLike() {
 	<div class="btns mt-5">
 		<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 	</div>
-
 </section>
 
 <section class="reply_container mt-5 px-3">
@@ -1141,7 +1138,7 @@ function toggleLike() {
 						<td>
 							<span id="reply-${reply.id }">${reply.body }</span>
 							<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
-								<input type="text" value="${reply.body }" name="reply-text-${reply.id }" />     
+								<input type="text" value="${reply.body }" name="reply-text-${reply.id }" />
 							</form>
 						</td>
 						<td>${reply.extra__writer }</td>

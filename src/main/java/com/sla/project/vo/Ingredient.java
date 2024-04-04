@@ -11,7 +11,7 @@ public class Ingredient {
 	private int id;
 	private int recipeId;
 	private int memberId;
-	private String name;
+	private String ingredientName;
 	private String nutrients;
 	private String measure;
 }
