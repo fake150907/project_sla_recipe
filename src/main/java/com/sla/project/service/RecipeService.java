@@ -9,6 +9,7 @@ import com.sla.project.repository.RecipeRepository;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.CookWare;
 import com.sla.project.vo.Ingredient;
+import com.sla.project.vo.IngredientList;
 import com.sla.project.vo.Recipe;
 import com.sla.project.vo.ResultData;
 
@@ -17,6 +18,8 @@ public class RecipeService {
 
 	@Autowired
 	private RecipeRepository recipeRepository;
+	@Autowired
+	private IngredientService ingredientService;
 
 	public RecipeService(RecipeRepository recipeRepository) {
 		this.recipeRepository = recipeRepository;
@@ -75,11 +78,13 @@ public class RecipeService {
 	}
 
 	public ResultData<Integer> writeRecipe(int memberId, String title, String body, int categoryId, int personnel,
-			int cookingTime, int cookLevel) {
+			int cookingTime, int cookLevel, IngredientList ingredients) {
 
 		recipeRepository.writeRecipe(memberId, title, body, categoryId, personnel, cookingTime, cookLevel);
 
 		int id = recipeRepository.getLastInsertId();
+		
+		ingredientService.writeIngredient(memberId, ingredients);
 
 		return ResultData.from("S-1", Ut.f("%d번 글이 생성되었습니다", id), "id", id);
 	}

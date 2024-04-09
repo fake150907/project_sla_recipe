@@ -20,6 +20,7 @@ import com.sla.project.service.ReplyService;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.CookWare;
 import com.sla.project.vo.Ingredient;
+import com.sla.project.vo.IngredientList;
 import com.sla.project.vo.Recipe;
 import com.sla.project.vo.ResultData;
 import com.sla.project.vo.Rq;
@@ -132,8 +133,7 @@ public class UsrRecipeController {
 		boolean isAlreadyAddrecipeGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
 				"recipe");
 		boolean isAlreadyAddrecipeBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "recipe");
-		boolean isAlreadyAddReplyGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id,
-				"reply");
+		boolean isAlreadyAddReplyGoodRp = reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "reply");
 		boolean isAlreadyAddReplyBadRp = reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "reply");
 
 		String relTypeCode = "Recipe";
@@ -182,8 +182,8 @@ public class UsrRecipeController {
 	@RequestMapping("/usr/recipe/doWrite")
 	@ResponseBody
 	public String doWrite(HttpServletRequest req, String title, String body, int categoryId, int personnel,
-			int cookingTime, int cookLevel, String ingredientName, String ingredientMeasure, String cookWareName,
-			String cookWareCount, String replaceUri, MultipartRequest multipartRequest) {
+			int cookingTime, int cookLevel, IngredientList ingredients, String cookWareName, String cookWareCount,
+			String replaceUri, MultipartRequest multipartRequest) {
 
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
@@ -193,7 +193,7 @@ public class UsrRecipeController {
 		}
 
 		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId,
-				personnel, cookingTime, cookLevel);
+				personnel, cookingTime, cookLevel, ingredients);
 
 		int id = (int) writeRecipeRd.getData1();
 

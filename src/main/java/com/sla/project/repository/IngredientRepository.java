@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.sla.project.vo.Ingredient;
+import com.sla.project.vo.IngredientList;
 
 @Mapper
 public interface IngredientRepository {
@@ -31,7 +32,7 @@ public interface IngredientRepository {
 				ingredientMeasure = #{ingredientMeasure},
 				recipeId = #{recipeId}
 			""")
-	void writeIngredient(int loginedMemberId, String ingredientName, String ingredientMeasure, int recipeId);
+	void writeIngredient(int loginedMemberId, IngredientList ingredientList);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();

@@ -431,56 +431,6 @@ fieldset {
 				<div class="cooking_information_text_bgc"></div>
 			</div>
 			<div class="cooking_information_bgc"></div>
-			<!-- select칸 -->
-			<%-- <div class="categoryId_box">
-				<div class="categoryId_text">카테고리</div>
-				<div class="categoryId_select">
-					<select class="categoryId select select-bordered select-sm max-w-xs" name="categoryId">
-						<option value="1" ${param.categoryId == '1' ? 'selected' : ''}>집밥</option>
-						<option value="2" ${param.categoryId == '2' ? 'selected' : ''}>다이어트</option>
-						<option value="3" ${param.categoryId == '3' ? 'selected' : ''}>탄단지</option>
-						<option value="4" ${param.categoryId == '4' ? 'selected' : ''}>초간단</option>
-						<option value="5" ${param.categoryId == '5' ? 'selected' : ''}>대접</option>
-					</select>
-				</div>
-			</div>
-			<div class="personnel_box">
-				<div class="personnel_text">인원</div>
-				<div class="personnel_select">
-					<select class="personnel select select-bordered select-sm max-w-xs" name="personnel">
-						<option value="1" ${param.personnel == '1' ? 'selected' : ''}>1인분</option>
-						<option value="2" ${param.personnel == '2' ? 'selected' : ''}>2인분</option>
-						<option value="3" ${param.personnel == '3' ? 'selected' : ''}>3인분</option>
-						<option value="4" ${param.personnel == '4' ? 'selected' : ''}>4인분</option>
-						<option value="5" ${param.personnel == '5' ? 'selected' : ''}>5인분이상</option>
-					</select>
-				</div>
-			</div>
-			<div class="cookingTime_box">
-				<div class="cookingTime_text">요리시간</div>
-				<div class="cookingTime_select">
-					<select class="cookingTime select select-bordered select-sm max-w-xs" name="cookingTime">
-						<option value="1" ${param.cookingTime == '1' ? 'selected' : ''}>10분이내</option>
-						<option value="2" ${param.cookingTime == '2' ? 'selected' : ''}>15분이내</option>
-						<option value="3" ${param.cookingTime == '3' ? 'selected' : ''}>20분이내</option>
-						<option value="4" ${param.cookingTime == '4' ? 'selected' : ''}>30분이내</option>
-						<option value="5" ${param.cookingTime == '5' ? 'selected' : ''}>60분이내</option>
-						<option value="6" ${param.cookingTime == '6' ? 'selected' : ''}>90분이내</option>
-					</select>
-				</div>
-			</div>
-			<div class="cookLevel_box">
-				<div class="cookLevel_text">난이도</div>
-				<div class="cookLevel_select">
-					<select class="cookLevel select select-bordered select-sm max-w-xs" name="cookLevel">
-						<option value="1" ${param.cookLevel == '1' ? 'selected' : ''}>아무나</option>
-						<option value="2" ${param.cookLevel == '2' ? 'selected' : ''}>초하수달</option>
-						<option value="3" ${param.cookLevel == '3' ? 'selected' : ''}>하수달</option>
-						<option value="4" ${param.cookLevel == '4' ? 'selected' : ''}>고수달</option>
-						<option value="5" ${param.cookLevel == '5' ? 'selected' : ''}>초고수달</option>
-					</select>
-				</div>
-			</div> --%>
 			<!-- radioBtn칸 -->
 			<div class="categoryId_box">
 				<div class="categoryId_text" style="font-size: 18px;">카테고리</div>
@@ -583,43 +533,40 @@ fieldset {
 				</div>
 			</div>
 			<div class="write-box table-box-1">
-				<div>
-					<div class="Thumbnail_box">
-						<span class="Thumbnail_text" style="font-weight: bold;">썸네일</span>
-						<div class="Thumbnail_text_bgc"></div>
-						<div class="Thumbnail_data_box">
-							<input id="fileInput" placeholder="이미지를 선택해주세요" type="file" />
-						</div>
-						<div class="Thumbnail_box_bgc">
-							<span class=""></span>
-						</div>
+				<div class="Thumbnail_box">
+					<span class="Thumbnail_text" style="font-weight: bold;">썸네일</span>
+					<div class="Thumbnail_text_bgc"></div>
+					<div class="Thumbnail_data_box">
+						<input id="fileInput" placeholder="이미지를 선택해주세요" type="file" />
 					</div>
-					<div class="title_box">
-						<span class="title_text" style="font-weight: bold;">제목</span>
-						<div class="title_text_bgc"></div>
-						<div class="title_data_box">
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="제목을 입력해주세요" name="title" />
-						</div>
-						<div class="title_box_bgc">
-							<span class=""></span>
-						</div>
-					</div>
-					<div class="ingredient_box">
-						<span class="ingredient_text" style="font-weight: bold;">요리재료</span>
-						<div class="ingredient_text_bgc"></div>
-						<div class="ingredient_data_box">
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="요리재료를 입력해주세요" name="ingredienName" />
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="용량을 입력해주세요" name="ingredienMeasure" />
-						</div>
-						<div class="ingredient_box_bgc">
-							<span class=""></span>
-						</div>
+					<div class="Thumbnail_box_bgc">
+						<span class=""></span>
 					</div>
 				</div>
-
+				<div class="title_box">
+					<span class="title_text" style="font-weight: bold;">제목</span>
+					<div class="title_text_bgc"></div>
+					<div class="title_data_box">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="제목을 입력해주세요" name="title" />
+					</div>
+					<div class="title_box_bgc">
+						<span class=""></span>
+					</div>
+				</div>
+				<div class="ingredient_box">
+					<span class="ingredient_text" style="font-weight: bold;">요리재료</span>
+					<div class="ingredient_text_bgc"></div>
+					<div class="ingredient_data_box">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="요리재료를 입력해주세요" name="ingredienName" />
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="용량을 입력해주세요" name="ingredienMeasure" />
+					</div>
+					<div class="ingredient_box_bgc">
+						<span class=""></span>
+					</div>
+				</div>
 				<div class="cookWare_box">
 					<span class="cookWare_text" style="font-weight: bold;">요리도구</span>
 					<div class="cookWare_text_bgc"></div>
@@ -648,11 +595,10 @@ fieldset {
 					</button>
 				</div>
 			</div>
-	</div>
-	</form>
-	<div class="btns">
-		<button class="btn btn-outline" class="" type="button" onclick="history.back();">뒤로가기</button>
-	</div>
+		</form>
+		<div class="btns">
+			<button class="btn btn-outline" class="" type="button" onclick="history.back();">뒤로가기</button>
+		</div>
 	</div>
 </section>
 

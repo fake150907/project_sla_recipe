@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sla.project.repository.IngredientRepository;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.Ingredient;
+import com.sla.project.vo.IngredientList;
 import com.sla.project.vo.ResultData;
 
 @Service
@@ -26,13 +27,11 @@ public class IngredientService {
 		return ingredients;
 	}
 
-	public ResultData<Integer> writeIngredient(int loginedMemberId, String ingredientName, String ingredientMeasure,
-			int recipeId) {
-		ingredientRepository.writeIngredient(loginedMemberId, ingredientName, ingredientMeasure, recipeId);
+	public void writeIngredient(int loginedMemberId, IngredientList ingredients) {
+		ingredientRepository.writeIngredient(loginedMemberId, ingredients);
 
 		int id = ingredientRepository.getLastInsertId();
 
-		return ResultData.from("S-1", Ut.f("%d번 댓글이 생성되었습니다", id), "id", id);
 	}
 
 	public ResultData userCanDelete(int loginedMemberId, Ingredient ingredient) {
