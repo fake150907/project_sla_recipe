@@ -24,13 +24,13 @@ public interface IngredientRepository {
 	List<Ingredient> getForPrintIngredients(int loginedMemberId, int relId);
 
 	@Insert("""
-				INSERT INTO ingredient
-				SET regDate = NOW(),
-				updateDate = NOW(),
-				memberId = #{loginedMemberId},
-				ingredientName = #{ingredientName},
-				ingredientMeasure = #{ingredientMeasure},
-				recipeId = #{recipeId}
+			    <script>
+			    INSERT INTO ingredient (regDate, updateDate, memberId, ingredientName,nutrients, measure, recipeId)
+			    VALUES
+			    <foreach collection='ingredientList' item='item' separator=','>
+			    (NOW(), NOW(), #{loginedMemberId}, #{item.ingredientName},'단백질',#{item.measure} ,#{item.recipeId})
+			    </foreach>
+			    </script>
 			""")
 	void writeIngredient(int loginedMemberId, IngredientList ingredientList);
 

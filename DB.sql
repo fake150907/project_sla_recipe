@@ -38,7 +38,7 @@ CREATE TABLE ingredient(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     recipeId INT(10) UNSIGNED NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
-    `name` CHAR(20) NOT NULL,
+    ingredientName CHAR(20) NOT NULL,
     nutrients  CHAR(20) NOT NULL,
     measure CHAR(10) NOT NULL
 );
@@ -209,63 +209,63 @@ cookLevel = 1;
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '김치',
+ingredientName = '김치',
 nutrients = '식이섬유',
 measure = '반포기';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '생닭',
+ingredientName = '생닭',
 nutrients = '단백질',
 measure = '1마리';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '우유',
+ingredientName = '우유',
 nutrients = '단백질,지질,유당',
 measure = '500ml';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '고추가루',
+ingredientName = '고추가루',
 nutrients = '',
 measure = '1T';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '양파',
+ingredientName = '양파',
 nutrients = '케르세틴',
 measure = '1개';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '다진마늘',
+ingredientName = '다진마늘',
 nutrients = '아미노산',
 measure = '1T';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '대파',
+ingredientName = '대파',
 nutrients = '무기질',
 measure = '반단';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-`name` = '물',
+ingredientName = '물',
 nutrients = '수분',
 measure = '300ml';
 
 INSERT INTO ingredient
 SET recipeId = 3,
 memberId = 3,
-`name` = '가물치',
+ingredientName = '가물치',
 nutrients = '단백질',
 measure = '1마리';
 
@@ -326,7 +326,9 @@ SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 3,
 title = '연어공구할사람!',
-`body`='둔산동으로 모여잇!';
+`body`='둔산동으로 모여잇!',
+memberLocationTag = '둔산동',
+buyingLocation = '이마트';
 
 INSERT INTO groupBuying
 (
@@ -348,6 +350,10 @@ INSERT INTO groupBuying
 )
 SELECT NOW(),NOW(), FLOOR(RAND() * 2) + 2, CONCAT('제목_',RAND()), CONCAT('내용_',RAND()),'갈마동','홈세이브마트'
 FROM groupBuying;
+
+SELECT * FROM groupBuying;
+
+SELECT COUNT(*) FROM groupBuying;
 
 #########################################################################
 # hashTag table insert data

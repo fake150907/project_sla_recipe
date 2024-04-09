@@ -558,10 +558,25 @@ fieldset {
 					<span class="ingredient_text" style="font-weight: bold;">요리재료</span>
 					<div class="ingredient_text_bgc"></div>
 					<div class="ingredient_data_box">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+						<!-- 				<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
 							placeholder="요리재료를 입력해주세요" name="ingredienName" />
 						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="용량을 입력해주세요" name="ingredienMeasure" />
+							placeholder="용량을 입력해주세요" name="ingredienMeasure" /> -->
+
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="요리재료를 입력해주세요" name="ingredients[0].ingredientName">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="용량을 입력해주세요" name="ingredients[0].measure">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
+							name="ingredients[0].recipeId" value="${currentId }">
+
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="요리재료를 입력해주세요" name="ingredients[1].ingredientName">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="용량을 입력해주세요" name="ingredients[1].measure">
+						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
+							name="ingredients[1].recipeId" value="${currentId }">
+
 					</div>
 					<div class="ingredient_box_bgc">
 						<span class=""></span>
