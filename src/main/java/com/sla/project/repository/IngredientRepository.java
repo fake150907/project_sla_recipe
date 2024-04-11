@@ -25,14 +25,14 @@ public interface IngredientRepository {
 
 	@Insert("""
 			    <script>
-			    INSERT INTO ingredient (regDate, updateDate, memberId, ingredientName,nutrients, measure, recipeId)
+			    INSERT INTO ingredient ( memberId, ingredientName,nutrients, measure, recipeId)
 			    VALUES
 			    <foreach collection='ingredientList' item='item' separator=','>
-			    (NOW(), NOW(), #{loginedMemberId}, #{item.ingredientName},'단백질',#{item.measure} ,#{item.recipeId})
+			    (#{loginedMemberId}, #{item.ingredientName},'단백질',#{item.measure} ,#{item.recipeId})
 			    </foreach>
 			    </script>
 			""")
-	void writeIngredient(int loginedMemberId, IngredientList ingredientList);
+	void writeIngredient(int loginedMemberId, List<Ingredient> ingredientList);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();

@@ -28,9 +28,10 @@ public class IngredientService {
 	}
 
 	public void writeIngredient(int loginedMemberId, IngredientList ingredients) {
-		ingredientRepository.writeIngredient(loginedMemberId, ingredients);
 
 		int id = ingredientRepository.getLastInsertId();
+		
+		ingredientRepository.writeIngredient(loginedMemberId, ingredients.getIngredients());
 
 	}
 
