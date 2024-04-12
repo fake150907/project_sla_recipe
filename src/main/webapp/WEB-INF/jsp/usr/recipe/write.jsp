@@ -35,93 +35,39 @@
 
 <script>
 <!-- 요리재료 작성 -->
+var ingredientIndex = 1; // 초기 재료 인덱스
 
-function ingredientDoWrite(recipeId) {
-	
- $.ajax({
-		url: '/usr/ingredient/doWrite',
-		type: 'POST',
-		data: {ingredientName : ingredientName, relId: recipeId},
-		dataType: 'json',
-		success: function(data){
-			console.log(data);
-			console.log('data.data1Name : ' + data.data1Name);
-			console.log('data.data1 : ' + data.data1);
-			console.log('data.data2Name : ' + data.data2Name);
-			console.log('data.data2 : ' + data.data2);
-			if(data.resultCode.startsWith('S-')){
-				var likeButton = $('#likeButton');
-				var likeCount = $('#likeCount');
-				var DislikeButton = $('#DislikeButton');
-				var DislikeCount = $('#DislikeCount');
-				
-				if(data.resultCode == 'S-1'){
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
-				}else if(data.resultCode == 'S-2'){
-					likeButton.toggleClass('btn-outline');
-					likeCount.text(data.data1);
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
-	
-				}else {
-					DislikeButton.toggleClass('btn-outline');
-					DislikeCount.text(data.data2);
-				}
-		
-			}else {
-				alert(data.msg);
-			}
-		},
-		error: function(jqXHR,textStatus,errorThrown) {
-			alert('싫어요 오류 발생 : ' + textStatus);
-		}
-		
-	});
+function addInputFields() {
+    // 새로운 input 요소들 생성
+    var input1 = createInputField("요리재료를 입력해주세요", "ingredients[" + ingredientIndex + "].ingredientName");
+    var input2 = createInputField("용량을 입력해주세요", "ingredients[" + ingredientIndex + "].measure");
+    var input3 = createHiddenField("ingredients[" + ingredientIndex + "].recipeId", "${currentId}");
+
+    // 생성된 input 요소들을 문서에 추가
+    document.getElementById("inputFieldsContainer").appendChild(input1);
+    document.getElementById("inputFieldsContainer").appendChild(input2);
+    document.getElementById("inputFieldsContainer").appendChild(input3);
+
+    ingredientIndex++; // 인덱스 증가
 }
 
-function toggleModifybtn(ingredientId)) {
-	
-	console.log(ingredientId);
-	
-	$('#modify-btn-'+ingredientId).hide();
-	$('#save-btn-'+ingredientId).show();
-	$('#ingredient-'+ingredientId).hide();
-	$('#modify-form-'+ingredientId).show();
+function createInputField(placeholder, name) {
+    var input = document.createElement("input");
+    input.className = "input input-bordered input-primary w-full max-w-xs";
+    input.setAttribute("autocomplete", "off");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", placeholder);
+    input.setAttribute("name", name);
+    return input;
 }
 
-function doModifyReply(ingredientId) {
-	 console.log(ingredientId); // 디버깅을 위해 ingredientId를 콘솔에 출력
-	    
-	    // form 요소를 정확하게 선택
-	    var form = $('#modify-form-' + ingredientId);
-	    console.log(form); // 디버깅을 위해 form을 콘솔에 출력
-
-	    // form 내의 input 요소의 값을 가져옵니다
-	    var text = form.find('input[name="reply-text-' + ingredientId + '"]').val();
-	    console.log(text); // 디버깅을 위해 text를 콘솔에 출력
-
-	    // form의 action 속성 값을 가져옵니다
-	    var action = form.attr('action');
-	    console.log(action); // 디버깅을 위해 action을 콘솔에 출력
-	
-    $.post({
-    	url: '/usr/reply/doModify', // 수정된 URL
-        type: 'POST', // GET에서 POST로 변경
-        data: { id: ingredientId, body: text }, // 서버에 전송할 데이터
-        success: function(data) {
-        	$('#modify-form-'+ingredientId).hide();
-        	$('#reply-'+ingredientId).text(data);
-        	$('#reply-'+ingredientId).show();
-        	$('#save-btn-'+ingredientId).hide();
-        	$('#modify-btn-'+ingredientId).show();
-        },
-        error: function(xhr, status, error) {
-            alert('댓글 수정에 실패했습니다: ' + error);
-        }
-	})
-};
-
+function createHiddenField(name, value) {
+    var input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", name);
+    input.setAttribute("value", value);
+    return input;
+}
 </script>
 
 <style>
@@ -562,21 +508,15 @@ fieldset {
 							placeholder="요리재료를 입력해주세요" name="ingredienName" />
 						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
 							placeholder="용량을 입력해주세요" name="ingredienMeasure" /> -->
-
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="요리재료를 입력해주세요" name="ingredients[0].ingredientName">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="용량을 입력해주세요" name="ingredients[0].measure">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
-							name="ingredients[0].recipeId" value="${currentId }">
-
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="요리재료를 입력해주세요" name="ingredients[1].ingredientName">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-							placeholder="용량을 입력해주세요" name="ingredients[1].measure">
-						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
-							name="ingredients[1].recipeId" value="${currentId }">
-
+						<div id="inputFieldsContainer">
+							<%-- 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="요리재료를 입력해주세요" name="ingredients[0].ingredientName">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="용량을 입력해주세요" name="ingredients[0].measure">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
+								name="ingredients[0].recipeId" value="${currentId }"> --%>
+						</div>
+						<button type="button" onclick="addInputFields()">추가</button>
 					</div>
 					<div class="ingredient_box_bgc">
 						<span class=""></span>
