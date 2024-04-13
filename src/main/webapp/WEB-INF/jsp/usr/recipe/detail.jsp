@@ -1046,7 +1046,7 @@ function toggleLike() {
 				<div class="ingredient_data_Box">
 					<c:forEach var="ingredient" items="${ingredient}">
 						<div class="ingredientContent">
-							<div class="ingredientName">${ingredient.ingredientName}</div>
+							<div class="ingredientName">${ingredient.name}</div>
 							<div class="ingredientMeasure">${ingredient.measure}</div>
 							<div class="ingredient_Line"></div>
 						</div>

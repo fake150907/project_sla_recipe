@@ -37,18 +37,35 @@
 <!-- 요리재료 작성 -->
 var ingredientIndex = 1; // 초기 재료 인덱스
 
-function addInputFields() {
+function addInputIngredientFields() {
     // 새로운 input 요소들 생성
-    var input1 = createInputField("요리재료를 입력해주세요", "ingredients[" + ingredientIndex + "].ingredientName");
+    var input1 = createInputField("요리재료를 입력해주세요", "ingredients[" + ingredientIndex + "].name");
     var input2 = createInputField("용량을 입력해주세요", "ingredients[" + ingredientIndex + "].measure");
     var input3 = createHiddenField("ingredients[" + ingredientIndex + "].recipeId", "${currentId}");
 
     // 생성된 input 요소들을 문서에 추가
-    document.getElementById("inputFieldsContainer").appendChild(input1);
-    document.getElementById("inputFieldsContainer").appendChild(input2);
-    document.getElementById("inputFieldsContainer").appendChild(input3);
+    document.getElementById("inputIngredientFieldsContainer").appendChild(input1);
+    document.getElementById("inputIngredientFieldsContainer").appendChild(input2);
+    document.getElementById("inputIngredientFieldsContainer").appendChild(input3);
 
     ingredientIndex++; // 인덱스 증가
+}
+
+<!-- 요리도구 작성 -->
+var cookWareIndex = 1; // 초기 재료 인덱스
+
+function addInputCookWareFields() {
+    // 새로운 input 요소들 생성
+    var input1 = createInputField("요리도구를 입력해주세요", "cookWares[" + cookWareIndex + "].name");
+    var input2 = createInputField("수량을 입력해주세요", "cookWares[" + cookWareIndex + "].count");
+    var input3 = createHiddenField("cookWares[" + cookWareIndex + "].recipeId", "${currentId}");
+
+    // 생성된 input 요소들을 문서에 추가
+    document.getElementById("inputCookWareFieldsContainer").appendChild(input1);
+    document.getElementById("inputCookWareFieldsContainer").appendChild(input2);
+    document.getElementById("inputCookWareFieldsContainer").appendChild(input3);
+
+    cookWareIndex++; // 인덱스 증가
 }
 
 function createInputField(placeholder, name) {
@@ -68,6 +85,7 @@ function createHiddenField(name, value) {
     input.setAttribute("value", value);
     return input;
 }
+
 </script>
 
 <style>
@@ -508,15 +526,15 @@ fieldset {
 							placeholder="요리재료를 입력해주세요" name="ingredienName" />
 						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
 							placeholder="용량을 입력해주세요" name="ingredienMeasure" /> -->
-						<div id="inputFieldsContainer">
-							<%-- 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="요리재료를 입력해주세요" name="ingredients[0].ingredientName">
+						<div id="inputIngredientFieldsContainer">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="요리재료를 입력해주세요" name="ingredients[0].name">
 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
 								placeholder="용량을 입력해주세요" name="ingredients[0].measure">
 							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
-								name="ingredients[0].recipeId" value="${currentId }"> --%>
+								name="ingredients[0].recipeId" value="${currentId }">
 						</div>
-						<button type="button" onclick="addInputFields()">추가</button>
+						<button type="button" onclick="addInputIngredientFields()">추가</button>
 					</div>
 					<div class="ingredient_box_bgc">
 						<span class=""></span>
@@ -530,6 +548,17 @@ fieldset {
 							placeholder="요리도구를 입력해주세요" name="cookWareName" />
 						<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
 							placeholder="개수를 입력해주세요" name="cookWareCount" />
+					</div>
+					<div class="cookWare_data_box">
+						<div id="inputCookWareFieldsContainer">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="요리도구를 입력해주세요" name="cookWares[0].name">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="수량을 입력해주세요" name="cookWares[0].count">
+							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="hidden"
+								name="cookWares[0].recipeId" value="${currentId }">
+						</div>
+						<button type="button" onclick="addInputCookWareFields()">추가</button>
 					</div>
 					<div class="cookWare_box_bgc">
 						<span class=""></span>

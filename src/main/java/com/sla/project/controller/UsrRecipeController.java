@@ -19,6 +19,7 @@ import com.sla.project.service.RecipeService;
 import com.sla.project.service.ReplyService;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.CookWare;
+import com.sla.project.vo.CookWareList;
 import com.sla.project.vo.Ingredient;
 import com.sla.project.vo.IngredientList;
 import com.sla.project.vo.Recipe;
@@ -182,8 +183,8 @@ public class UsrRecipeController {
 	@RequestMapping("/usr/recipe/doWrite")
 	@ResponseBody
 	public String doWrite(HttpServletRequest req, String title, String body, int categoryId, int personnel,
-			int cookingTime, int cookLevel, IngredientList ingredients, String cookWareName, String cookWareCount,
-			String replaceUri, MultipartRequest multipartRequest) {
+			int cookingTime, int cookLevel, IngredientList ingredients, CookWareList cookWares, String replaceUri,
+			MultipartRequest multipartRequest) {
 
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
@@ -193,7 +194,7 @@ public class UsrRecipeController {
 		}
 
 		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId,
-				personnel, cookingTime, cookLevel, ingredients);
+				personnel, cookingTime, cookLevel, ingredients,cookWares);
 
 		int id = (int) writeRecipeRd.getData1();
 

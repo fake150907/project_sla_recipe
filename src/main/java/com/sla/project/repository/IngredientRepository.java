@@ -25,10 +25,10 @@ public interface IngredientRepository {
 
 	@Insert("""
 			    <script>
-			    INSERT INTO ingredient ( memberId, ingredientName,nutrients, measure, recipeId)
+			    INSERT INTO ingredient ( memberId, name ,nutrients, measure, recipeId)
 			    VALUES
 			    <foreach collection='ingredientList' item='item' separator=','>
-			    (#{loginedMemberId}, #{item.ingredientName},'단백질',#{item.measure} ,#{item.recipeId})
+			    (#{loginedMemberId}, #{item.name},'단백질',#{item.measure} ,#{item.recipeId})
 			    </foreach>
 			    </script>
 			""")
@@ -52,7 +52,7 @@ public interface IngredientRepository {
 
 	@Update("""
 			UPDATE ingredient
-			SET ingredientName = #{ingredientName},
+			SET name = #{ingredientName},
 			updateDate = NOW()
 			WHERE id = #{id}
 				""")
