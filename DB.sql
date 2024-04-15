@@ -38,7 +38,7 @@ CREATE TABLE ingredient(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     recipeId INT(10) UNSIGNED NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
-    ingredientName CHAR(20) NOT NULL,
+    `name` CHAR(20) NOT NULL,
     nutrients  CHAR(20) NOT NULL,
     measure CHAR(10) NOT NULL
 );
@@ -353,7 +353,7 @@ FROM groupBuying;
 
 SELECT * FROM groupBuying;
 
-SELECT COUNT(*) FROM groupBuying;
+select count(*) from groupBuying;
 
 #########################################################################
 # hashTag table insert data
