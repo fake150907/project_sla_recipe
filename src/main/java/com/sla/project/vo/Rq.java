@@ -133,8 +133,8 @@ public class Rq {
 		return getEncodedCurrentUri();
 	}
 
-	public String getImgUri(int id) {
-		return "/common/genFile/file/recipe/" + id + "/extra/Img/1";
+	public String getImgUri(int id, String relTypeCode) {
+		return "/common/genFile/file/" + relTypeCode + "/" + id + "/extra/Img/1";
 	}
 
 	public String getProfileFallbackImgUri() {
@@ -144,7 +144,7 @@ public class Rq {
 	public String getProfileFallbackImgOnErrorHtml() {
 		return "this.src = '" + getProfileFallbackImgUri() + "'";
 	}
-	
+
 	public String getFindLoginIdUri() {
 		return "../member/findLoginId?afterFindLoginIdUri=" + getAfterFindLoginIdUri();
 	}

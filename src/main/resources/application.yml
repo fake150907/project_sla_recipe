@@ -29,9 +29,9 @@ spring:
 mybatis:
   type-aliases-package: com.sla.project.vo
 custom:
-  siteName: 2024_01_Spring_AM
+  siteName: project_sla_recipe
   siteMainUri: http://localhost:8081
   emailFrom: no-reply@localhost
-  emailFromName: 2024_01_Spring_AM
+  emailFromName: project_sla_recipe
   genFileDirPath: C:\work\sts-4.19.1.RELEASE-workspace2\demo\images
   

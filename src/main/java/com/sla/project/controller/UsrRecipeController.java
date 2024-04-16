@@ -150,6 +150,7 @@ public class UsrRecipeController {
 		model.addAttribute("replies", usrReplyController.showReplyList(req, model, id, relTypeCode));
 		model.addAttribute("repliesCount", usrReplyController.showReplyList(req, model, id, relTypeCode).size());
 		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
+		model.addAttribute("relTypeCode", relTypeCode);
 
 		return "usr/recipe/detail";
 	}
@@ -194,7 +195,7 @@ public class UsrRecipeController {
 		}
 
 		ResultData<Integer> writeRecipeRd = recipeService.writeRecipe(rq.getLoginedMemberId(), title, body, categoryId,
-				personnel, cookingTime, cookLevel, ingredients,cookWares);
+				personnel, cookingTime, cookLevel, ingredients, cookWares);
 
 		int id = (int) writeRecipeRd.getData1();
 

@@ -23,6 +23,82 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+<!-- 회원가입 폼 관련 -->
+<script type="text/javascript">
+	let MemberJoin__submitFormDone = false;
+	function MemberJoin__submit(form) {
+		if (MemberJoin__submitFormDone) {
+			return;
+		}
+		form.JoinId.value = form.JoinId.value.trim();
+		form.JoinPw.value = form.JoinId.value.trim();
+		form.JoinEmail.value = form.JoinId.value.trim();
+		form.JoinName.value = form.JoinId.value.trim();
+		form.JoinNickName.value = form.JoinId.value.trim();
+		form.JoinCellPhoneNum.value = form.JoinId.value.trim();
+		if (form.JoinId.value == 0) {
+			alert('아이디를 입력해주세요');
+			return;
+		}
+		if (form.JoinPw.value == 0) {
+			alert('비밀번호를 입력해주세요');
+			return;
+		}
+		if (form.JoinEmail.value == 0) {
+			alert('이메일을 입력해주세요');
+			return;
+		}
+		if (form.JoinName.value == 0) {
+			alert('이름을 입력해주세요');
+			return;
+		}
+		if (form.JoinNickName.value == 0) {
+			alert('닉네임을 입력해주세요');
+			return;
+		}
+		if (form.JoinCellPhoneNum.value == 0) {
+			alert('전화번호를 입력해주세요');
+			return;
+		}
+
+		$('#fileInput').attr('name', 'file__member__' + ${currentId} + '__extra__Img__1');
+		
+		form.body.value = markdown;
+		MemberJoin__submitFormDone = true;
+		form.submit();
+	};
+
+
+</script>
+<script>
+
+/* 아이디 중복체크 함수 */
+function JoinIdConfirm() {
+	var form = document.form1;
+
+	console.log(form.JoinPw);
+	
+	var JoinId = form.JoinId.value;
+	
+
+	if (JoinId == null) {
+		$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
+		return;
+	}
+
+	$.get('./loginIdConfirm', {
+		JoinId : JoinId
+	}, function(data) {
+
+		var code = data.code;
+
+		$('.rs').text(data.rs);
+		$('.rs-msg').text(data.msg);
+		$('.rs-code').text(code);
+
+	}, 'json');
+}
+</script>
 <style>
 .SlaRecipeJoinPageVer02 {
 	width: 100%;
@@ -52,11 +128,15 @@
 }
 
 .JoinIdBox, .JoinPwBox, .JoinNameBox, .JoinNickNameBox, .JoinEmailBox,
-	.JoinCellPhoneNumBox {
+	.JoinCellPhoneNumBox, .profileImage_box {
 	left: 937px;
 	width: 550px;
 	position: absolute;
 	height: 100px;
+}
+
+.profileImage_box {
+	top: 15%;
 }
 
 .JoinIdBox {
@@ -249,36 +329,7 @@
 	left: 20%;
 }
 </style>
-<script>
-	/* 아이디 중복체크 함수 */
-	function JoinIdConfirm() {
-		var form = document.form1;
 
-		var JoinId = $('.JoinId').value;
-
-		/* if (JoinId == null) {
-			$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
-			return;
-		} */
-
-		if (JoinId == null) {
-			$('.rs-msg').text('*중복확인을 위한 아이디를 입력해주세요');
-			return;
-		}
-
-		$.get('./loginIdConfirm', {
-			JoinId : JoinId
-		}, function(data) {
-
-			var code = data.code;
-
-			$('.rs').text(data.rs);
-			$('.rs-msg').text(data.msg);
-			$('.rs-code').text(code);
-
-		}, 'json');
-	};
-</script>
 </head>
 <body>
 	<div class="SlaRecipeLoginPageVer02">
@@ -291,7 +342,18 @@
 				src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png" alt="Logo">
 		</a>
 		<!-- 회원가입 form -->
-		<form class="form1" action="../member/doJoin" method="POST">
+		<form name="form1" class="form1" action="../member/doJoin" method="POST"
+			onsubmit="MemberJoin__submit(this); return false;" enctype="multipart/form-data">
+			<div class="profileImage_box">
+				<span class="profileImage_text" style="font-weight: bold;">프로필이미지</span>
+				<div class="profileImage_text_bgc"></div>
+				<div class="profileImage_data_box">
+					<input id="fileInput" placeholder="이미지를 선택해주세요" type="file" />
+				</div>
+				<div class="profileImage_box_bgc">
+					<span class=""></span>
+				</div>
+			</div>
 			<div class="JoinIdBox">
 				<div style="font-size: 20xp; font-family: Inter; font-weight: 600;">아이디</div>
 				<div class="inputJoinId_box">

@@ -94,4 +94,10 @@ public interface MemberRepository {
 			""")
 	public void modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum, String email);
 
+	@Select("""
+			SELECT MAX(id) + 1
+			FROM recipe
+			""")
+	public int getCurrentMemberId();
+
 }

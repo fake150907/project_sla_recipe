@@ -8,6 +8,7 @@
 <div>${loginedMember.loginId }</div>
 <div>${rq.loginedMember.loginId }</div>
 <div>${rq.loginedMember.getLoginId() }</div>
+
 <section class="mt-8 text-xl px-4 ">
 	<div class="">
 		<table class="table-box-1 " border="1">
@@ -16,6 +17,14 @@
 			</colgroup>
 
 			<tbody>
+				<tr>
+					<th>프로필이미지</th>
+					<td>
+						<img class="profileImage rounded-xl" src="${rq.getImgUri(loginedMemberId,relTypeCode)}"
+							onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
+						<%-- 	<div>${rq.getImgUri(recipe.id)}</div> --%>
+					</td>
+				</tr>
 				<tr>
 					<th>가입일</th>
 					<td>${rq.loginedMember.regDate }</td>

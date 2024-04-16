@@ -5,10 +5,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
+import com.sla.project.service.GenFileService;
 import com.sla.project.service.MemberService;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.Member;
@@ -25,6 +29,9 @@ public class UsrMemberController {
 
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private GenFileService genFileService;
 
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
@@ -90,7 +97,10 @@ public class UsrMemberController {
 	}
 
 	@RequestMapping("/usr/member/join")
-	public String showJoin(HttpServletRequest req) {
+	public String showJoin(HttpServletRequest req, Model model) {
+		int currentId = memberService.getCurrentMemberId();
+
+		model.addAttribute("currentId", currentId);
 
 		return "usr/member/join";
 	}
@@ -98,7 +108,7 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
 	public String doJoin(HttpServletRequest req, String JoinId, String JoinPw, String JoinName, String JoinNickName,
-			String JoinCellPhoneNum, String JoinEmail) {
+			String JoinCellPhoneNum, String JoinEmail, MultipartRequest multipartRequest) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
@@ -133,6 +143,18 @@ public class UsrMemberController {
 		}
 
 		Member member = memberService.getMember(joinRd.getData1());
+
+		int id = joinRd.getData1();
+
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				genFileService.save(multipartFile, id);
+			}
+		}
 
 		return Ut.jsReplace(joinRd.getResultCode(), joinRd.getMsg(), "../member/login");
 	}
@@ -181,7 +203,11 @@ public class UsrMemberController {
 	}
 
 	@RequestMapping("/usr/member/myPage")
-	public String showMyPage() {
+	public String showMyPage(HttpServletRequest req, Model model) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		String relTypeCode = "member";
+		model.addAttribute("relTypeCode", relTypeCode);
+		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 
 		return "usr/member/myPage";
 	}

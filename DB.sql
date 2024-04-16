@@ -150,6 +150,8 @@ SELECT * FROM cookWare;
 
 SELECT * FROM groupBuying;
 
+SELECT * FROM genFile;
+
 SELECT * FROM category;
 
 SELECT * FROM hashTag;
@@ -353,7 +355,7 @@ FROM groupBuying;
 
 SELECT * FROM groupBuying;
 
-select count(*) from groupBuying;
+SELECT COUNT(*) FROM groupBuying;
 
 #########################################################################
 # hashTag table insert data

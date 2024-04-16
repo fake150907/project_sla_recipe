@@ -865,7 +865,7 @@ function toggleLike() {
 		<div class="div-box-1 ">
 			<div>
 				<div class="Thumnail_box">
-					<img class="Thumnail rounded-xl" src="${rq.getImgUri(recipe.id)}" onerror="${rq.profileFallbackImgOnErrorHtml}"
+					<img class="Thumnail rounded-xl" src="${rq.getImgUri(recipe.id,relTypeCode)}" onerror="${rq.profileFallbackImgOnErrorHtml}"
 						alt="" />
 					<%-- 	<div>${rq.getImgUri(recipe.id)}</div> --%>
 				</div>
