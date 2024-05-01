@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${pageTitle }</title>
+<title>Sla Recipe</title>
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
@@ -21,10 +21,11 @@
 <!-- 구글폰트 불러오기 -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<head>
-<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sla Recipe</title>
+
 <script>
 //요소를 가져옵니다.
 const introduceBox = document.querySelector('.introduce_box');
@@ -91,7 +92,23 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
     }, 300); // 0.3초 후에 요소를 숨김
 });
 </script>
+
 <style>
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.sevillana-regular {
+	font-family: "Sevillana", cursive;
+	font-weight: 400;
+	font-style: normal;
+}
+
 .SlaRecipeStartPageVer01 {
 	width: 1910px;
 	height: 940px;
@@ -109,9 +126,9 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 }
 
 .HeadIcons {
-	width: 300px;
+	width: 400px;
 	height: 55px;
-	top: 2%;
+	top: 3%;
 	position: absolute;
 	display: flex;
 	justify-content: space-around;
@@ -119,13 +136,13 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 }
 
 .HeadIcons img {
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 }
 
 .SearchIcon, .noneLogin-SearchIcon, .LoginIcon, .LogoutIcon, .JoinIcon,
 	.HomeIcon, .MyPageIcon, .noneLogin-HomeIcon, .WriteIcon {
-	font-size: 15px;
+	font-size: 18px;
 	width: px;
 	font-weight: bold;
 	width: 43.96px;
@@ -148,8 +165,10 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 
 .logo {
 	position: absolute;
-	width: 153px;
-	height: 193px;
+	left: 3%;
+	top: 5%;
+	width: 133px;
+	height: 163px;
 }
 
 .Group6 {
@@ -282,13 +301,12 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	color: rgba(0, 0, 0, 0.8);
 	font-size: 25px;
 	width: 400px;
-	font-family: Inter;
+	font-family: 'GmarketSansMedium';
 	font-weight: 500;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	display: flex;
-	font-family: Inter;
 }
 
 .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box
@@ -357,26 +375,30 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 .title, .subtitle {
 	position: absolute;
 	color: white;
-	font-family: Inter;
-	font-weight: 600;
+	font-weight: 700;
+	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
+		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
+	left: 40%;
+	font-family: "Sevillana", cursive;
+	font-style: normal;
 	word-wrap: break-word;
-	left: 35%;
 }
 
 .title {
-	font-size: 90px;
-	width: 450px;
-	top: 0px;
+	font-size: 100px;
+	width: 900px;
+	top: 30px;
 }
 
 .subtitle {
 	width: 800px;
-	font-size: 40px;
-	top: 109px;
+	font-size: 50px;
+	top: 170px;
 }
 
 .material-symbols-outlined {
-	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 500;
+	font-size: 35px;
 }
 /* 재료공구 */
 .ingredients_img1 {
@@ -547,7 +569,8 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 			alt="Background Image">
 		<div class="logo">
 			<a href="/">
-				<img src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png"
+				<img class="logo"
+					src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png"
 					alt="Background Image" />
 			</a>
 		</div>
@@ -622,12 +645,12 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 				<div class="startPage_bottom_item1">
 					<div class="introduce_box"></div>
 					<a href="">
-						<div class="startPage_bottom_content">
+						<span class="startPage_bottom_content">
 							슬라레시피소개
-							<div class="icon">
+							<span class="icon">
 								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
-							</div>
-						</div>
+							</span>
+						</span>
 					</a>
 				</div>
 			</div>
@@ -651,12 +674,12 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 						</div>
 					</div>
 					<a href="../groupBuying/list">
-						<div class="startPage_bottom_content">
+						<span class="startPage_bottom_content">
 							재료공구
-							<div class="icon">
+							<span class="icon">
 								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
-							</div>
-						</div>
+							</span>
+						</span>
 					</a>
 				</div>
 			</div>
@@ -665,12 +688,12 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 				<div class="startPage_bottom_item3">
 					<div class="recommendRecipe_box"></div>
 					<a href="">
-						<div class="startPage_bottom_content">
+						<span class="startPage_bottom_content">
 							맟춤레시피
-							<div class="icon">
+							<span class="icon">
 								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
-							</div>
-						</div>
+							</span>
+						</span>
 					</a>
 				</div>
 			</div>
@@ -679,12 +702,12 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 				<div class="startPage_bottom_item4">
 					<div class="recipeList_box"></div>
 					<a href="../recipe/list">
-						<div class="startPage_bottom_content">
+						<span class="startPage_bottom_content">
 							레시피 목록
-							<div class="icon">
+							<span class="icon">
 								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
-							</div>
-						</div>
+							</span>
+						</span>
 					</a>
 				</div>
 			</div>

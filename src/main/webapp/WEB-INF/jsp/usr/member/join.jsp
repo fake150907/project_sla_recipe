@@ -22,7 +22,9 @@
 <!-- 구글 폰트 불러오기  -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
 <!-- 회원가입 폼 관련 -->
 <script type="text/javascript">
 	let MemberJoin__submitFormDone = false;
@@ -283,21 +285,25 @@ function JoinIdConfirm() {
 	position: absolute;
 	color: white;
 	font-size: 90px;
-	font-family: Inter;
+	font-family: "Sevillana", cursive;
 	font-weight: 600;
 	word-wrap: break-word;
+	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
+		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
 }
 
 .ATasteToBuildYourDreamOn {
-	left: 150px;
+	left: 170px;
 	top: 120px;
 	width: 100%;
 	color: white;
 	font-size: 40px;
-	font-family: Inter;
+	font-family: "Sevillana", cursive;
 	font-weight: 600;
 	word-wrap: break-word;
 	position: absolute;
+	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
+		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
 }
 
 .logo {

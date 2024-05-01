@@ -172,21 +172,25 @@
 	position: absolute;
 	color: white;
 	font-size: 90px;
-	font-family: Inter;
+	font-family: "Sevillana", cursive;
 	font-weight: 600;
 	word-wrap: break-word;
+	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
+		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
 }
 
 .ATasteToBuildYourDreamOn {
-	left: 150px;
+	left: 170px;
 	top: 120px;
 	width: 100%;
 	color: white;
 	font-size: 40px;
-	font-family: Inter;
-	font-weight: 600;
 	word-wrap: break-word;
 	position: absolute;
+	font-family: "Sevillana", cursive;
+	font-weight: 600;
+	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
+		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
 }
 
 .logo {

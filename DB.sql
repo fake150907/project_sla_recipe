@@ -211,63 +211,63 @@ cookLevel = 1;
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '김치',
+`name`= '김치',
 nutrients = '식이섬유',
 measure = '반포기';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '생닭',
+`name`= '생닭',
 nutrients = '단백질',
 measure = '1마리';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '우유',
+`name`= '우유',
 nutrients = '단백질,지질,유당',
 measure = '500ml';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '고추가루',
+`name`= '고추가루',
 nutrients = '',
 measure = '1T';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '양파',
+`name`= '양파',
 nutrients = '케르세틴',
 measure = '1개';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '다진마늘',
+`name`= '다진마늘',
 nutrients = '아미노산',
 measure = '1T';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '대파',
+`name`= '대파',
 nutrients = '무기질',
 measure = '반단';
 
 INSERT INTO ingredient
 SET recipeId = 1,
 memberId = 3,
-ingredientName = '물',
+`name`= '물',
 nutrients = '수분',
 measure = '300ml';
 
 INSERT INTO ingredient
 SET recipeId = 3,
 memberId = 3,
-ingredientName = '가물치',
+`name`= '가물치',
 nutrients = '단백질',
 measure = '1마리';
 
