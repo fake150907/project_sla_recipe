@@ -197,4 +197,17 @@ public class RecipeService {
 
 	}
 
+	public List<Recipe> getForPrintScrapRecipes(int itemsInAPage, int page, String searchKeywordTypeCode,
+			String searchKeyword, int loginedMemberId) {
+
+//		SELECT * FROM recipe WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
+//		SELECT * FROM recipe WHERE boardId = 1 ORDER BY id DESC LIMIT 10, 10; 2page
+
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		return recipeRepository.getForPrintScrapRecipes(limitFrom, limitTake, searchKeywordTypeCode, searchKeyword,
+				loginedMemberId);
+	}
+
 }

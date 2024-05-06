@@ -178,6 +178,42 @@ public interface RecipeRepository {
 	public List<Recipe> getForPrintRecipes(int limitFrom, int limitTake, String searchKeywordTypeCode,
 			String searchKeyword);
 
+	@Select("""
+			<script>
+			SELECT R.*, M.nickName AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			FROM recipe AS R
+			INNER JOIN `member` AS M
+			ON R.memberId = M.id
+			LEFT JOIN reply AS RP
+			ON R.id = RP.relId
+			LEFT JOIN reactionPoint AS P
+			ON R.id = P.relId
+			WHERE 1
+			AND P.memberId = #{loginedMemberId}
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'extra__writer'">
+						AND M.nickName LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR R.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			GROUP BY R.id
+			ORDER BY R.id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
+			""")
+	public List<Recipe> getForPrintScrapRecipes(int limitFrom, int limitTake, String searchKeywordTypeCode,
+			String searchKeyword, int loginedMemberId);
+
 	@Update("""
 			UPDATE recipe
 			SET goodReactionPoint = goodReactionPoint + 1

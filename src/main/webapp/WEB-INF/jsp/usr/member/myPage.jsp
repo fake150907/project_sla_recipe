@@ -1,13 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MYPAGE"></c:set>
 <%@ include file="../common/head.jspf"%>
-
-<div>1${loginedMember }</div>
-<div>2${rq.loginedMember }</div>
-<div>${loginedMember.loginId }</div>
-<div>${rq.loginedMember.loginId }</div>
-<div>${rq.loginedMember.getLoginId() }</div>
 
 <section class="mt-8 text-xl px-4 ">
 	<div class="">
@@ -19,10 +14,9 @@
 			<tbody>
 				<tr>
 					<th>프로필이미지</th>
-					<td>
-						<img class="profileImage rounded-xl" src="${rq.getImgUri(loginedMemberId,relTypeCode)}"
-							onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
-						<%-- 	<div>${rq.getImgUri(recipe.id)}</div> --%>
+					<td><img class="profileImage rounded-xl"
+						src="${rq.getImgUri(loginedMemberId,relTypeCode)}"
+						onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" /> <%-- 	<div>${rq.getImgUri(recipe.id)}</div> --%>
 					</td>
 				</tr>
 				<tr>
@@ -51,15 +45,19 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td>
-						<a href="../member/checkPw" class="btn btn-active btn-ghost">회원정보 수정</a>
-					</td>
+					<td><a href="../recipe/scrapList">좋아요표시한레시피</a></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><a href="../member/checkPw"
+						class="btn btn-active btn-ghost">회원정보 수정</a></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<div class="btns">
-		<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
+		<button class="btn-text-link btn btn-active btn-ghost" type="button"
+			onclick="history.back();">뒤로가기</button>
 
 
 	</div>

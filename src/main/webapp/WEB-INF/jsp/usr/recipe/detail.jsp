@@ -334,7 +334,7 @@ function toggleLike() {
 	border: none;
 	cursor: pointer;
 	outline: none;
-	background-color: transparent;
+	background-color: ;
 	left: 83%;
 	top: -320%;
 }

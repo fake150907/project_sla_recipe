@@ -215,4 +215,33 @@ public class UsrRecipeController {
 
 	}
 
+	@RequestMapping("/usr/recipe/scrapList")
+	public String showScrapList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		int recipesCount = recipeService.getRecipesCount(searchKeywordTypeCode, searchKeyword);
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 15;
+
+		int pagesCount = (int) Math.ceil(recipesCount / (double) itemsInAPage);
+
+		List<Recipe> recipes = recipeService.getForPrintScrapRecipes(itemsInAPage, page, searchKeywordTypeCode,
+				searchKeyword, rq.getLoginedMemberId());
+
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("recipesCount", recipesCount);
+		model.addAttribute("recipes", recipes);
+
+		return "usr/recipe/scrapList";
+	}
+
 }
