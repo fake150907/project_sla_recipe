@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -8,22 +9,28 @@
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
 
 <!-- daisy ui 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
 
 <!-- 폰트어썸 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 <!-- 제이쿼리 불러오기 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- 구글폰트 불러오기 -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap"
+	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
@@ -68,28 +75,28 @@ document.querySelector('.startPage_bottom_box1').addEventListener('mouseleave', 
     introduceBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
     setTimeout(() => {
         introduceBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 300); // 0.3초 후에 요소를 숨김
+    }, 100); // 0.3초 후에 요소를 숨김
 });
 
 document.querySelector('.startPage_bottom_box2').addEventListener('mouseleave', () => {
     ingredientsBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
     setTimeout(() => {
         ingredientsBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 300); // 0.3초 후에 요소를 숨김
+    }, 100); // 0.3초 후에 요소를 숨김
 });
 
 document.querySelector('.startPage_bottom_box3').addEventListener('mouseleave', () => {
     recommendRecipeBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
     setTimeout(() => {
         recommendRecipeBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 300); // 0.3초 후에 요소를 숨김
+    }, 100); // 0.3초 후에 요소를 숨김
 });
 
 document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', () => {
     recipeListBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
     setTimeout(() => {
         recipeListBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 300); // 0.3초 후에 요소를 숨김
+    }, 100); // 0.3초 후에 요소를 숨김
 });
 </script>
 
@@ -126,13 +133,13 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 }
 
 .HeadIcons {
-	width: 400px;
+	width: 500px;
 	height: 55px;
 	top: 3%;
 	position: absolute;
 	display: flex;
 	justify-content: space-around;
-	right: 2%;
+	right: 38%;
 }
 
 .HeadIcons img {
@@ -367,33 +374,36 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 
 /* 타이틀 */
 .header-container {
-	width: 602px;
-	height: 157px;
+	width: 650px;
+	height: 230px;
 	position: relative;
+	display: felx;
+	justify-content: center;
+	left: 32%;
+	top: 27%;
+	justify-content: center;
 }
 
 .title, .subtitle {
-	position: absolute;
-	color: white;
+	color: #1B1818;
 	font-weight: 700;
 	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
 		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
-	left: 40%;
 	font-family: "Sevillana", cursive;
 	font-style: normal;
-	word-wrap: break-word;
 }
 
 .title {
 	font-size: 100px;
-	width: 900px;
-	top: 30px;
+	width: 450px;
+	margin-left: 110px;
 }
 
 .subtitle {
+	display: felx;
+	justify-content: center;
 	width: 800px;
 	font-size: 50px;
-	top: 170px;
 }
 
 .material-symbols-outlined {
@@ -567,13 +577,6 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 		<img class="Rectangle61"
 			src="https://images.unsplash.com/photo-1516824467205-afa656d31a79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 			alt="Background Image">
-		<div class="logo">
-			<a href="/">
-				<img class="logo"
-					src="https://velog.velcdn.com/images/fake150907/post/265346d4-9a4e-4661-8925-816dcc4ffa21/image.png"
-					alt="Background Image" />
-			</a>
-		</div>
 		<div class="header-container">
 			<div class="title">Sla Recipe</div>
 			<div class="subtitle">A Taste to Build Your Dream On</div>
@@ -621,7 +624,8 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 					</a>
 				</div>
 				<div class="LogoutIcon">
-					<a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline" href="../member/doLogout">
+					<a onclick="if(confirm('로그아웃 할래?') == false) return false;"
+						class="hover:underline" href="../member/doLogout">
 						<span class="material-symbols-outlined">logout</span>
 						<span class="Icon_text">Logout</span>
 					</a>
@@ -633,7 +637,8 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 					</a>
 				</div>
 				<div class="MyPageIcon">
-					<a class="hover:underline" class="h-full px-3 flex items-center" href="/usr/member/myPage">
+					<a class="hover:underline" class="h-full px-3 flex items-center"
+						href="/usr/member/myPage">
 						<span class="material-symbols-outlined"> location_home </span>
 						<span class="Icon_text">MyPage</span>
 					</a>
@@ -648,7 +653,9 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 						<span class="startPage_bottom_content">
 							슬라레시피소개
 							<span class="icon">
-								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
+								<img
+									src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg"
+									alt="" />
 							</span>
 						</span>
 					</a>
@@ -662,13 +669,15 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 							<div class="ingredients_content">
 								<div class="title">재료공구</div>
 								<div class="subtitle">신선한 재료로 요리하고싶은 당신의 마음!</div>
-								<div class="description">마트에 가서 재료를 사도 혼자 사는 당신들이 먹기에는 양이 너무 많다!</div>
+								<div class="description">마트에 가서 재료를 사도 혼자 사는 당신들이 먹기에는 양이
+									너무 많다!</div>
 							</div>
 							<img class="ingredients_img1"
 								src="https://velog.velcdn.com/images/fake150907/post/f78257ce-3777-4a59-9bf6-7b8323cd1810/image.jpg" />
 						</div>
 						<div class="ingredients_item2">
-							<div class="ingredients_content2">이제 다른 사람들과 재료를 공동구매해서 항상 신선하고 질 좋은 재료로 식사해보세요!</div>
+							<div class="ingredients_content2">이제 다른 사람들과 재료를 공동구매해서 항상
+								신선하고 질 좋은 재료로 식사해보세요!</div>
 							<img class="ingredients_img2"
 								src="https://velog.velcdn.com/images/fake150907/post/8ce2087f-9ea9-433b-94e6-d3f38de359a3/image.jpg" />
 						</div>
@@ -677,7 +686,9 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 						<span class="startPage_bottom_content">
 							재료공구
 							<span class="icon">
-								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
+								<img
+									src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg"
+									alt="" />
 							</span>
 						</span>
 					</a>
@@ -691,7 +702,9 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 						<span class="startPage_bottom_content">
 							맟춤레시피
 							<span class="icon">
-								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
+								<img
+									src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg"
+									alt="" />
 							</span>
 						</span>
 					</a>
@@ -705,7 +718,9 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 						<span class="startPage_bottom_content">
 							레시피 목록
 							<span class="icon">
-								<img src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg" alt="" />
+								<img
+									src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg"
+									alt="" />
 							</span>
 						</span>
 					</a>

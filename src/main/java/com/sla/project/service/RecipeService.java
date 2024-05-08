@@ -210,4 +210,8 @@ public class RecipeService {
 				loginedMemberId);
 	}
 
+	public int getScrapRecipesCount(String searchKeywordTypeCode, String searchKeyword, int loginedMemberId) {
+		return recipeRepository.getScrapRecipesCount(searchKeywordTypeCode, searchKeyword, loginedMemberId);
+	}
+
 }

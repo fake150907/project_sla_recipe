@@ -222,7 +222,8 @@ public class UsrRecipeController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		int recipesCount = recipeService.getRecipesCount(searchKeywordTypeCode, searchKeyword);
+		int recipesCount = recipeService.getScrapRecipesCount(searchKeywordTypeCode, searchKeyword,
+				rq.getLoginedMemberId());
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page

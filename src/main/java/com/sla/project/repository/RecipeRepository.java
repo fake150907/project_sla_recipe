@@ -262,4 +262,31 @@ public interface RecipeRepository {
 			""")
 	public int getCurrentRecipeId();
 
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM recipe AS R
+			LEFT JOIN reactionPoint AS P
+			ON R.id = P.relId
+			WHERE 1
+			AND P.memberId = #{loginedMemberId}
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND R.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND R.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR R.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			ORDER BY R.id DESC
+			</script>
+			""")
+	public int getScrapRecipesCount(String searchKeywordTypeCode, String searchKeyword, int loginedMemberId);
+
 }
