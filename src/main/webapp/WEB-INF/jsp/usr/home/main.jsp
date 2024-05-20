@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Sla Recipe</title>
-<link rel="stylesheet" href="/resource/common.css" />
-<script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
@@ -31,74 +29,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap"
 	rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-//요소를 가져옵니다.
-const introduceBox = document.querySelector('.introduce_box');
-const ingredientsBox = document.querySelector('.ingredients_box');
-const recommendRecipeBox = document.querySelector('.recommendRecipe_box');
-const recipeListBox = document.querySelector('.recipeList_box');
-
-// 각 상자에 대한 마우스 진입 및 빠져 나가기 이벤트를 추가합니다.
-// 마우스 진입 이벤트
-document.querySelector('.startPage_bottom_box1').addEventListener('mouseenter', () => {
-    introduceBox.style.display = 'block'; // 요소를 보이도록 변경
-    setTimeout(() => {
-        introduceBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
-    }, 100);
-});
-
-document.querySelector('.startPage_bottom_box2').addEventListener('mouseenter', () => {
-    ingredientsBox.style.display = 'block'; // 요소를 보이도록 변경
-    setTimeout(() => {
-        ingredientsBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
-    }, 100);
-});
-
-document.querySelector('.startPage_bottom_box3').addEventListener('mouseenter', () => {
-    recommendRecipeBox.style.display = 'block'; // 요소를 보이도록 변경
-    setTimeout(() => {
-        recommendRecipeBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
-    }, 100);
-});
-
-document.querySelector('.startPage_bottom_box4').addEventListener('mouseenter', () => {
-    recipeListBox.style.display = 'block'; // 요소를 보이도록 변경
-    setTimeout(() => {
-        recipeListBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
-    }, 100);
-});
-
-// 마우스 빠져 나가기 이벤트
-document.querySelector('.startPage_bottom_box1').addEventListener('mouseleave', () => {
-    introduceBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
-    setTimeout(() => {
-        introduceBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 100); // 0.3초 후에 요소를 숨김
-});
-
-document.querySelector('.startPage_bottom_box2').addEventListener('mouseleave', () => {
-    ingredientsBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
-    setTimeout(() => {
-        ingredientsBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 100); // 0.3초 후에 요소를 숨김
-});
-
-document.querySelector('.startPage_bottom_box3').addEventListener('mouseleave', () => {
-    recommendRecipeBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
-    setTimeout(() => {
-        recommendRecipeBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 100); // 0.3초 후에 요소를 숨김
-});
-
-document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', () => {
-    recipeListBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
-    setTimeout(() => {
-        recipeListBox.style.display = 'none'; // 요소를 숨기도록 변경
-    }, 100); // 0.3초 후에 요소를 숨김
-});
-</script>
 
 <style>
 @font-face {
@@ -116,32 +53,43 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	font-style: normal;
 }
 
+.mukta-bold {
+	font-family: "Mukta", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+/* Main container for the Sla Recipe Start Page */
 .SlaRecipeStartPageVer01 {
-	width: 1910px;
-	height: 940px;
+	width: 100%; /* Use 100% of the available width */
+	height: 100vh; /* Use the full height of the viewport */
 	position: relative;
 	background: white;
+	overflow: hidden; /* Ensure no overflow issues */
 }
 
+/* Background image styling */
 .Rectangle61 {
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
+	width: 100%; /* Cover the full width */
+	height: 100%; /* Cover the full height */
 	position: absolute;
-	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
+	top: 0;
+	left: 0;
+	object-fit: cover; /* Ensure the image covers the area */
 }
 
+/* Head icons container */
 .HeadIcons {
-	width: 500px;
+	width: 80%; /* Adjust to a percentage of the viewport width */
+	max-width: 500px; /* Limit the maximum width */
 	height: 55px;
 	top: 3%;
 	position: absolute;
 	display: flex;
 	justify-content: space-around;
-	right: 38%;
+	right: 10%; /* Adjust to align properly */
 }
-
+/* Individual icon styling */
 .HeadIcons img {
 	width: 80px;
 	height: 80px;
@@ -150,9 +98,8 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 .SearchIcon, .noneLogin-SearchIcon, .LoginIcon, .LogoutIcon, .JoinIcon,
 	.HomeIcon, .MyPageIcon, .noneLogin-HomeIcon, .WriteIcon {
 	font-size: 18px;
-	width: px;
 	font-weight: bold;
-	width: 43.96px;
+	width: 44px;
 	position: relative;
 	height: 58px;
 }
@@ -170,6 +117,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	align-content: center;
 }
 
+/* Logo styling */
 .logo {
 	position: absolute;
 	left: 3%;
@@ -229,6 +177,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	align-items: center;
 }
 /*하단 바*/
+/* Bottom container */
 .startPage_bottom_Container {
 	width: 100%;
 	height: 99px;
@@ -238,11 +187,10 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: rgba(255, 255, 255, 0.3); /* 배경색을 흰색으로 투명도 조절 */
-	backdrop-filter: blur(10px); /* 블러 효과 추가 */
+	background: rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(10px);
 	padding: 0 20px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	position: absolute;
 }
 
 .startPage_bottom_box1, .startPage_bottom_box2, .startPage_bottom_box3,
@@ -252,13 +200,14 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
+	flex: 1;
+	min-width: 200px; /* Minimum width to maintain some responsiveness */
 }
 
 .startPage_bottom_item1, .startPage_bottom_item2,
 	.startPage_bottom_item3, .startPage_bottom_item4 {
-	width: 477px;
+	width: 100%;
 	height: 99px;
-	left: -19.5px;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
@@ -267,26 +216,8 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	box-sizing: border-box;
 }
 
-.separator1 {
+.separator1, .separator2, .separator3 {
 	width: 1px;
-	left: 477px;
-	position: absolute;
-	height: 99px;
-	background-color: #ccc;
-}
-
-.separator2 {
-	width: 1px;
-	left: 954px;
-	position: absolute;
-	height: 99px;
-	background-color: #ccc;
-}
-
-.separator3 {
-	width: 1px;
-	left: 1431px;
-	position: absolute;
 	height: 99px;
 	background-color: #ccc;
 }
@@ -307,25 +238,25 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 .startPage_bottom_content {
 	color: rgba(0, 0, 0, 0.8);
 	font-size: 25px;
-	width: 400px;
+	width: 100%;
 	font-family: 'GmarketSansMedium';
 	font-weight: 500;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	display: flex;
 }
 
+/* Additional box styling */
 .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box
 	{
 	background: rgba(0, 0, 0, 0.3);
-	width: 1910px;
-	height: 800px;
+	width: 100%;
+	height: 650px;
 	position: absolute;
 	display: none;
 	bottom: 99px;
 	backdrop-filter: blur(10px);
-	opacity: 1; /* 투명도를 1로 설정하여 요소를 부드럽게 보여줌 */
+	opacity: 0;
 	transition: opacity 0.3s ease;
 }
 
@@ -335,7 +266,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 }
 
 .introduce_box {
-	left: -2px;
+	left: -4.2%;
 }
 
 .ingredients_box {
@@ -350,13 +281,13 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	left: -1431px;
 }
 
-/* .startPage_bottom_box1, .startPage_bottom_box2, .startPage_bottom_box3, .startPage_bottom_box4에 hover 시 transition 효과 적용 */
-.startPage_bottom_box1:hover .startPage_bottom_item1,
-	.startPage_bottom_box2:hover .startPage_bottom_item2,
-	.startPage_bottom_box3:hover .startPage_bottom_item3,
-	.startPage_bottom_box4:hover .startPage_bottom_item4 {
-	background: rgba(0, 0, 0, 0.3);
-	transition: background 0.3s ease; /* 배경색 변화에 대한 transition 효과 설정 */
+/* Hover effects */
+.startPage_bottom_box1:hover .introduce_box, .startPage_bottom_box2:hover .ingredients_box,
+	.startPage_bottom_box3:hover .recommendRecipe_box,
+	.startPage_bottom_box4:hover .recipeList_box {
+	display: block;
+	opacity: 1;
+	transition: opacity 0.3s ease;
 }
 
 /* .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box의 display 속성을 변경하여 효과적으로 보여줌 */
@@ -364,7 +295,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	.startPage_bottom_box3:hover  .recommendRecipe_box,
 	.startPage_bottom_box4:hover  .recipeList_box {
 	background: rgba(0, 0, 0, 0.3);
-	width: 1910px;
+	width: 1920px;
 	height: 650px;
 	position: absolute;
 	display: block;
@@ -373,37 +304,40 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 }
 
 /* 타이틀 */
+/* Header container for the title and subtitle */
 .header-container {
-	width: 650px;
-	height: 230px;
-	position: relative;
-	display: felx;
-	justify-content: center;
-	left: 32%;
-	top: 27%;
-	justify-content: center;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 20%; /* Adjust to position vertically */
 }
 
 .title, .subtitle {
 	color: #1B1818;
 	font-weight: 700;
-	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
-		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
-	font-family: "Sevillana", cursive;
+	font-family: "Merriweather", serif;
+	user-select: none; text-transform : uppercase; font-size : 150px;
+	transition : all 0.25s ease-out;
 	font-style: normal;
+	text-transform: uppercase;
+	font-size: 150px;
+	transition: all 0.25s ease-out;
 }
 
+/* Title and subtitle styling */
 .title {
-	font-size: 100px;
-	width: 450px;
-	margin-left: 110px;
+	color: #fff;
+	font-weight: 700;
+	font-family: "Merriweather", serif;
+	font-size: 10vw; /* Make it responsive using vw */
 }
 
 .subtitle {
-	display: felx;
-	justify-content: center;
-	width: 800px;
-	font-size: 50px;
+	color: #fff;
+	font-weight: 700;
+	font-family: "Merriweather", serif;
+	font-size: 5vw; /* Make it responsive using vw */
+	margin-top: 1em;
 }
 
 .material-symbols-outlined {
@@ -458,6 +392,7 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 	color: white;
 }
 
+/* Title for ingredient box */
 .ingredients_content>.title {
 	left: 0;
 	top: 0;
@@ -728,6 +663,73 @@ document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', 
 			</div>
 		</div>
 	</div>
+
+	<script>
+//요소를 가져옵니다.
+const introduceBox = document.querySelector('.introduce_box');
+const ingredientsBox = document.querySelector('.ingredients_box');
+const recommendRecipeBox = document.querySelector('.recommendRecipe_box');
+const recipeListBox = document.querySelector('.recipeList_box');
+
+// 각 상자에 대한 마우스 진입 및 빠져 나가기 이벤트를 추가합니다.
+// 마우스 진입 이벤트
+document.querySelector('.startPage_bottom_box1').addEventListener('mouseenter', () => {
+    introduceBox.style.display = 'block'; // 요소를 보이도록 변경
+    setTimeout(() => {
+        introduceBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
+    }, 100);
+});
+
+document.querySelector('.startPage_bottom_box2').addEventListener('mouseenter', () => {
+    ingredientsBox.style.display = 'block'; // 요소를 보이도록 변경
+    setTimeout(() => {
+        ingredientsBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
+    }, 100);
+});
+
+document.querySelector('.startPage_bottom_box3').addEventListener('mouseenter', () => {
+    recommendRecipeBox.style.display = 'block'; // 요소를 보이도록 변경
+    setTimeout(() => {
+        recommendRecipeBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
+    }, 100);
+});
+
+document.querySelector('.startPage_bottom_box4').addEventListener('mouseenter', () => {
+    recipeListBox.style.display = 'block'; // 요소를 보이도록 변경
+    setTimeout(() => {
+        recipeListBox.style.opacity = 1; // 투명도를 1로 설정하여 부드럽게 보이도록 함
+    }, 100);
+});
+
+// 마우스 빠져 나가기 이벤트
+document.querySelector('.startPage_bottom_box1').addEventListener('mouseleave', () => {
+    introduceBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
+    setTimeout(() => {
+        introduceBox.style.display = 'none'; // 요소를 숨기도록 변경
+    }, 100); // 0.3초 후에 요소를 숨김
+});
+
+document.querySelector('.startPage_bottom_box2').addEventListener('mouseleave', () => {
+    ingredientsBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
+    setTimeout(() => {
+        ingredientsBox.style.display = 'none'; // 요소를 숨기도록 변경
+    }, 100); // 0.3초 후에 요소를 숨김
+});
+
+document.querySelector('.startPage_bottom_box3').addEventListener('mouseleave', () => {
+    recommendRecipeBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
+    setTimeout(() => {
+        recommendRecipeBox.style.display = 'none'; // 요소를 숨기도록 변경
+    }, 100); // 0.3초 후에 요소를 숨김
+});
+
+document.querySelector('.startPage_bottom_box4').addEventListener('mouseleave', () => {
+    recipeListBox.style.opacity = 0; // 투명도를 0으로 설정하여 사라지도록 함
+    setTimeout(() => {
+        recipeListBox.style.display = 'none'; // 요소를 숨기도록 변경
+    }, 100); // 0.3초 후에 요소를 숨김
+});
+</script>
 </body>
 </html>
 
