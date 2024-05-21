@@ -71,13 +71,13 @@
 
 /* search_location_form_box */
 .location_box {
-	left: 20%;
+	left: 23.8%;
 	top: 15%;
 	position: absolute;
 }
 
 .inputLocation {
-	width: 350px;
+	width: 250px;
 	height: 46.5px;
 	background-color: #FFFACD;
 	opacity: 0.5;

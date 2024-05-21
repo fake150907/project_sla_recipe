@@ -12,9 +12,9 @@
 <style>
 #map {
 	position: absolute;
-	width: 75%;
+	width: 80%;
 	height: 845px;
-	left: 25%;
+	left: 20%;
 	top: 5.5%;
 }
 
@@ -228,14 +228,15 @@ body>p {
 #menu_wrap {
 	position: absolute;
 	top: 10%;
-	left: 24.7%;
+	left: 0;
 	bottom: 0;
 	width: 350px;
 	height: 800px;
 	margin: 10px 0 30px 10px;
 	padding: 5px;
 	overflow-y: auto;
-	background: rgba(255, 255, 255, 0.7);
+	background: #FFFACD;
+	opacity: 0.7;
 	z-index: 1;
 	font-size: 12px;
 	border-radius: 10px;
@@ -428,45 +429,23 @@ body>p {
 	left: 83.4%;
 	z-index: 30;
 }
+
+.returnBtn {
+	position: absolute;
+	top: 12%;
+	left: 1%;
+	z-index: 999;
+}
+
+.returnBtn::after {
+	border-bottom-width: 20px;
+	border-color: black;
+}
 </style>
 </head>
 <body>
-	<form action="">
-		<div class="location_box">
-			<div class="location_data">
-				<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLocation w-full"
-					autocomplete="off" type="text" placeholder="위치를 입력해주세요" name="InputLocation" />
-			</div>
-			<div class="logcation_submit_btn">
-				<span class="material-symbols-outlined">pin_drop</span>
-				<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value=""
-					class="searchLocationBtn" />
-			</div>
-		</div>
-	</form>
-	<div class="group_buying_content_box">
-		<img class="group_buying_content_img"
-			src="https://velog.velcdn.com/images/fake150907/post/9f912887-de04-489b-88d8-32ea2598e83a/image.jpg" alt="" />
-		<div class="group_buying_content_hashTag">#둔산동 #당근 #대전</div>
-		<!-- 공구글에 저장되어있는 hashTag를 가져와서 보여줌 -->
-		<div class="IngredientProfileContent">
-			<div class="IngredientProfileContent_title">당근 공구할사람</div>
-			<div class="profile-username">당근러버</div>
-			<div class="follow_follower">팔로우 3.1k 팔로우 0</div>
-			<img class="profile-image"
-				src="https://velog.velcdn.com/images/fake150907/post/4c31dbe1-b756-4382-ad7e-96a9d3b50b7f/image.jpg"
-				alt="Profile Image">
-			<div class="MannerWeather">
-				<div class="Rectangle70"></div>
-				<div class="weather-text">
-					<span class="main-text">매너날씨</span>
-				</div>
-				<span class="material-symbols-outlined partly_cloudy_day">partly_cloudy_day</span>
-			</div>
-		</div>
-		<div class="in_chat_btn_box">
-			<a class="in_chat_btn btn" href="">참가</a>
-		</div>
+	<div class="returnBtn">
+		<a href="../groupBuying/list">리스트로 돌아가기</a>
 	</div>
 	<div class="map_wrap">
 		<div id="map" style="position: relative; overflow: hidden;"></div>

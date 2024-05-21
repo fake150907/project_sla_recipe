@@ -90,48 +90,50 @@ function createHiddenField(name, value) {
 <style>
 /* Flexbox 기반 레이아웃 */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	max-width: 1000px;
+	margin: 0 auto;
+	margin-top: 50px;
 }
 
 .section {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    background-color: #FFFACD;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	background-color: #FFFACD;
 }
 
 .section-title {
-    font-weight: bold;
-    margin-bottom: 10px;
+	font-size: 18px; font-weight : bold;
+	margin-bottom: 10px;
+	font-weight: bold;
 }
 
 .input-group {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .input-group label {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 5px;
+	display: block;
+	font-size: 18px;
+	margin-bottom: 5px;
 }
 
 .radio-group, .input-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
 }
 
 .radio-group label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
 
 [type="radio"], span {
@@ -179,127 +181,191 @@ function createHiddenField(name, value) {
 
 /* 버튼 스타일 */
 button {
-    padding: 10px 20px;
-    background-color: #EDC127;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+	padding: 10px 20px;
+	background-color: #EDC127;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 button:hover {
-    background-color: #FFC700;
+	background-color: #FFC700;
 }
 
 /* input 스타일 */
 input[type="text"], input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
 
 /* editor 스타일 */
 .toast-ui-editor {
-    width: 100%;
-    height: 400px;
+	width: 100%;
+	height: 400px;
 }
 
 /* 반응형 디자인 */
-@media (max-width: 768px) {
-    .radio-group, .input-group {
-        flex-direction: column;
-    }
-
-    button {
-        width: 100%;
-    }
+@media ( max-width : 768px) {
+	.radio-group, .input-group {
+		flex-direction: column;
+	}
+	button {
+		width: 100%;
+	}
 }
 </style>
 
 <section class="container">
-    <form action="../recipe/doWrite" method="POST" onsubmit="RecipeWrite__submit(this); return false;" enctype="multipart/form-data">
-        <input type="hidden" name=">${currentId }">
-        <input type="hidden" name="body">
+	<form action="../recipe/doWrite" method="POST" onsubmit="RecipeWrite__submit(this); return false;"
+		enctype="multipart/form-data">
+		<input type="hidden" name=">${currentId }">
+		<input type="hidden" name="body">
 
-        <div class="section">
-            <div class="section-title">요리정보</div>
-            <div class="input-group radio-group">
-                <label>카테고리</label>
-                <label><input type="radio" name="categoryId" value="1" /><span>집밥</span></label>
-                <label><input type="radio" name="categoryId" value="2" /><span>다이어트</span></label>
-                <label><input type="radio" name="categoryId" value="3" /><span>탄단지</span></label>
-                <label><input type="radio" name="categoryId" value="4" /><span>초간단</span></label>
-                <label><input type="radio" name="categoryId" value="5" /><span>대접</span></label>
-            </div>
+		<div class="section">
+			<div class="section-title">요리정보</div>
+			<div class="input-group radio-group">
+				<label>카테고리</label>
+				<label>
+					<input type="radio" name="categoryId" value="1" />
+					<span>집밥</span>
+				</label>
+				<label>
+					<input type="radio" name="categoryId" value="2" />
+					<span>다이어트</span>
+				</label>
+				<label>
+					<input type="radio" name="categoryId" value="3" />
+					<span>탄단지</span>
+				</label>
+				<label>
+					<input type="radio" name="categoryId" value="4" />
+					<span>초간단</span>
+				</label>
+				<label>
+					<input type="radio" name="categoryId" value="5" />
+					<span>대접</span>
+				</label>
+			</div>
 
-            <div class="input-group radio-group">
-                <label>인원</label>
-                <label><input type="radio" name="personnel" value="1" /><span>1인분</span></label>
-                <label><input type="radio" name="personnel" value="2" /><span>2인분</span></label>
-                <label><input type="radio" name="personnel" value="3" /><span>3인분</span></label>
-                <label><input type="radio" name="personnel" value="4" /><span>4인분</span></label>
-                <label><input type="radio" name="personnel" value="5" /><span>5인분 이상</span></label>
-            </div>
+			<div class="input-group radio-group">
+				<label>인원</label>
+				<label>
+					<input type="radio" name="personnel" value="1" />
+					<span>1인분</span>
+				</label>
+				<label>
+					<input type="radio" name="personnel" value="2" />
+					<span>2인분</span>
+				</label>
+				<label>
+					<input type="radio" name="personnel" value="3" />
+					<span>3인분</span>
+				</label>
+				<label>
+					<input type="radio" name="personnel" value="4" />
+					<span>4인분</span>
+				</label>
+				<label>
+					<input type="radio" name="personnel" value="5" />
+					<span>5인분 이상</span>
+				</label>
+			</div>
 
-            <div class="input-group radio-group">
-                <label>요리시간</label>
-                <label><input type="radio" name="cookingTime" value="1" /><span>10분 이내</span></label>
-                <label><input type="radio" name="cookingTime" value="2" /><span>20분 이내</span></label>
-                <label><input type="radio" name="cookingTime" value="3" /><span>30분 이내</span></label>
-                <label><input type="radio" name="cookingTime" value="4" /><span>60분 이내</span></label>
-                <label><input type="radio" name="cookingTime" value="5" /><span>90분 이내</span></label>
-            </div>
+			<div class="input-group radio-group">
+				<label>요리시간</label>
+				<label>
+					<input type="radio" name="cookingTime" value="1" />
+					<span>10분 이내</span>
+				</label>
+				<label>
+					<input type="radio" name="cookingTime" value="2" />
+					<span>20분 이내</span>
+				</label>
+				<label>
+					<input type="radio" name="cookingTime" value="3" />
+					<span>30분 이내</span>
+				</label>
+				<label>
+					<input type="radio" name="cookingTime" value="4" />
+					<span>60분 이내</span>
+				</label>
+				<label>
+					<input type="radio" name="cookingTime" value="5" />
+					<span>90분 이내</span>
+				</label>
+			</div>
 
-            <div class="input-group radio-group">
-                <label>난이도</label>
-                <label><input type="radio" name="cookLevel" value="1" /><span>초하수달</span></label>
-                <label><input type="radio" name="cookLevel" value="2" /><span>하수달</span></label>
-                <label><input type="radio" name="cookLevel" value="3" /><span>중수달</span></label>
-                <label><input type="radio" name="cookLevel" value="4" /><span>고수달</span></label>
-                <label><input type="radio" name="cookLevel" value="5" /><span>초고수달</span></label>
-            </div>
+			<div class="input-group radio-group">
+				<label>난이도</label>
+				<label>
+					<input type="radio" name="cookLevel" value="1" />
+					<span>초하수달</span>
+				</label>
+				<label>
+					<input type="radio" name="cookLevel" value="2" />
+					<span>하수달</span>
+				</label>
+				<label>
+					<input type="radio" name="cookLevel" value="3" />
+					<span>중수달</span>
+				</label>
+				<label>
+					<input type="radio" name="cookLevel" value="4" />
+					<span>고수달</span>
+				</label>
+				<label>
+					<input type="radio" name="cookLevel" value="5" />
+					<span>초고수달</span>
+				</label>
+			</div>
 
-            <div class="input-group">
-                <label>제목</label>
-                <input type="text" name="title" />
-            </div>
-        </div>
+			<div class="input-group">
+				<label class="section-title">제목</label>
+				<input type="text" name="title" />
+			</div>
+		</div>
 
-        <div class="section">
-            <div id="inputIngredientFieldsContainer" class="input-group">
-                <label  class="section-title">재료</label>
-                <input class="input input-bordered" autocomplete="off" type="text" placeholder="요리재료를 입력해주세요" name="ingredients[0].name">
-                <input class="input input-bordered" autocomplete="off" type="text" placeholder="용량을 입력해주세요" name="ingredients[0].measure">
-                <input type="hidden" name="ingredients[0].recipeId" value="${currentId}">
-            </div>
-            <button type="button" onclick="addInputIngredientFields()">재료 추가</button>
-        </div>
+		<div class="section">
+			<div id="inputIngredientFieldsContainer" class="input-group">
+				<label class="section-title">재료</label>
+				<input class="input input-bordered" autocomplete="off" type="text" placeholder="요리재료를 입력해주세요"
+					name="ingredients[0].name">
+				<input class="input input-bordered" autocomplete="off" type="text" placeholder="용량을 입력해주세요"
+					name="ingredients[0].measure">
+				<input type="hidden" name="ingredients[0].recipeId" value="${currentId}">
+			</div>
+			<button type="button" onclick="addInputIngredientFields()">재료 추가</button>
+		</div>
 
-        <div class="section">
-            <div id="inputCookWareFieldsContainer" class="input-group">
-                <label class="section-title">요리도구</label>
-                <input class="input input-bordered" autocomplete="off" type="text" placeholder="요리도구를 입력해주세요" name="cookWares[0].name">
-                <input class="input input-bordered" autocomplete="off" type="text" placeholder="수량을 입력해주세요" name="cookWares[0].count">
-                <input type="hidden" name="cookWares[0].recipeId" value="${currentId}">
-            </div>
-            <button type="button" onclick="addInputCookWareFields()">요리도구 추가</button>
-        </div>
+		<div class="section">
+			<div id="inputCookWareFieldsContainer" class="input-group">
+				<label class="section-title">요리도구</label>
+				<input class="input input-bordered" autocomplete="off" type="text" placeholder="요리도구를 입력해주세요"
+					name="cookWares[0].name">
+				<input class="input input-bordered" autocomplete="off" type="text" placeholder="수량을 입력해주세요"
+					name="cookWares[0].count">
+				<input type="hidden" name="cookWares[0].recipeId" value="${currentId}">
+			</div>
+			<button type="button" onclick="addInputCookWareFields()">요리도구 추가</button>
+		</div>
 
-        <div class="section">
-            <div class="section-title">레시피 사진</div>
-            <div class="input-group">
-                <label>레시피 사진</label>
-                <input id="fileInput" type="file" name="file">
-            </div>
-        </div>
+		<div class="section">
+			<div class="section-title">레시피 사진</div>
+			<div class="input-group">
+				<label>레시피 사진</label>
+				<input id="fileInput" type="file" name="file">
+			</div>
+		</div>
 
-        <div class="section">
-            <div class="section-title">본문</div>
-            <div class="toast-ui-editor"></div>
-        </div>
+		<div class="section">
+			<div class="section-title">본문</div>
+			<div class="toast-ui-editor"></div>
+		</div>
 
-        <button type="submit">등록</button>
-    </form>
+		<button type="submit">등록</button>
+	</form>
 </section>
 
 <%@ include file="../common/foot.jspf"%>

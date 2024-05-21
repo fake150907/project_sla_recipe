@@ -288,7 +288,6 @@
 	display: block;
 	opacity: 1;
 	transition: opacity 0.3s ease;
-	backdrop-filter: blur(20px);
 }
 
 /* .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box의 display 속성을 변경하여 효과적으로 보여줌 */
@@ -313,31 +312,52 @@
 	top: 20%; /* Adjust to position vertically */
 }
 
-.title, .subtitle {
-	font-size: calc(1em + 30vmin);
-	font-weight: 600;
-	color: tomato;
-	--x-offset: -0.0480em;
-	--y-offset: 0.0480em;
-	--stroke: 0.025em;
-	--background-color: white;
-	--stroke-color: lightblue;
-	text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
-		calc(var(--x-offset)- var(--stroke)) calc(var(--y-offset)+ var(--stroke))
-		0px var(--stroke-color);
+.title ,.subtitle {
+  font-size: calc( 1em + 30vmin );
+  font-weight: 600;
+  color: tomato;
+  
+  --x-offset: -0.0480em;
+  --y-offset: 0.0480em;
+  --stroke: 0.025em;
+  --background-color: white;
+  --stroke-color: lightblue;
+  
+  text-shadow: 
+    
+    var(--x-offset)
+    var(--y-offset)
+    0px
+    var(--background-color), 
+    
+    calc( var(--x-offset) - var(--stroke) )
+    calc( var(--y-offset) + var(--stroke) )
+    0px
+    var(--stroke-color);
+  
 }
 /* for browsers that support spread, added in
 https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
 currently: none browsers! none of them!
 I can't even find a test: 
 https://wpt.fyi/results/css/css-text-decor */
-@
-supports ( text-shadow: 1px 1px 1px 1px black ) { .title ,.subtitle {
-	text-shadow:var(--x-offset)var(--y-offset)0px0pxvar(--background-color),
-	var(--x-offset)var(--y-offset)var(--stroke)0pxvar(--stroke-color);
-	
-}
-
+@supports ( text-shadow: 1px 1px 1px 1px black ) {
+  .title ,.subtitle {
+    text-shadow:
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      0px
+      var(--background-color), 
+      
+      var(--x-offset) 
+      var(--y-offset)
+      var(--stroke)
+      0px
+      var(--stroke-color);
+    
+  }
 }
 .title, .subtitle {
 	font-weight: 400;
@@ -557,8 +577,8 @@ supports ( text-shadow: 1px 1px 1px 1px black ) { .title ,.subtitle {
 				</div>
 				<div class="noneLogin-SearchIcon">
 					<a class="hover:underline" href="../recipe/list">
-						<span class="material-symbols-outlined"> recipe </span>
-						<span class="Icon_text">Search</span>
+						<span class="material-symbols-outlined"> Search </span>
+						<span class="Icon_text">recipe</span>
 					</a>
 				</div>
 				<div class="LoginIcon">
@@ -585,8 +605,8 @@ supports ( text-shadow: 1px 1px 1px 1px black ) { .title ,.subtitle {
 				</div>
 				<div class="SearchIcon">
 					<a class="hover:underline" href="../recipe/list">
-						<span class="material-symbols-outlined"> recipe </span>
-						<span class="Icon_text">Search</span>
+						<span class="material-symbols-outlined"> Search </span>
+						<span class="Icon_text">recipe</span>
 					</a>
 				</div>
 				<div class="LogoutIcon">
@@ -617,7 +637,7 @@ supports ( text-shadow: 1px 1px 1px 1px black ) { .title ,.subtitle {
 					<div class="introduce_box"></div>
 					<a href="">
 						<span class="startPage_bottom_content">
-							슬라레시피소개
+							Contact Me
 							<span class="icon">
 								<img
 									src="https://velog.velcdn.com/images/fake150907/post/7379f23c-b9d0-4da9-bf1d-3eba0567ea40/image.svg"
