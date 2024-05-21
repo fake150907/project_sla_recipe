@@ -287,6 +287,7 @@ function toggleLike() {
 	border-radius: 10px;
 	width: 980px;
 	height: 580PX;
+	object-fit:cover;
 }
 /* 제목관련 css */
 .title_box {
@@ -334,7 +335,6 @@ function toggleLike() {
 	border: none;
 	cursor: pointer;
 	outline: none;
-	background-color: ;
 	left: 83%;
 	top: -320%;
 }
@@ -1076,9 +1076,6 @@ function toggleLike() {
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="btns mt-5">
-		<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
 	</div>
 </section>
 

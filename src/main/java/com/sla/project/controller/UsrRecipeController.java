@@ -20,6 +20,7 @@ import com.sla.project.service.ReplyService;
 import com.sla.project.util.Ut;
 import com.sla.project.vo.CookWare;
 import com.sla.project.vo.CookWareList;
+import com.sla.project.vo.GroupBuying;
 import com.sla.project.vo.Ingredient;
 import com.sla.project.vo.IngredientList;
 import com.sla.project.vo.Recipe;
@@ -111,9 +112,10 @@ public class UsrRecipeController {
 
 		List<Recipe> recipes = recipeService.getForPrintRecipes(itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
-
+		String relTypeCode = "Recipe";
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("relTypeCode", relTypeCode);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("recipesCount", recipesCount);
@@ -213,6 +215,27 @@ public class UsrRecipeController {
 
 		return Ut.jsReplace(writeRecipeRd.getResultCode(), writeRecipeRd.getMsg(), "../recipe/detail?id=" + id);
 
+	}
+
+	@RequestMapping("/usr/recipe/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Recipe recipe = recipeService.getRecipe(id);
+
+		if (recipe == null) {
+			return Ut.jsHistoryBack("F-1", Ut.f("%d번 글은 존재하지 않습니다", id));
+		}
+
+		ResultData loginedMemberCanDeleteRd = recipeService.userCanDelete(rq.getLoginedMemberId(), recipe);
+
+		if (loginedMemberCanDeleteRd.isSuccess()) {
+			recipeService.deleteRecipe(id);
+		}
+
+		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(),
+				"../recipe/list");
 	}
 
 	@RequestMapping("/usr/recipe/scrapList")

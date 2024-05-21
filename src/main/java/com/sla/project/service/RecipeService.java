@@ -93,7 +93,7 @@ public class RecipeService {
 		return ResultData.from("S-1", Ut.f("%d번 글이 생성되었습니다", id), "id", id);
 	}
 
-	public void deleterecipe(int id) {
+	public void deleteRecipe(int id) {
 		recipeRepository.deleteRecipe(id);
 	}
 
@@ -213,5 +213,4 @@ public class RecipeService {
 	public int getScrapRecipesCount(String searchKeywordTypeCode, String searchKeyword, int loginedMemberId) {
 		return recipeRepository.getScrapRecipesCount(searchKeywordTypeCode, searchKeyword, loginedMemberId);
 	}
-
 }

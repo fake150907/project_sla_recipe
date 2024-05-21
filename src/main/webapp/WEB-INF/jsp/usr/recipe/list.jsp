@@ -32,7 +32,7 @@
 
 .Thumbnail {
 	aspect-ratio: 1.19;
-	object-fit: auto;
+	object-fit: cover;
 	object-position: center;
 	width: 200px;
 	height: 210px;
@@ -133,7 +133,7 @@
 }
 </style>
 
-<section class="mt-8 text-xl px-4">
+<section class="mb-10 mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
 		<div class="mb-4 flex">
 			<div class="badge badge-outline">${recipesCount }개</div>
@@ -190,12 +190,11 @@
 			%>
 			<a href="detail?id=${recipe.id }">
 				<div class="recipe-box">
-					<img class="Thumbnail" src="${rq.getImgUri(recipe.id,relTypeCode)}"
-						onerror="${rq.profileFallbackImgOnErrorHtml}" alt="" />
+					<img class="Thumbnail" src="${rq.getImgUri(recipe.id,relTypeCode)}" onerror="${rq.profileFallbackImgOnErrorHtml}"/>
 					<div class="div-6">
 						<img
-							src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
-							class="profile-img" />
+							loading="lazy" src="https://velog.velcdn.com/images/fake150907/post/6e82a95f-9874-4838-9862-a90c025c101a/image.jpg"
+							class="profile-img"  onerror="this.src='https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-1.jpg';"/>
 						<div class="div-7">
 							<div class="div-8">
 								<div class="recipe-title">${recipe.title}</div>
@@ -228,28 +227,19 @@
 			value="${baseUri }&searchKeyword=${searchKeyword}" />
 
 		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="?${baseUri }&page=1">1</a>
+			<a  style="background-color: #FFFACF;" class="btn btn-sm" href="?${baseUri }&page=1">1</a>
 			<button class="btn btn-sm btn-disabled">...</button>
 		</c:if>
 
 		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }"
+			<a style="background-color: #FFFACF;"  class="btn btn-sm ${param.page == i ? 'btn-active' : '' }"
 				href="?${baseUri }&page=${i }">${i }</a>
 		</c:forEach>
 
 		<c:if test="${endPage < pagesCount }">
 			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="?${baseUri }&page=${pagesCount }">${pagesCount }</a>
+			<a style="background-color: #FFFACF;" class="btn btn-sm" href="?${baseUri }&page=${pagesCount }">${pagesCount }</a>
 		</c:if>
-	</div>
-	<!-- 	원래 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<div class="btn-group">
-			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }"
-					href="?page=${i }">${i }</a>
-			</c:forEach>
-		</div>
 	</div>
 </section>
 

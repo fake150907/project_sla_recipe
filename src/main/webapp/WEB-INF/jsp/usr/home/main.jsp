@@ -87,7 +87,7 @@
 	position: absolute;
 	display: flex;
 	justify-content: space-around;
-	right: 10%; /* Adjust to align properly */
+	right: 36%; /* Adjust to align properly */
 }
 /* Individual icon styling */
 .HeadIcons img {
@@ -251,11 +251,11 @@
 	{
 	background: rgba(0, 0, 0, 0.3);
 	width: 100%;
-	height: 650px;
+	height: 100%;
 	position: absolute;
 	display: none;
 	bottom: 99px;
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(20px);
 	opacity: 0;
 	transition: opacity 0.3s ease;
 }
@@ -270,11 +270,11 @@
 }
 
 .ingredients_box {
-	left: -477px;
+	left: -104.5%;
 }
 
 .recommendRecipe_box {
-	left: -954px;
+	left:-204.7%;
 }
 
 .recipeList_box {
@@ -288,6 +288,7 @@
 	display: block;
 	opacity: 1;
 	transition: opacity 0.3s ease;
+		backdrop-filter: blur(20px);
 }
 
 /* .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box의 display 속성을 변경하여 효과적으로 보여줌 */
@@ -296,11 +297,12 @@
 	.startPage_bottom_box4:hover  .recipeList_box {
 	background: rgba(0, 0, 0, 0.3);
 	width: 1920px;
-	height: 650px;
+	height: 770%;
 	position: absolute;
 	display: block;
 	backdrop-filter: blur(10px);
 	bottom: 99px;
+	
 }
 
 /* 타이틀 */
@@ -312,31 +314,71 @@
 	top: 20%; /* Adjust to position vertically */
 }
 
+.title ,.subtitle {
+  font-size: calc( 1em + 30vmin );
+  font-weight: 600;
+  color: tomato;
+  
+  --x-offset: -0.0480em;
+  --y-offset: 0.0480em;
+  --stroke: 0.025em;
+  --background-color: white;
+  --stroke-color: lightblue;
+  
+  text-shadow: 
+    
+    var(--x-offset)
+    var(--y-offset)
+    0px
+    var(--background-color), 
+    
+    calc( var(--x-offset) - var(--stroke) )
+    calc( var(--y-offset) + var(--stroke) )
+    0px
+    var(--stroke-color);
+  
+}
+/* for browsers that support spread, added in
+https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
+currently: none browsers! none of them!
+I can't even find a test: 
+https://wpt.fyi/results/css/css-text-decor */
+@supports ( text-shadow: 1px 1px 1px 1px black ) {
+  .title ,.subtitle {
+    text-shadow:
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      0px
+      var(--background-color), 
+      
+      var(--x-offset) 
+      var(--y-offset)
+      var(--stroke)
+      0px
+      var(--stroke-color);
+    
+  }
+}
+
 .title, .subtitle {
-	color: #1B1818;
-	font-weight: 700;
+	font-weight: 400;
 	font-family: "Merriweather", serif;
-	user-select: none; text-transform : uppercase; font-size : 150px;
-	transition : all 0.25s ease-out;
-	font-style: normal;
+	user-select: none;
 	text-transform: uppercase;
-	font-size: 150px;
-	transition: all 0.25s ease-out;
+	font-size: 120px;
 }
 
 /* Title and subtitle styling */
 .title {
-	color: #fff;
-	font-weight: 700;
 	font-family: "Merriweather", serif;
-	font-size: 10vw; /* Make it responsive using vw */
+	font-size: 8vw; /* Make it responsive using vw */
 }
 
 .subtitle {
-	color: #fff;
-	font-weight: 700;
 	font-family: "Merriweather", serif;
-	font-size: 5vw; /* Make it responsive using vw */
+	font-size: 4vw; /* Make it responsive using vw */
 	margin-top: 1em;
 }
 
@@ -348,7 +390,7 @@
 .ingredients_img1 {
 	width: 605px;
 	height: 345px;
-	top: 100px;
+	top: 150px;
 	left: 350px;
 	border-radius: 10px;
 	position: absolute;
@@ -358,7 +400,7 @@
 .ingredients_img2 {
 	width: 605px;
 	height: 345px;
-	top: 250px;
+	top: 300px;
 	left: 900px;
 	position: absolute;
 	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
@@ -378,41 +420,53 @@
 	top: 0;
 }
 
-.ingredients_content2 {
-	width: 566px;
+.description{
+	width: 550px;
 	height: 66px;
 	position: absolute;
 	font-size: 20px;
-	font-weight: 600;
+	font-weight: 400;
 	line-height: 24px;
 	word-wrap: break-word;
-	left: 900px;
-	top: 600px;
-	font-family: Inter;
+	left: 350px;
+	top: 500px;
+	color: white;
+}
+
+.ingredients_content2 {
+	width: 580px;
+	height: 66px;
+	position: absolute;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 24px;
+	word-wrap: break-word;
+	left: 910px;
+	top: 650px;
 	color: white;
 }
 
 /* Title for ingredient box */
-.ingredients_content>.title {
+.ingredients_content>.ingredients-title {
 	left: 0;
-	top: 0;
+	top: 50%;
 	position: absolute;
 	color: white;
 	font-size: 35px;
 	font-family: Inter;
-	font-weight: 600;
+		font-weight: 500;
 	line-height: 42px;
 	word-wrap: break-word;
 }
 
-.ingredients_content>.subtitle {
-	left: 151px;
-	top: 9px;
+.ingredients_content>.ingredients-subtitle {
+	left: 0;
+	top: 120%;
 	position: absolute;
 	color: white;
 	font-size: 20px;
 	font-family: Inter;
-	font-weight: 600;
+	font-weight: 400;
 	line-height: 24px;
 	word-wrap: break-word;
 }
@@ -602,13 +656,13 @@
 					<div class="ingredients_box">
 						<div class="ingredients_item1">
 							<div class="ingredients_content">
-								<div class="title">재료공구</div>
-								<div class="subtitle">신선한 재료로 요리하고싶은 당신의 마음!</div>
-								<div class="description">마트에 가서 재료를 사도 혼자 사는 당신들이 먹기에는 양이
-									너무 많다!</div>
+								<div class="ingredients-title">재료공구</div>
+								<div class="ingredients-subtitle">신선한 재료로 요리하고싶은 당신의 마음!</div>
 							</div>
 							<img class="ingredients_img1"
 								src="https://velog.velcdn.com/images/fake150907/post/f78257ce-3777-4a59-9bf6-7b8323cd1810/image.jpg" />
+								<div class="description">마트에 가서 재료를 사도 혼자 사는 당신들이 먹기에는 양이
+									너무 많다!</div>
 						</div>
 						<div class="ingredients_item2">
 							<div class="ingredients_content2">이제 다른 사람들과 재료를 공동구매해서 항상
@@ -632,7 +686,22 @@
 			<div class="separator2"></div>
 			<div class="startPage_bottom_box3">
 				<div class="startPage_bottom_item3">
-					<div class="recommendRecipe_box"></div>
+					<div class="recommendRecipe_box">
+						<div class="recommendRecipe_item1">
+							<div class="recommendRecipe_content">
+								<div class="recommendRecipe-title">맞춤 레시피</div>
+								<div class="recommendRecipe-subtitle">안성맞춤 레시피를 추천받아보자!</div>
+							</div>
+							<img class="recommendRecipe_img1"
+								src="" />
+							<div class="recommendRecipe-content2">밥을 뭐먹어야할지 고민 되는 당신!</div>
+						</div>
+						<div class="recommendRecipe_item2">
+							<div class="recommendRecipe_content3">이제 태그별로 레시피를 선택해서 골라보세요!</div>
+							<img class="recommendRecipe_img2"
+								src="" />
+						</div>
+					</div>
 					<a href="">
 						<span class="startPage_bottom_content">
 							맟춤레시피

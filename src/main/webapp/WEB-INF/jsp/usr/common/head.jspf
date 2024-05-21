@@ -138,16 +138,62 @@
 
 .title {
 	position: absolute;
-	font-family: "Sevillana", cursive;
 	font-style: normal;
-	font-weight: 600;
-	font-size: 70px;
+	font-family: "Merriweather", serif;
+	font-size: 40px;
 	width: 450px;
 	color: white;
 	word-wrap: break-word;
 	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
 		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
 	top: 17%;
+}
+
+.title ,.subtitle {
+  font-weight: 700;
+  color: tomato;
+  
+  --x-offset: -0.0480em;
+  --y-offset: 0.0480em;
+  --stroke: 0.025em;
+  --background-color: white;
+  --stroke-color: lightblue;
+  
+  text-shadow: 
+    
+    var(--x-offset)
+    var(--y-offset)
+    0px
+    var(--background-color), 
+    
+    calc( var(--x-offset) - var(--stroke) )
+    calc( var(--y-offset) + var(--stroke) )
+    0px
+    var(--stroke-color);
+  
+}
+/* for browsers that support spread, added in
+https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
+currently: none browsers! none of them!
+I can't even find a test: 
+https://wpt.fyi/results/css/css-text-decor */
+@supports ( text-shadow: 1px 1px 1px 1px black ) {
+  .title {
+    text-shadow:
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      0px
+      var(--background-color), 
+      
+      var(--x-offset) 
+      var(--y-offset)
+      var(--stroke)
+      0px
+      var(--stroke-color);
+    
+  }
 }
 </style>
 
@@ -205,9 +251,9 @@
 						</a>
 					</div>
 					<div class="SearchIcon">
-						<a class="hover:underline" href="../recipe/search">
+						<a class="hover:underline" href="../recipe/list">
 							<span class="material-symbols-outlined"> search </span>
-							<span class="Icon_text">Search</span>
+							<span class="Icon_text">Recipe</span>
 						</a>
 					</div>
 					<div class="LogoutIcon">
