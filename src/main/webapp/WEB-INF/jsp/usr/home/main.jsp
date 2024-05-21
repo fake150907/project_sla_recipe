@@ -274,7 +274,7 @@
 }
 
 .recommendRecipe_box {
-	left:-204.7%;
+	left: -204.7%;
 }
 
 .recipeList_box {
@@ -288,7 +288,7 @@
 	display: block;
 	opacity: 1;
 	transition: opacity 0.3s ease;
-		backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
 }
 
 /* .introduce_box, .ingredients_box, .recommendRecipe_box, .recipeList_box의 display 속성을 변경하여 효과적으로 보여줌 */
@@ -302,7 +302,6 @@
 	display: block;
 	backdrop-filter: blur(10px);
 	bottom: 99px;
-	
 }
 
 /* 타이틀 */
@@ -314,54 +313,32 @@
 	top: 20%; /* Adjust to position vertically */
 }
 
-.title ,.subtitle {
-  font-size: calc( 1em + 30vmin );
-  font-weight: 600;
-  color: tomato;
-  
-  --x-offset: -0.0480em;
-  --y-offset: 0.0480em;
-  --stroke: 0.025em;
-  --background-color: white;
-  --stroke-color: lightblue;
-  
-  text-shadow: 
-    
-    var(--x-offset)
-    var(--y-offset)
-    0px
-    var(--background-color), 
-    
-    calc( var(--x-offset) - var(--stroke) )
-    calc( var(--y-offset) + var(--stroke) )
-    0px
-    var(--stroke-color);
-  
+.title, .subtitle {
+	font-size: calc(1em + 30vmin);
+	font-weight: 600;
+	color: tomato;
+	--x-offset: -0.0480em;
+	--y-offset: 0.0480em;
+	--stroke: 0.025em;
+	--background-color: white;
+	--stroke-color: lightblue;
+	text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
+		calc(var(--x-offset)- var(--stroke)) calc(var(--y-offset)+ var(--stroke))
+		0px var(--stroke-color);
 }
 /* for browsers that support spread, added in
 https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
 currently: none browsers! none of them!
 I can't even find a test: 
 https://wpt.fyi/results/css/css-text-decor */
-@supports ( text-shadow: 1px 1px 1px 1px black ) {
-  .title ,.subtitle {
-    text-shadow:
-      
-      var(--x-offset)
-      var(--y-offset)
-      0px
-      0px
-      var(--background-color), 
-      
-      var(--x-offset) 
-      var(--y-offset)
-      var(--stroke)
-      0px
-      var(--stroke-color);
-    
-  }
+@
+supports ( text-shadow: 1px 1px 1px 1px black ) { .title ,.subtitle {
+	text-shadow:var(--x-offset)var(--y-offset)0px0pxvar(--background-color),
+	var(--x-offset)var(--y-offset)var(--stroke)0pxvar(--stroke-color);
+	
 }
 
+}
 .title, .subtitle {
 	font-weight: 400;
 	font-family: "Merriweather", serif;
@@ -420,7 +397,7 @@ https://wpt.fyi/results/css/css-text-decor */
 	top: 0;
 }
 
-.description{
+.description {
 	width: 550px;
 	height: 66px;
 	position: absolute;
@@ -454,7 +431,7 @@ https://wpt.fyi/results/css/css-text-decor */
 	color: white;
 	font-size: 35px;
 	font-family: Inter;
-		font-weight: 500;
+	font-weight: 500;
 	line-height: 42px;
 	word-wrap: break-word;
 }
@@ -579,8 +556,8 @@ https://wpt.fyi/results/css/css-text-decor */
 					</a>
 				</div>
 				<div class="noneLogin-SearchIcon">
-					<a class="hover:underline" href="../recipe/search">
-						<span class="material-symbols-outlined"> search </span>
+					<a class="hover:underline" href="../recipe/list">
+						<span class="material-symbols-outlined"> recipe </span>
 						<span class="Icon_text">Search</span>
 					</a>
 				</div>
@@ -607,8 +584,8 @@ https://wpt.fyi/results/css/css-text-decor */
 					</a>
 				</div>
 				<div class="SearchIcon">
-					<a class="hover:underline" href="../recipe/search">
-						<span class="material-symbols-outlined"> search </span>
+					<a class="hover:underline" href="../recipe/list">
+						<span class="material-symbols-outlined"> recipe </span>
 						<span class="Icon_text">Search</span>
 					</a>
 				</div>
@@ -661,8 +638,8 @@ https://wpt.fyi/results/css/css-text-decor */
 							</div>
 							<img class="ingredients_img1"
 								src="https://velog.velcdn.com/images/fake150907/post/f78257ce-3777-4a59-9bf6-7b8323cd1810/image.jpg" />
-								<div class="description">마트에 가서 재료를 사도 혼자 사는 당신들이 먹기에는 양이
-									너무 많다!</div>
+							<div class="description">마트에 가서 재료를 사도 혼자 사는 당신들이 먹기에는 양이
+								너무 많다!</div>
 						</div>
 						<div class="ingredients_item2">
 							<div class="ingredients_content2">이제 다른 사람들과 재료를 공동구매해서 항상
@@ -693,13 +670,13 @@ https://wpt.fyi/results/css/css-text-decor */
 								<div class="recommendRecipe-subtitle">안성맞춤 레시피를 추천받아보자!</div>
 							</div>
 							<img class="recommendRecipe_img1"
-								src="" />
+								src="https://images.unsplash.com/photo-1705261467139-3be0264d78bf?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
 							<div class="recommendRecipe-content2">밥을 뭐먹어야할지 고민 되는 당신!</div>
 						</div>
 						<div class="recommendRecipe_item2">
-							<div class="recommendRecipe_content3">이제 태그별로 레시피를 선택해서 골라보세요!</div>
-							<img class="recommendRecipe_img2"
-								src="" />
+							<div class="recommendRecipe_content3">이제 태그별로 레시피를 선택해서
+								골라보세요!</div>
+							<img class="recommendRecipe_img2" src="" />
 						</div>
 					</div>
 					<a href="">
