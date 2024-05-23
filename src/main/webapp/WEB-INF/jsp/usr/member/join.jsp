@@ -211,12 +211,12 @@ function JoinIdConfirm() {
 /* 공통속성이라서 묶음 */
 .inputJoinId, .inputJoinPw, .inputJoinName, .inputJoinNickName,
 	.inputJoinEmail, .inputJoinCellPhoneNum {
-	background-color: #FFFACD;
+	background-color: white;
 	left: 50px;
 }
 
 .inputJoinPw {
-	background-color: #FFFACD;
+	background-color: #white;
 	left: 35px;
 }
 
@@ -280,7 +280,7 @@ function JoinIdConfirm() {
 /* 페이지 구성요소 */
 .SlaRecipe {
 	width: 100%;
-	left: 225px;
+	left: 5.7%;
 	top: 0px;
 	position: absolute;
 	color: white;
@@ -293,9 +293,9 @@ function JoinIdConfirm() {
 }
 
 .ATasteToBuildYourDreamOn {
-	left: 170px;
+	left: 5.7%;
 	top: 120px;
-	width: 100%;
+	width: 130%;
 	color: white;
 	font-size: 40px;
 	font-family: "Sevillana", cursive;
@@ -304,6 +304,59 @@ function JoinIdConfirm() {
 	position: absolute;
 	text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0
 		rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6);
+}
+
+.SlaRecipe ,.ATasteToBuildYourDreamOn {
+  font-weight: 600;
+  color: tomato;
+  
+  --x-offset: -0.0480em;
+  --y-offset: 0.0480em;
+  --stroke: 0.025em;
+  --background-color: white;
+  --stroke-color: lightblue;
+  
+  text-shadow: 
+    
+    var(--x-offset)
+    var(--y-offset)
+    0px
+    var(--background-color), 
+    
+    calc( var(--x-offset) - var(--stroke) )
+    calc( var(--y-offset) + var(--stroke) )
+    0px
+    var(--stroke-color);
+  
+}
+/* for browsers that support spread, added in
+https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
+currently: none browsers! none of them!
+I can't even find a test: 
+https://wpt.fyi/results/css/css-text-decor */
+@supports ( text-shadow: 1px 1px 1px 1px black ) {
+  .SlaRecipe ,.ATasteToBuildYourDreamOn {
+    text-shadow:
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      0px
+      var(--background-color), 
+      
+      var(--x-offset) 
+      var(--y-offset)
+      var(--stroke)
+      0px
+      var(--stroke-color);
+    
+  }
+}
+.SlaRecipe, .ATasteToBuildYourDreamOn {
+	font-weight: 400;
+	font-family: "Merriweather", serif;
+	user-select: none;
+	text-transform: uppercase;
 }
 
 .logo {
@@ -334,6 +387,7 @@ function JoinIdConfirm() {
 	color: rgba(0, 0, 0, 0.6);
 	left: 20%;
 }
+
 </style>
 
 </head>
@@ -354,7 +408,7 @@ function JoinIdConfirm() {
 				<span class="profileImage_text" style="font-weight: bold;">프로필이미지</span>
 				<div class="profileImage_text_bgc"></div>
 				<div class="profileImage_data_box">
-					<input id="fileInput" placeholder="이미지를 선택해주세요" type="file" />
+					<input style="border-radius: " id="fileInput" type="file" />
 				</div>
 				<div class="profileImage_box_bgc">
 					<span class=""></span>

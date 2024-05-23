@@ -479,6 +479,10 @@ https://wpt.fyi/results/css/css-text-decor */
 	line-height: 24px;
 	word-wrap: break-word;
 }
+
+.recommendRecipe_img1 {
+	width: 15%;
+}
 </style>
 <script type="text/javascript">
 	/* $(function(){

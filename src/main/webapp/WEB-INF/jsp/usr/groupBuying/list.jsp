@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="GROUPBUYING LIST"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -28,8 +29,10 @@
 .table_box1, .table_box2, .table_box3 {
 	position: absolute;
 	left: 0;
-	background-color: #FFFACD;
-	border: 1px solid #FFFACD;
+	border: 1px solid #dbdbdb;
+	border-bottom-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 .table_box1 {
@@ -104,6 +107,7 @@
 	border-bottom-right-radius: 10px;
 	border-top-right-radius: 10px;
 	border: 0.50px rgba(0, 0, 0, 0.10) solid;
+	z-index: 99;
 }
 
 .searchLocationBtn {
@@ -124,6 +128,7 @@
 	position: absolute;
 	top: 15%;
 	left: 48%;
+	z-index: 99;
 }
 
 .searchKeyword {
@@ -171,6 +176,7 @@
 
 .searchKeywordTypeCode {
 	width: 150px;
+	height: 46.5px;
 	color: rgba(0, 0, 0, 0.6);
 	background-color: #FFFACD;
 }
@@ -207,31 +213,25 @@
 <div class="list_container">
 	<div class="search_container">
 		<div class="search_location_form_box">
-			<form action="">
-				<div class="location_box">
-					<div class="location_data">
-						<input style="font-size: 20px; font-family: Inter; font-weight: 600;" class="inputLocation w-full"
-							autocomplete="off" type="text" placeholder="위치를 입력해주세요" name="InputLocation" />
-					</div>
-					<div class="logcation_submit_btn">
-						<span class="material-symbols-outlined">pin_drop</span>
-						<input style="font-size: 30px; font-family: Inter; font-weight: 600;" type="submit" value=""
-							class="searchLocationBtn" />
-					</div>
-				</div>
-			</form>
+			<div class="location_box">
+				<a style="width: 150px" href="../groupBuying/location"
+					class="logcation_submit_btn btn"> 위치검색하기 </a>
+			</div>
 		</div>
 		<div class="search_groupBuying_box">
-			<form action="" method="POST" onsubmit="searchKeyword__submit(this); return false;">
+			<form action="" method="POST"
+				onsubmit="searchKeyword__submit(this); return false;">
 				<select data-value="${param.searchKeywordTypeCode }"
-					class="searchKeywordTypeCode select select-bordered select-sm w-full max-w-xs" name="searchKeywordTypeCode">
+					class="searchKeywordTypeCode select select-bordered select-sm w-full max-w-xs"
+					name="searchKeywordTypeCode">
 					<option class="op" value="title">title</option>
 					<option class="op" value="body">body</option>
 					<option class="op" value="title,body">title+body</option>
 				</select>
-				<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-					class="searchKeyword input-sm input input-bordered w-48 max-w-xs" />
-				<button class="SearchBtn btn btn-ghost btn-sm" type="submit">검색</button>
+				<input value="${param.searchKeyword }" name="searchKeyword"
+					type="text" placeholder="searchKeyword?"
+					class="searchKeyword input-sm input-bordered w-48 max-w-xs" />
+				<button class="SearchBtn btn-ghost btn-sm" type="submit">검색</button>
 			</form>
 		</div>
 	</div>
@@ -241,10 +241,12 @@
 				<span class="address1_text">${address1 }</span>
 			</div>
 			<div class="show_LT1">
-				<a class="LT1 btn btn-active btn-link" href="../groupBuying/listByMemberLocationTag1">전체보기</a>
+				<a class="LT1 btn btn-active btn-link"
+					href="../groupBuying/listByMemberLocationTag1">전체보기</a>
 			</div>
 			<section class="mt-8 text-xl px-4">
-				<div class="table_box1" style="width: 100%; height: 350px; overflow: auto">
+				<div class="table_box1"
+					style="width: 100%; height: 350px; overflow: auto">
 					<table class="table-box-1 table" border="1">
 						<colgroup>
 							<col style="width: 10%" />
@@ -281,10 +283,12 @@
 				<span class="address2_text">${address2 }</span>
 			</div>
 			<div class="show_LT2">
-				<a class="LT2 btn btn-active btn-link" href="../groupBuying/listByMemberLocationTag2">전체보기</a>
+				<a class="LT2 btn btn-active btn-link"
+					href="../groupBuying/listByMemberLocationTag2">전체보기</a>
 			</div>
 			<section class="mt-8 text-xl px-4">
-				<div class="table_box2" style="width: 100%; height: 350px; overflow: auto">
+				<div class="table_box2"
+					style="width: 100%; height: 350px; overflow: auto">
 					<table class="table-box-1 table" border="1">
 						<colgroup>
 							<col style="width: 10%" />
@@ -321,10 +325,12 @@
 				<span class="address3_text">${address3 }</span>
 			</div>
 			<div class="show_LT3">
-				<a class="LT3 btn btn-active btn-link" href="../groupBuying/listByMemberLocationTag3">전체보기</a>
+				<a class="LT3 btn btn-active btn-link"
+					href="../groupBuying/listByMemberLocationTag3">전체보기</a>
 			</div>
 			<section class="mt-8 text-xl px-4">
-				<div class="table_box3" style="width: 100%; height: 350px; overflow: auto">
+				<div class="table_box3"
+					style="width: 100%; height: 350px; overflow: auto">
 					<table class="table-box-1 table" border="1">
 						<colgroup>
 							<col style="width: 10%" />
