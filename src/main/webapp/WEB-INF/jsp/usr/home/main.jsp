@@ -394,10 +394,30 @@ https://wpt.fyi/results/css/css-text-decor */
 	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
 }
 
+.recommendRecipe_img1 {
+	width: 500px;
+	height: 345px;
+	top: 150px;
+	left: 350px;
+	border-radius: 10px;
+	position: absolute;
+	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
+}
+
 .ingredients_img2 {
 	width: 605px;
 	height: 345px;
 	top: 300px;
+	left: 900px;
+	position: absolute;
+	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
+	border-radius: 10px;
+}
+
+.recommendRecipe_img2 {
+	width: 605px;
+	height: 345px;
+	top: 150px;
 	left: 900px;
 	position: absolute;
 	background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
@@ -440,6 +460,18 @@ https://wpt.fyi/results/css/css-text-decor */
 	word-wrap: break-word;
 	left: 910px;
 	top: 650px;
+	color: white;
+}
+.recommendRecipe_content2{
+	width: 580px;
+	height: 66px;
+	position: absolute;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 24px;
+	word-wrap: break-word;
+	top: 500px;
+	left: 910px;
 	color: white;
 }
 
@@ -687,19 +719,20 @@ https://wpt.fyi/results/css/css-text-decor */
 			<div class="startPage_bottom_box3">
 				<div class="startPage_bottom_item3">
 					<div class="recommendRecipe_box">
-						<div class="recommendRecipe_item1">
-							<div class="recommendRecipe_content">
-								<div class="recommendRecipe-title">맞춤 레시피</div>
-								<div class="recommendRecipe-subtitle">안성맞춤 레시피를 추천받아보자!</div>
+						<div class="ingredients_item1">
+							<div class="ingredients_content">
+								<div class="ingredients-title">맞춤 레시피</div>
+								<div class="ingredients-subtitle">안성맞춤 레시피를 추천받아보자!</div>
 							</div>
-							<img class="recommendRecipe_img1"
+							<img class="recommendRecipe_img1" style="width: 300px;"
 								src="https://images.unsplash.com/photo-1705261467139-3be0264d78bf?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-							<div class="recommendRecipe-content2">밥을 뭐먹어야할지 고민 되는 당신!</div>
+							<div class="description">밥을 뭐먹어야할지 고민 되는 당신!</div>
 						</div>
-						<div class="recommendRecipe_item2">
-							<div class="recommendRecipe_content3">이제 태그별로 레시피를 선택해서
+						<div class="ingredients_item2">
+							<div class="recommendRecipe_content2">이제 태그별로 레시피를 선택해서
 								골라보세요!</div>
-							<img class="recommendRecipe_img2" src="" />
+							<img class="recommendRecipe_img2"
+								src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
 						</div>
 					</div>
 					<a href="">
@@ -717,7 +750,22 @@ https://wpt.fyi/results/css/css-text-decor */
 			<div class="separator3"></div>
 			<div class="startPage_bottom_box4">
 				<div class="startPage_bottom_item4">
-					<div class="recipeList_box"></div>
+					<div class="recipeList_box">
+						<div class="ingredients_item1">
+							<div class="ingredients_content">
+								<div class="ingredients-title">요리레시피</div>
+								<div class="ingredients-subtitle">다양한 레시피를 즐기고 싶은 당신의 마음!</div>
+							</div>
+							<img class="ingredients_img1"
+								src="https://images.pexels.com/photos/5339080/pexels-photo-5339080.jpeg" />
+							<div class="description">다양한 레시피를 참고하여 요리를 해봐요!</div>
+						</div>
+						<div class="ingredients_item2">
+							<div class="ingredients_content2">오늘 저녁고민 해결 끝!</div>
+							<img class="ingredients_img2"
+								src="https://images.pexels.com/photos/2313686/pexels-photo-2313686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+						</div>
+					</div>
 					<a href="../recipe/list">
 						<span class="startPage_bottom_content">
 							레시피 목록
