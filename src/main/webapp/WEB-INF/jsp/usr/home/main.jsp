@@ -638,8 +638,7 @@ https://wpt.fyi/results/css/css-text-decor */
 		<div class="startPage_bottom_Container">
 			<div class="startPage_bottom_box1">
 				<div class="startPage_bottom_item1">
-					<div class="introduce_box"></div>
-					<a href="">
+					<a href="../home/contact">
 						<span class="startPage_bottom_content">
 							Contact Me
 							<span class="icon">

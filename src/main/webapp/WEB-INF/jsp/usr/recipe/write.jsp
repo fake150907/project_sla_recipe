@@ -303,7 +303,7 @@ input[type="text"], input[type="file"] {
 					<input type="radio" name="cookLevel" value="1" />
 					<span>초하수달</span>
 				</label>
-				<label>
+				<label>k
 					<input type="radio" name="cookLevel" value="2" />
 					<span>하수달</span>
 				</label>

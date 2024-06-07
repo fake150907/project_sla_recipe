@@ -23,5 +23,11 @@ public class UsrHomeController {
 
 		return "/usr/home/search";
 	}
+	
+	@RequestMapping("/usr/home/contact")
+	public String showContactPage() {
+
+		return "/usr/home/contact";
+	}
 
 }
